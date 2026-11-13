@@ -1,0 +1,51 @@
+# One subflow per check, so the refusal text tells which rail blocked the call.
+
+define subflow check approval gate
+  $valid = execute check_approval_gate(tool_calls=$tool_calls)
+
+  if not $valid
+    bot refuse approval gate
+    abort
+
+define subflow check scope
+  $valid = execute check_scope(tool_calls=$tool_calls)
+
+  if not $valid
+    bot refuse scope
+    abort
+
+define subflow check terminal status
+  $valid = execute check_terminal_status(tool_calls=$tool_calls)
+
+  if not $valid
+    bot refuse terminal status
+    abort
+
+define subflow check caps
+  $valid = execute check_caps(tool_calls=$tool_calls)
+
+  if not $valid
+    bot refuse caps
+    abort
+
+define subflow check append only
+  $valid = execute check_append_only(tool_calls=$tool_calls)
+
+  if not $valid
+    bot refuse append only
+    abort
+
+define bot refuse approval gate
+  "approval gate: a digital employee cannot decide approvals or change a human gate's own table"
+
+define bot refuse scope
+  "scope: the tool is not permitted to the digital employee's role"
+
+define bot refuse terminal status
+  "terminal status: a digital employee cannot set a terminal status"
+
+define bot refuse caps
+  "caps: a value exceeds a company policy cap"
+
+define bot refuse append only
+  "append only: the audit log tables are append-only"

@@ -1,0 +1,70 @@
+{
+  "start": "S00",
+  "facts": {
+    "so_giao_dich": 85,
+    "tong_giao_dich": 1800000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Đối chiếu ngân hàng cuối kỳ tháng 4/2026"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": {
+          "id": "BK-0426",
+          "loai_ct": "sao_ke_ngan_hang",
+          "ma_dt": "NH-01",
+          "ghi_chu": "Báo cáo ngân hàng ngày 05/04/2026",
+          "lines": [
+            {
+              "ma_dong": "BK-0426-1",
+              "so_luong": 85,
+              "don_gia": 21176470,
+              "thue_suat": 0
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "APR-0426",
+        "doc": "BK-0426",
+        "loai_pd": "dang_ky_doi_chieu"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT-01",
+      "params": {
+        "approval": "APR-0426",
+        "decision": "Đã duyệt",
+        "ly_do": "Tất cả giao dịch khớp, không có ngoại lệ"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình đối chiếu ngân hàng hoàn tất thành công"
+      }
+    }
+  ]
+}

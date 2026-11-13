@@ -1,0 +1,85 @@
+{
+  "start": "S00",
+  "facts": {
+    "ngay_gui_khieu_nai": 0,
+    "han_xu_ly": 3,
+    "ngay_hien_tai": 3
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Khiếu nại quá hạn về lỗi phần mềm của KH-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH",
+      "params": {
+        "doc": {
+          "id": "KN-001",
+          "loai_ct": "khieu_nai",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Khách hàng báo lỗi phần mềm và phản hồi chậm",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-CSKH",
+      "params": {
+        "expr": {
+          "op": "ge",
+          "args": [
+            {
+              "fact": "ngay_hien_tai"
+            },
+            {
+              "fact": "han_xu_ly"
+            }
+          ]
+        },
+        "ref": "KN-001",
+        "flag_reason": "Quá hạn xử lý khiếu nại"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "flag_exception",
+      "actor": "DE-CSKH",
+      "params": {
+        "ref": "KN-001",
+        "reason": "Chưa phản hồi khiếu nại trong 3 ngày làm việc theo quy định"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-001",
+        "doc": "KN-001",
+        "loai_pd": "danh_gia_khieu_nai"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-MH",
+      "params": {
+        "for": "TP-CSKH",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

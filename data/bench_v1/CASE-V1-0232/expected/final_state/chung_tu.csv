@@ -1,0 +1,3 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+HD-00,hoa_don_mua,CASE-V1-0232-LS,NCC-01,,NCC-01,Đã thực hiện,Khớp,VND,1500000,16500000,Hóa đơn gốc đã được thanh toán ngày 18/02/2026
+HD-2567,de_nghi_chi,CASE-V1-0232,NCC-01,,DE-MH,Từ chối,,VND,1500000,16500000,Thanh toán hóa đơn quảng cáo TikTok chiến dịch tháng 2

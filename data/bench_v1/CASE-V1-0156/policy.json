@@ -1,0 +1,23 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "yeu_cau_ho_so_hoan_tien",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT-01"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_hoan_tien": "5000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "164996700000",
+      "id": "APR-PO-2604",
+      "loai_pd": "don_nhap_kho",
+      "nguoi_duyet": "GD-MP",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "54994500000",
+      "id": "APR-DN-2604",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-KT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình nhập kho hoàn tất thành công",
+    "step": "S12",
+    "type": "end"
+  },
+  "vars": {
+    "reconcile.VINV-2604": "Cần kiểm"
+  }
+}

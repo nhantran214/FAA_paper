@@ -1,0 +1,11 @@
+ma_dong,ma_ct,ma_hh,mo_ta,so_luong,don_gia,chiet_khau,thue_suat,thanh_tien
+PO-01-1,PO-01,HH-01,,100,,,,
+PO-01-2,PO-01,HH-02,,5,,,,
+GRN-01-1,GRN-01,HH-01,,100,,,,
+GRN-01-2,GRN-01,HH-02,,5,,,,
+INV-01-1,INV-01,HH-01,,100,,,0.1,
+INV-01-2,INV-01,HH-02,,5,,,0.1,
+INV-02-1,INV-02,HH-01,,100,,,0.1,
+INV-02-2,INV-02,HH-02,,5,,,0.08,
+DN-01-1,DN-01,HH-01,,100,28500,,0.1,2850000
+DN-01-2,DN-01,HH-02,,5,1500000,,0.08,7500000

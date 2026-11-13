@@ -1,0 +1,6 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0080,S01,DRAFTED,DE-001,DE-NS01,
+2,CASE-V1-0080,S03,FLAGGED,NV-MOI,DE-NS01,Số tài khoản trong hồ sơ bị chỉnh sửa không khớp với tài khoản gốc
+3,CASE-V1-0080,S04,REQUESTED,APR-001,DE-NS01,
+4,CASE-V1-0080,S05,REJECTED,APR-001,KTT,
+5,CASE-V1-0080,S06,FLAGGED,DE-001,DE-NS01,"approval APR-001 is Từ chối, not Đã duyệt; invoice DE-001 was not reconciled in this run (ket_qua '' on file); stk_nhan 987654321098 differs from the stk on file for NV-MOI (123456789012)"

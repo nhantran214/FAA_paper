@@ -1,0 +1,138 @@
+{
+  "start": "S00",
+  "facts": {
+    "uy_quyen_hieu_luc": false,
+    "so_luong_xe_can_dieu_chuyen": 1
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-AL",
+      "params": {
+        "title": "Điều chuyển xe tải 10 tấn từ TP.HCM sang Hà Nội"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-TS",
+      "params": {
+        "doc": {
+          "id": "DC-001",
+          "loai_ct": "phieu_xuat",
+          "ma_dt": "TP-HCM",
+          "lines": [
+            {
+              "ma_dong": "DC-001-1",
+              "ma_hh": "TS-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "TS-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-TS",
+      "params": {
+        "id": "APR-001",
+        "doc": "DC-001",
+        "loai_pd": "dieu_chuyen_ts"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-TS",
+      "params": {
+        "expr": {
+          "fact": "uy_quyen_hieu_luc"
+        },
+        "ref": "APR-001",
+        "flag_reason": "Ủy quyền không hiệu lực"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "check",
+      "actor": "DE-TS",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_ct": "DC-001"
+                },
+                "col": "so_luong"
+              }
+            },
+            {
+              "policy": "caps.han_muc_uy_quyen_dieu_chuyen"
+            }
+          ]
+        },
+        "ref": "APR-001",
+        "flag_reason": "Số lượng xe vượt quá hạn mức ủy quyền"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "TP-TS",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "record_external_fact",
+      "actor": "THU-KHO-HN",
+      "params": {
+        "event_kind": "RECEIVED",
+        "doc": {
+          "id": "NAP-001",
+          "loai_ct": "phieu_nhap",
+          "ct_goc": "DC-001",
+          "lines": [
+            {
+              "ma_dong": "NAP-001-1",
+              "ma_hh": "TS-01",
+              "so_luong": 1
+            }
+          ]
+        }
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-AL",
+      "params": {
+        "reason": "Hoàn tất điều chuyển xe tải"
+      }
+    }
+  ]
+}

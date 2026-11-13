@@ -1,0 +1,136 @@
+{
+  "start": "S00",
+  "facts": {
+    "thieu_hang_HH-01": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-ABC",
+      "params": {
+        "title": "Nhập kho thiếu hàng do nhà cung cấp giao không đầy đủ"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "THU-KHO-ABC",
+      "params": {
+        "doc": {
+          "id": "PHIEU-NHAP-0031",
+          "loai_ct": "phieu_nhap",
+          "ma_dt": "NCC-01",
+          "ct_goc": "",
+          "ghi_chu": "Nhận 92 thùng bột giặt 3kg thay vì 100 thùng như đơn hàng",
+          "lines": [
+            {
+              "ma_dong": "PHIEU-NHAP-0031-1",
+              "ma_hh": "HH-01",
+              "so_luong": 92,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KH",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "op": "div",
+              "args": [
+                {
+                  "op": "sub",
+                  "args": [
+                    {
+                      "field": {
+                        "table": "hang_hoa",
+                        "key": {
+                          "ma_hh": "HH-01"
+                        },
+                        "col": "ton_kho"
+                      }
+                    },
+                    {
+                      "field": {
+                        "table": "dong_ct",
+                        "key": {
+                          "ma_ct": "PHIEU-NHAP-0031"
+                        },
+                        "col": "so_luong"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "field": {
+                    "table": "hang_hoa",
+                    "key": {
+                      "ma_hh": "HH-01"
+                    },
+                    "col": "ton_kho"
+                  }
+                }
+              ]
+            },
+            {
+              "policy": "tolerances.so_luong"
+            }
+          ]
+        },
+        "ref": "HH-01",
+        "flag_reason": "Thiếu 8 thùng (8%) vượt mức dung sai 5%"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "flag_exception",
+      "actor": "DE-KH",
+      "params": {
+        "ref": "HH-01",
+        "reason": "Nhà cung cấp giao thiếu 8 thùng bột giặt 3kg so với đơn hàng"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-0031",
+        "doc": "PHIEU-NHAP-0031",
+        "loai_pd": "xac_nhan_thieu_hang"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-ABC",
+      "params": {
+        "for": "TP-MH-ABC",
+        "approval": "APR-0031"
+      }
+    }
+  ]
+}

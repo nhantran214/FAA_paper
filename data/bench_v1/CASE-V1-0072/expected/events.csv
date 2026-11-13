@@ -1,0 +1,4 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0072,S01,DRAFTED,DE-001,DE-NS,
+2,CASE-V1-0072,S02,REQUESTED,APR-001,DE-NS,
+3,CASE-V1-0072,S04,FLAGGED,APR-001,DP-01,Phó giám đốc không có quyền duyệt tuyển dụng nhân viên giao hàng theo ủy quyền

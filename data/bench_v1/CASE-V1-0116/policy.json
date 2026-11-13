@@ -1,0 +1,23 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "chuyen_kho",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-KHO"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "tieu_chi_chuyen_kho": "200"
+  },
+  "tolerances": {
+    "gia": "0"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

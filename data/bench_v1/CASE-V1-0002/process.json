@@ -1,0 +1,108 @@
+{
+  "start": "S00",
+  "facts": {
+    "kiem_tra_stk_moi": true,
+    "ngay_kiem_tra": "2026-03-18",
+    "ngay_phe_duyet": "2026-03-20"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Cập nhật số tài khoản nhà cung cấp giấy in"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "PLHD-001",
+          "loai_ct": "phu_luc_hop_dong",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PLHD-001-1",
+              "mo_ta": "Đề nghị đổi số tài khoản từ 123456789 sang 987654321",
+              "so_luong": 1,
+              "don_gia": 0,
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "fact": "kiem_tra_stk_moi"
+        },
+        "ref": "NCC-01",
+        "flag_reason": "Tài khoản mới 987654321 không hợp lệ"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "PLHD-001",
+        "loai_pd": "doi_stk_ncc"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Thông tin tài khoản mới đã được xác minh"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "PLHD-001-CAP",
+          "loai_ct": "phu_luc_hop_dong",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PLHD-001-CAP-1",
+              "mo_ta": "Cập nhật số tài khoản thành 987654321",
+              "so_luong": 1,
+              "don_gia": 0,
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "STATUS_CHANGED"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Đã cập nhật tài khoản nhà cung cấp"
+      }
+    }
+  ]
+}

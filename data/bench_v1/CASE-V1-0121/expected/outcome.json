@@ -1,0 +1,41 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "6000000",
+      "id": "APR-001",
+      "loai_pd": "danh_gia_hu_hong",
+      "nguoi_duyet": "TP-KHO",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Giá trị hàng hư vượt ngưỡng phê duyệt của kế toán trưởng (5.000.000 VND)",
+      "ref": "PHIEU-001",
+      "step": "S02"
+    },
+    {
+      "reason": "Giá trị hàng hư vượt ngưỡng phê duyệt của kế toán trưởng (5.000.000 VND)",
+      "ref": "PHIEU-001",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "TP-KHO",
+    "reason": "",
+    "step": "S06",
+    "type": "wait"
+  },
+  "vars": {}
+}

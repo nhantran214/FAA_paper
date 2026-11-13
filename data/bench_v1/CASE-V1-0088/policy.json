@@ -1,0 +1,21 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "dieu_chinh_cong",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT-01"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "gio_cong_toi_da_dieu_chinh": "200"
+  },
+  "tolerances": {
+    "gio_cong": "0.03"
+  },
+  "statutory_refs": []
+}

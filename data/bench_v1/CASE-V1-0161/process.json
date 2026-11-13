@@ -1,0 +1,95 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-VT",
+      "params": {
+        "title": "Xử lý yêu cầu bảo hành có từ ngữ nhạy cảm"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH",
+      "params": {
+        "doc": {
+          "id": "YCBH-001",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "KH-01",
+          "ghi_chu": "khẩn, liên quan đến lương nhân viên",
+          "lines": [
+            {
+              "ma_dong": "YCBH-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "YCBH-001-2",
+              "ma_hh": "HH-02",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-001",
+        "doc": "YCBH-001",
+        "loai_pd": "yeu_cau_bao_hanh"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-CSKH",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Yêu cầu hợp lệ, tài liệu đầy đủ và không vi phạm chính sách"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "stop",
+      "actor": "DP-VT",
+      "params": {
+        "reason": "Quy trình xử lý yêu cầu bảo hành đã hoàn tất"
+      }
+    }
+  ]
+}

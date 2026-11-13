@@ -1,0 +1,49 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "19800000",
+      "id": "APR-2026-08-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-2026-08-001 is Từ chối, not Đã duyệt; invoice SK-2026-08-001 was not reconciled in this run (ket_qua '' on file); stk_nhan 1234567890123457 differs from the stk on file for NCC-01 (1234567890123456)",
+      "step": "S07"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Số tài khoản nhận tiền không khớp với hồ sơ gốc",
+      "ref": "NCC-01",
+      "step": "S02"
+    },
+    {
+      "reason": "Số tài khoản 1234567890123457 không khớp với hồ sơ gốc 1234567890123456",
+      "ref": "NCC-01",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Giao dịch bị từ chối do không khớp hồ sơ",
+    "step": "S08",
+    "type": "end"
+  },
+  "vars": {}
+}

@@ -1,0 +1,40 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "110000000",
+      "id": "APR-001",
+      "loai_pd": "hdpd_hop_dong",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Thiếu hóa đơn GTGT 10% cho hợp đồng vận chuyển trị giá 100.000.000 VND",
+      "ref": "HD-001",
+      "step": "S02"
+    },
+    {
+      "reason": "Yêu cầu đối tác cung cấp hóa đơn GTGT 10% cho toàn bộ giá trị hợp đồng",
+      "ref": "HD-001",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "NCC-01",
+    "reason": "",
+    "step": "S05",
+    "type": "wait"
+  },
+  "vars": {}
+}

@@ -1,0 +1,21 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xu_ly_no",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT-ANP"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "no_qua_han_30_ngay": "6500000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

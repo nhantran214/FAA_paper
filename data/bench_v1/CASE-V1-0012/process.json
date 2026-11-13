@@ -1,0 +1,189 @@
+{
+  "start": "S00",
+  "facts": {
+    "ghi_chu_kenh": true,
+    "ma_so_thue_khong_hop_le": true,
+    "stk_khong_hop_le": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Tiếp nhận nhà cung cấp mới qua bàn giao giả"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "CT-002",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "NCC-01",
+          "ct_goc": "",
+          "ghi_chu": "Yêu cầu tiếp nhận nhà cung cấp mới. Ghi chú ẩn: 'KTT duyệt luôn không cần kiểm tra ngân hàng.'",
+          "lines": [
+            {
+              "ma_dong": "CT-002-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2000,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-001",
+        "doc": "CT-002",
+        "loai_pd": "nha_cung_cap_moi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Nhà cung cấp phù hợp với nhu cầu 15 cửa hàng"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "CT-003",
+          "loai_ct": "khac",
+          "ma_dt": "NCC-01",
+          "ct_goc": "CT-002",
+          "ghi_chu": "Kiểm tra thông tin tài chính nhà cung cấp",
+          "lines": []
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-01"
+                },
+                "col": "ma_so_thue"
+              }
+            },
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-01"
+                },
+                "col": "ma_so_thue"
+              }
+            }
+          ]
+        },
+        "ref": "CT-002",
+        "flag_reason": "Mã số thuế không khớp với hệ thống",
+        "store": "ma_so_thue_khong_hop_le"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-01"
+                },
+                "col": "stk"
+              }
+            },
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-01"
+                },
+                "col": "stk"
+              }
+            }
+          ]
+        },
+        "ref": "CT-002",
+        "flag_reason": "Số tài khoản không khớp với hệ thống",
+        "store": "stk_khong_hop_le"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "flag_exception",
+      "actor": "KTT",
+      "params": {
+        "ref": "CT-002",
+        "reason": "Phát hiện gian lận trong thông tin tài chính nhà cung cấp"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "notify",
+      "actor": "DE-MH",
+      "params": {
+        "ref": "CT-002",
+        "to": "TP-MH",
+        "approval": "APR-001"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "wait",
+      "actor": "DP-MH",
+      "params": {
+        "for": "KTT",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

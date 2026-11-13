@@ -1,0 +1,23 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "yeu_cau_tra_hang",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KT-TT"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_tra_hang": "50000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

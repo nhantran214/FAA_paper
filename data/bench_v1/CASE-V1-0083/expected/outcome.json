@@ -1,0 +1,37 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "76375000",
+      "id": "APR-03-2026-1",
+      "loai_pd": "bang_luong",
+      "nguoi_duyet": "TP-NS",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "76375000",
+      "id": "APR-03-2026-2",
+      "loai_pd": "bang_luong_kt",
+      "nguoi_duyet": "GD-KT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình chấm công và tính lương tháng 03/2026 đã hoàn tất với cả hai phê duyệt.",
+    "step": "S06",
+    "type": "end"
+  },
+  "vars": {}
+}

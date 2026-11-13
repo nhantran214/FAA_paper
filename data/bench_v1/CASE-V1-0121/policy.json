@@ -1,0 +1,27 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "danh_gia_hu_hong",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 5000000,
+          "nguoi_duyet": "KT-TRUONG"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "TP-KHO"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "gia_tri_hu_hong_toi_da_duyet_ngoai_le": "10000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

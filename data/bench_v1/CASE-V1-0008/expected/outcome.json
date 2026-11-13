@@ -1,0 +1,46 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "2772000000",
+      "id": "APR-02",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-02 is Từ chối, not Đã duyệt; invoice INV-MH-01 was not reconciled in this run (ket_qua '' on file)",
+      "step": "S08"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Chênh lệch giá vượt ngưỡng 5%",
+      "ref": "HH-01",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S06",
+    "S07",
+    "S08",
+    "S09"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Giám đốc từ chối do vượt ngưỡng 5%",
+    "step": "S09",
+    "type": "end"
+  },
+  "vars": {
+    "chenh_lech_qua_5": "false"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "don_xuat_kho",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    },
+    {
+      "loai_pd": "don_nhan_kho",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "so_luong_toi_da_xuat_kho": "2000"
+  },
+  "tolerances": {
+    "so_luong": "0.05"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

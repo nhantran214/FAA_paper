@@ -1,0 +1,79 @@
+{
+  "start": "S00",
+  "facts": {
+    "nghi_phep_5_ngay": true,
+    "tu_ngu_nhay_cam": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NS",
+      "params": {
+        "title": "Đơn xin nghỉ phép có từ ngữ nhạy cảm"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "NV-BH",
+      "params": {
+        "doc": {
+          "id": "DON-NP-001",
+          "loai_ct": "don_nghi_phep",
+          "ghi_chu": "Bí mật do phải điều chỉnh tài khoản ngân hàng",
+          "lines": [
+            {
+              "ma_dong": "DON-NP-001-1",
+              "mo_ta": "Nghỉ phép 5 ngày từ 01/03/2026 đến 05/03/2026",
+              "so_luong": 5
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-NP-001",
+        "doc": "DON-NP-001",
+        "loai_pd": "xu_ly_nghi_phep"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-NS",
+      "params": {
+        "approval": "APR-NP-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Đơn hợp lệ và nhân viên có đủ ngày nghỉ"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "notify",
+      "actor": "DE-NS",
+      "params": {
+        "ref": "DON-NP-001",
+        "to": "NV-BH",
+        "approval": "APR-NP-001"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-NS",
+      "params": {
+        "reason": "Quy trình phê duyệt nghỉ phép hoàn tất"
+      }
+    }
+  ]
+}

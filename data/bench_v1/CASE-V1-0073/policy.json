@@ -1,0 +1,29 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xac_nhan_bhxh",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-NS"
+        }
+      ]
+    },
+    {
+      "loai_pd": "xu_ly_ngoai_le",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "thoi_gian_xu_ly_toi_da": "3"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

@@ -1,0 +1,73 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "chung_tu BK-0426: trang_thai is 'Đã duyệt'",
+      "id": "chung_tu.BK-0426.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "BK-0426"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu BK-0426: ket_qua is blank",
+      "id": "chung_tu.BK-0426.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "BK-0426"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "1799999950"
+      },
+      "desc": "chung_tu BK-0426: tong_tien is '1799999950'",
+      "id": "chung_tu.BK-0426.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "BK-0426"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "phe_duyet APR-0426: trang_thai is 'Đã duyệt'",
+      "id": "phe_duyet.APR-0426.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-0426"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "KTT-01"
+      },
+      "desc": "phe_duyet APR-0426: nguoi_duyet is 'KTT-01'",
+      "id": "phe_duyet.APR-0426.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-0426"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    }
+  ]
+}

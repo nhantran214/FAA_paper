@@ -1,0 +1,29 @@
+# Original baseline code, installed editable into .venv (Python 3.13).
+# Install: .venv/bin/pip install -r requirements-baselines.txt (from the repository root).
+# For the exact environment of the paper run use requirements-baselines.lock instead.
+# CaMeL needs the pydantic-ai API of its uv.lock; later pydantic-ai removed
+# Agent(result_type=...). The three pins below are the camel uv.lock versions.
+# opentelemetry-api / -semantic-conventions are pinned to the camel uv.lock versions
+# because pydantic-ai-slim 0.2.12 imports opentelemetry._events (gone in newer releases).
+# nemoguardrails resolves cleanly against these pins and imports in this same venv, so no
+# separate .venv-nemo is needed (spec 6.1 subprocess bridge is optional, not forced).
+# Known: pip check reports fastapi wanting opentelemetry-api>=1.44; fastapi still imports.
+# Known: import agentdojo.task_suite BEFORE camel.pipeline_elements.privileged_llm
+# (upstream circular import in agentdojo.default_suites when camel imports it first).
+# Torch: default PyPI build (CUDA 13 wheels, GPU-capable).
+pydantic-ai-slim==0.2.12
+pydantic-ai==0.2.12
+openai==1.82.1
+opentelemetry-api==1.33.1
+opentelemetry-semantic-conventions==0.54b1
+-e ./baselines/agentdojo
+-e ./baselines/camel
+-e ./baselines/nemo_guardrails
+-e ./baselines/progent
+# The AgentDojo detector's stack, pinned to the versions of requirements-baselines.lock so
+# the detector's verdicts do not move with a new release.
+torch==2.15.0
+transformers==5.22.2
+tokenizers==0.23.3
+huggingface_hub==1.33.0
+safetensors==0.8.0

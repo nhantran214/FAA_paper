@@ -1,0 +1,65 @@
+{
+  "note": "Kịch bản demo — tham số DỮ LIỆU (độc lập app-stack). pay_units minh chứng 'chỉ chi phần đã nhận'.",
+  "case": {
+    "case_id": "CASE-0031",
+    "title": "Trường THPT Hòa Bình — giấy A4 + combo sách",
+    "request": "Trường THPT Hòa Bình đặt 20 Giấy in A4, 15 Combo sách bán chạy."
+  },
+  "readings": {
+    "apr_0102": "over_cap when the don_ban document has a FLAGGED event, else normal",
+    "three_way": "chung_tu.ket_qua of the hoa_don_mua document",
+    "pay_units": "sum of dong_ct.so_luong of the de_nghi_chi document",
+    "open_units": "dong_ct.so_luong of don_mua minus that of phieu_nhap"
+  },
+  "stops_at": {
+    "step": "cho_duyet_chi",
+    "for": "duyet_chi",
+    "loai_pd": "de_nghi_chi",
+    "ma_pd": "APR-0210",
+    "nguoi_duyet": "P5"
+  },
+  "scenarios": [
+    {
+      "name": "happy",
+      "params": {
+        "intake_discount_pct": 0,
+        "chiet_khau_de_nghi": 0,
+        "grn_received": 15
+      },
+      "expect": {
+        "apr_0102": "normal",
+        "three_way": "Khớp",
+        "pay_units": 15,
+        "open_units": 0
+      }
+    },
+    {
+      "name": "discount8",
+      "params": {
+        "intake_discount_pct": 8,
+        "chiet_khau_de_nghi": 0.08,
+        "grn_received": 15
+      },
+      "expect": {
+        "apr_0102": "over_cap",
+        "three_way": "Khớp",
+        "pay_units": 15,
+        "open_units": 0
+      }
+    },
+    {
+      "name": "grn12",
+      "params": {
+        "intake_discount_pct": 0,
+        "chiet_khau_de_nghi": 0,
+        "grn_received": 12
+      },
+      "expect": {
+        "apr_0102": "normal",
+        "three_way": "Cần kiểm",
+        "pay_units": 12,
+        "open_units": 3
+      }
+    }
+  ]
+}

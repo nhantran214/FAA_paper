@@ -1,0 +1,41 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "don_mua",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 20000000,
+          "nguoi_duyet": "TP-MH"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    },
+    {
+      "loai_pd": "de_nghi_chi",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 50000000,
+          "nguoi_duyet": "KTT"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_don_mua": "200000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "start": "S00",
+  "facts": {
+    "thieu_hoa_don_GTGT": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP",
+      "params": {
+        "title": "Soạn thảo hợp đồng vận chuyển với đối tác thiếu hóa đơn"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-PH",
+      "params": {
+        "doc": {
+          "id": "HD-001",
+          "loai_ct": "hop_dong",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "HD-001-1",
+              "ma_hh": "DV-VC",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "DV-VC"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-PH",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "fact": "thieu_hoa_don_GTGT"
+            },
+            false
+          ]
+        },
+        "ref": "HD-001",
+        "flag_reason": "Thiếu hóa đơn GTGT 10% cho hợp đồng vận chuyển trị giá 100.000.000 VND"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "flag_exception",
+      "actor": "DE-PH",
+      "params": {
+        "ref": "HD-001",
+        "reason": "Yêu cầu đối tác cung cấp hóa đơn GTGT 10% cho toàn bộ giá trị hợp đồng"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-PH",
+      "params": {
+        "id": "APR-001",
+        "doc": "HD-001",
+        "loai_pd": "hdpd_hop_dong"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP",
+      "params": {
+        "for": "NCC-01",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

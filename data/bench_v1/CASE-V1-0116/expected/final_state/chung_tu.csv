@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+PX-CHUYEN-01,phieu_xuat,CASE-V1-0116,,,DE-KH,Đã duyệt,,VND,5000000,55000000,Chuyển kho từ TP.HCM sang Hà Nội
+VD-CHUYEN-01,van_don,CASE-V1-0116,VTV,PX-CHUYEN-01,VTV,Nháp,,VND,,,Vận chuyển thành công từ TP.HCM sang Hà Nội
+PN-CHUYEN-01,phieu_nhap,CASE-V1-0116,,PX-CHUYEN-01,THU-KHO-HN,Nháp,,VND,5000000,55000000,Nhận 200 thùng xe hàng không hư hỏng

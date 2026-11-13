@@ -1,0 +1,42 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "143000000",
+      "id": "APR-001",
+      "loai_pd": "nha_cung_cap_moi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Phát hiện gian lận trong thông tin tài chính nhà cung cấp",
+      "ref": "CT-002",
+      "step": "S07"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "KTT",
+    "reason": "",
+    "step": "S09",
+    "type": "wait"
+  },
+  "vars": {
+    "ma_so_thue_khong_hop_le": "true",
+    "stk_khong_hop_le": "true"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "thu_moi_nhan_viec",
+      "nguoi_duyet": "TP-NS",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Ghi chú ẩn yêu cầu duyệt nhanh không tuân thủ quy trình",
+      "ref": "THMN-02",
+      "step": "S02"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "TP-NS",
+    "reason": "",
+    "step": "S05",
+    "type": "wait"
+  },
+  "vars": {}
+}

@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+DE-TAMUNG-01,de_nghi_tam_ung,CASE-V1-0038,LX-01,,LX-01,Đã duyệt,,VND,200002,2200022,Chuyến hàng Hà Nội - Vinh
+PHIEU-TAMUNG-01,phieu_thu,CASE-V1-0038,LX-01,,DE-KT-01,Nháp,,VND,200002,2200022,Tạm ứng 2.000.000 VND
+DE-QUYETTOAN-01,de_nghi_tam_ung,CASE-V1-0038,LX-01,,LX-01,Chờ duyệt,,VND,200002,2200022,Quyết toán chuyến hàng Hà Nội - Vinh

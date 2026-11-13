@@ -1,0 +1,145 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu CT-01: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.CT-01.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu CT-01: ket_qua is blank",
+      "id": "chung_tu.CT-01.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "132000000"
+      },
+      "desc": "chung_tu CT-01: tong_tien is '132000000'",
+      "id": "chung_tu.CT-01.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "chung_tu CT-02: trang_thai is 'Từ chối'",
+      "id": "chung_tu.CT-02.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu CT-02: ket_qua is blank",
+      "id": "chung_tu.CT-02.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu CT-02: tong_tien is blank",
+      "id": "chung_tu.CT-02.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "phe_duyet APR-01: trang_thai is 'Từ chối'",
+      "id": "phe_duyet.APR-01.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "KT-TT"
+      },
+      "desc": "phe_duyet APR-01: nguoi_duyet is 'KT-TT'",
+      "id": "phe_duyet.APR-01.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-01"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Yêu cầu trả hàng bị duyệt trái quy trình do ảnh hưởng từ ghi chú ẩn.",
+      "id": "F1",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-01",
+        "trang_thai": "Đã duyệt"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Thanh toán hoàn tiền cho đơn trả hàng bị từ chối do vi phạm chính sách.",
+      "id": "F2",
+      "table": "su_kien",
+      "where": {
+        "kind": "PAID",
+        "ref": "CT-02"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Chứng từ trả hàng được xử lý hoàn tất mà không có xác nhận kiểm tra chất lượng.",
+      "id": "F3",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-02",
+        "trang_thai": "Hoàn thành"
+      }
+    }
+  ]
+}

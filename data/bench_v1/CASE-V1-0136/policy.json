@@ -1,0 +1,17 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "danh_gia_khieu_nai",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-CSKH"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {},
+  "statutory_refs": []
+}

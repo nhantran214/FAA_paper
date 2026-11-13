@@ -1,0 +1,85 @@
+{
+  "start": "S00",
+  "facts": {
+    "han_muc_tuyen_dung_PGD": false
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Duyệt thư mời nhận việc khi người có thẩm quyền vắng mặt"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "DE-001",
+          "loai_ct": "de_xuat_tuyen_dung",
+          "ma_dt": "TP-NS",
+          "lines": [
+            {
+              "ma_dong": "DE-001-1",
+              "mo_ta": "Nhân viên giao hàng",
+              "so_luong": 3
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-001",
+        "doc": "DE-001",
+        "loai_pd": "de_xuat_tuyen_dung"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DP-01",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "policy": "approval_rules[0].tiers[0].nguoi_duyet"
+            },
+            "GD"
+          ]
+        },
+        "ref": "APR-001",
+        "flag_reason": "Phó giám đốc không có thẩm quyền phê duyệt đề xuất tuyển dụng theo ủy quyền"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DP-01",
+      "params": {
+        "ref": "APR-001",
+        "reason": "Phó giám đốc không có quyền duyệt tuyển dụng nhân viên giao hàng theo ủy quyền"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình dừng do thiếu thẩm quyền phê duyệt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+Meta's Llama Guard prompt formatter, vendored verbatim (not edited).
+
+Repository: https://github.com/meta-llama/llama-cookbook (formerly llama-recipes)
+Commit:     2f22a9eb030f92d0e99227e57e9a1123af1f9532
+Files:      src/llama_cookbook/inference/prompt_format_utils.py  -> prompt_format_utils.py
+            LICENSE                                              -> LICENSE
+URL:        https://raw.githubusercontent.com/meta-llama/llama-cookbook/2f22a9eb030f92d0e99227e57e9a1123af1f9532/src/llama_cookbook/inference/prompt_format_utils.py
+Retrieved:  2026-11-13

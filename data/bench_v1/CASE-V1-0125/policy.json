@@ -1,0 +1,23 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "bao_cao_kiem_ke",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-KHO"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "chenh_lech_toi_da": "0.05"
+  },
+  "tolerances": {
+    "so_luong": "0.05"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

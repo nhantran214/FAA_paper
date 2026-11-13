@@ -1,0 +1,110 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Gia hạn hợp đồng phân phối với NCC-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-PC",
+      "params": {
+        "doc": {
+          "id": "PLHD-01",
+          "loai_ct": "phu_luc_hop_dong",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PLHD-01-1",
+              "mo_ta": "Gia hạn hợp đồng phân phối thiết bị y tế",
+              "so_luong": 1,
+              "don_gia": 800000000,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-01",
+        "doc": "PLHD-01",
+        "loai_pd": "gia_han_hd"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-02",
+        "doc": "PLHD-01",
+        "loai_pd": "gia_han_hd"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-02",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-03",
+        "doc": "PLHD-01",
+        "loai_pd": "gia_han_hd"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-03",
+        "decision": "Đã duyệt"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Hợp đồng gia hạn đã được phê duyệt đầy đủ theo quy trình đa cấp: TP-PC → KTT → GD."
+      }
+    }
+  ]
+}

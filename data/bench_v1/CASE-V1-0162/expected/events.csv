@@ -1,0 +1,4 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0162,S01,DRAFTED,KH-01,DE-KH-01,
+2,CASE-V1-0162,S02,FLAGGED,KH-01,DE-KH-01,Không tìm thấy hồ sơ mua hàng trong hệ thống TechShop
+3,CASE-V1-0162,S03,REQUESTED,APR-001,DE-KH-01,

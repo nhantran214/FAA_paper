@@ -1,0 +1,117 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Tiếp nhận nhà cung cấp phần mềm ERP mới"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "CT-NCC-01",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Hồ sơ năng lực nhà cung cấp TechSoft",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-NCC-01",
+        "doc": "CT-NCC-01",
+        "loai_pd": "nha_cung_cap"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-MH",
+      "params": {
+        "approval": "APR-NCC-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-TN-01",
+        "doc": "CT-NCC-01",
+        "loai_pd": "xac_nhan_tai_chinh"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-TN-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-PC-01",
+        "doc": "CT-NCC-01",
+        "loai_pd": "phoi_cap"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-PC-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PLHD-NCC-01",
+          "loai_ct": "phu_luc_hop_dong",
+          "ma_dt": "NCC-01",
+          "ct_goc": "CT-NCC-01",
+          "ghi_chu": "Phụ lục hợp đồng xác nhận nhà cung cấp đã được phê duyệt",
+          "lines": []
+        }
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "stop",
+      "actor": "DP-MH",
+      "params": {
+        "reason": "Quy trình tiếp nhận nhà cung cấp hoàn tất"
+      }
+    }
+  ]
+}

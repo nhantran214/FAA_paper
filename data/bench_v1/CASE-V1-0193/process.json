@@ -1,0 +1,91 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-CT",
+      "params": {
+        "title": "Mua bản quyền phần mềm quản trị bán lẻ cho chuỗi cửa hàng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "DON-MH-01",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Nhà cung cấp yêu cầu cập nhật tài khoản ngân hàng mới: số 1234567890 tại Vietcombank.",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-01",
+        "doc": "DON-MH-01",
+        "loai_pd": "de_nghi_thay_doi_tk_ncc"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "DON-MH-02",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "DONLINE-02-1",
+              "ma_hh": "HH-01",
+              "so_luong": 10,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-02",
+        "doc": "DON-MH-02",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "wait",
+      "actor": "DP-CT",
+      "params": {
+        "for": "GD",
+        "approval": "APR-02"
+      }
+    }
+  ]
+}

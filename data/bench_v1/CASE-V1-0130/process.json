@@ -1,0 +1,106 @@
+{
+  "start": "S00",
+  "facts": {
+    "thu_kho_phat_hien_hang_hong": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Xuất hủy 150 sản phẩm hư hỏng tại kho hàng TP.HCM"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "THU-KHO-01",
+      "params": {
+        "doc": {
+          "id": "BB-001",
+          "loai_ct": "bien_ban_kiem_tra",
+          "lines": [
+            {
+              "ma_dong": "BB-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 150,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-KH-01",
+      "params": {
+        "doc": {
+          "id": "XH-001",
+          "loai_ct": "phieu_xuat",
+          "ct_goc": "BB-001",
+          "lines": [
+            {
+              "ma_dong": "XH-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 150,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KH-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "XH-001",
+        "loai_pd": "xuat_huy"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "GD-01",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Hư hỏng nghiêm trọng, giá trị đề nghị trong ngưỡng phê duyệt"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình xuất hủy hoàn tất sau khi được phê duyệt"
+      }
+    }
+  ]
+}

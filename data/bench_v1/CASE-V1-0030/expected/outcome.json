@@ -1,0 +1,42 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "11550000",
+      "id": "APR-001",
+      "loai_pd": "duyet_bao_gia",
+      "nguoi_duyet": "TP-BH",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "11550000",
+      "id": "APR-002",
+      "loai_pd": "duyet_hoa_don",
+      "nguoi_duyet": "TP-BH",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Hoàn tất quy trình bán hàng",
+    "step": "S09",
+    "type": "end"
+  },
+  "vars": {
+    "reconcile.HD-001": "Khớp"
+  }
+}

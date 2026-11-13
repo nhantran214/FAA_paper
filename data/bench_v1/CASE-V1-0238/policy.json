@@ -1,0 +1,37 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_chi",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 500000000,
+          "nguoi_duyet": "TP-MH"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    },
+    {
+      "loai_pd": "bo_sung_ngan_sach",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "ngan_sach_marketing": "500000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

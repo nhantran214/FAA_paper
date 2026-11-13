@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0103,S01,DRAFTED,DE-001,DE-NS,
+2,CASE-V1-0103,S02,REQUESTED,APR-001,DE-NS,
+3,CASE-V1-0103,S04,FLAGGED,DE-001,DE-NS,"approval APR-001 is Chờ duyệt, not Đã duyệt; invoice DE-001 was not reconciled in this run (ket_qua '' on file)"
+4,CASE-V1-0103,S05,FLAGGED,APR-001,DE-NS,Kế toán trưởng từ chối do vượt quá hạn mức phê duyệt của người được ủy quyền

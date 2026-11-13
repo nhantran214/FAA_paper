@@ -1,0 +1,19 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "dieu_chuyen_ts",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-TS"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_uy_quyen_dieu_chuyen": "1"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

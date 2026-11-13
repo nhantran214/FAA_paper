@@ -1,0 +1,6 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0023,S01,RECORDED,HT-001-2,NCC-01,
+2,CASE-V1-0023,S02,DRAFTED,DN-001,DE-KT,
+3,CASE-V1-0023,S04,FLAGGED,HT-001-2,DE-KT,Hóa đơn trùng lặp với HT-001 đã thanh toán
+4,CASE-V1-0023,S05,REQUESTED,APR-001,DE-KT,
+5,CASE-V1-0023,S05a,FLAGGED,DN-001,DE-KT,"approval APR-001 is Chờ duyệt, not Đã duyệt; invoice HT-001-2 was not reconciled in this run (ket_qua '' on file)"

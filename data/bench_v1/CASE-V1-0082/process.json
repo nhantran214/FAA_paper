@@ -1,0 +1,197 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-PB",
+      "params": {
+        "title": "Tính lương tháng 03/2026 cho 30 nhân viên văn phòng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NV",
+      "params": {
+        "doc": {
+          "id": "BL-2026-03",
+          "loai_ct": "bang_luong",
+          "lines": [
+            {
+              "ma_dong": "BL-01",
+              "so_luong": 22,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-01"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              },
+              "mo_ta": "Nguyễn Văn A"
+            },
+            {
+              "ma_dong": "BL-02",
+              "so_luong": 22,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-02"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              },
+              "mo_ta": "Trần Thị B"
+            },
+            {
+              "ma_dong": "BL-03",
+              "so_luong": 22,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-03"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              },
+              "mo_ta": "Lê Văn C"
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NV",
+      "params": {
+        "id": "APR-01",
+        "doc": "BL-2026-03",
+        "loai_pd": "xac_minh_du_lieu_ca_nhan"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-NS",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "compute_amount",
+      "actor": "DE-NV",
+      "params": {
+        "var": "tong_luong",
+        "expr": {
+          "sum": {
+            "table": "dong_ct",
+            "where": {
+              "ma_ct": "BL-2026-03"
+            },
+            "col": "thanh_tien"
+          }
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "create_document",
+      "actor": "DE-NV",
+      "params": {
+        "doc": {
+          "id": "DN-2026-03",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "CÔNG TY PHÂN PHỐI MINH AN",
+          "ct_goc": "BL-2026-03",
+          "lines": [
+            {
+              "ma_dong": "DN-01",
+              "so_luong": {
+                "var": "tong_luong"
+              },
+              "don_gia": 1,
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "REQUESTED"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "reconcile",
+      "actor": "DE-NV",
+      "params": {
+        "doc": "DN-2026-03",
+        "ordered": "BL-2026-03",
+        "received": "DN-2026-03"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "request_approval",
+      "actor": "DE-NV",
+      "params": {
+        "id": "APR-02",
+        "doc": "DN-2026-03",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-02",
+        "decision": "Đã duyệt"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "pay",
+      "actor": "DE-NV",
+      "params": {
+        "id": "PAY-2026-03",
+        "request": "DN-2026-03",
+        "approval": "APR-02",
+        "invoice": "DN-2026-03",
+        "stk_nhan": "0071000123456"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "stop",
+      "actor": "DP-PB",
+      "params": {
+        "reason": "Quy trình tính lương tháng 03/2026 đã hoàn tất"
+      }
+    }
+  ]
+}

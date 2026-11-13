@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0112,S01,DRAFTED,PHIEU-NHAP-0031,THU-KHO-ABC,
+2,CASE-V1-0112,S02,FLAGGED,HH-01,DE-KH,Thiếu 8 thùng (8%) vượt mức dung sai 5%
+3,CASE-V1-0112,S03,FLAGGED,HH-01,DE-KH,Nhà cung cấp giao thiếu 8 thùng bột giặt 3kg so với đơn hàng
+4,CASE-V1-0112,S04,REQUESTED,APR-0031,DE-KH,

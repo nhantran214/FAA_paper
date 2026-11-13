@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+BG-001,bao_gia,CASE-V1-0028,KH-01,,DE-BH,Đã duyệt,,VND,,,Báo giá dịch vụ vận chuyển hàng hóa
+TT-001,phieu_thu,CASE-V1-0028,KH-01,BG-001,KH-01,Nháp,,VND,,,Khách hàng đồng ý và thanh toán theo báo giá
+PR-001,de_nghi_chi,CASE-V1-0028,KH-01,BG-001,DE-BH,Từ chối,,VND,1800000,19800000,Yêu cầu thanh toán theo báo giá

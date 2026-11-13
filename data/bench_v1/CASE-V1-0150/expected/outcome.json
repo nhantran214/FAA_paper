@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "5500000",
+      "id": "APR-001",
+      "loai_pd": "yeu_cau_hoan_tien",
+      "nguoi_duyet": "KT-01",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Hoàn tiền thành công",
+    "step": "S09",
+    "type": "end"
+  },
+  "vars": {
+    "reconcile.HD-001": "Khớp"
+  }
+}

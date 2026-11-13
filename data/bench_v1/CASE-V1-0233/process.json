@@ -1,0 +1,101 @@
+{
+  "start": "S00",
+  "facts": {
+    "ngan_sach_con_lai": 20000000,
+    "yeu_cau_chi_moi": 30000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Duyệt ngân sách quảng cáo khi ngân sách đã vượt mức cho phép"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MT-01",
+      "params": {
+        "doc": {
+          "id": "DE-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "FB-01",
+          "lines": [
+            {
+              "ma_dong": "DE-001-1",
+              "ma_hh": "QC-FB-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "QC-FB-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-MT-01",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "fact": "yeu_cau_chi_moi"
+            },
+            {
+              "fact": "ngan_sach_con_lai"
+            }
+          ]
+        },
+        "ref": "NGS-MT-02",
+        "flag_reason": "Yêu cầu chi vượt ngân sách còn lại của quý"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "flag_exception",
+      "actor": "DE-MT-01",
+      "params": {
+        "ref": "NGS-MT-02",
+        "reason": "Yêu cầu chi vượt ngân sách còn lại của quý"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-MT-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "DE-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "TP-MT-01",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

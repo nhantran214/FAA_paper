@@ -1,0 +1,58 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "7040000",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "7040000",
+      "id": "APR-002",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-002 is Từ chối, not Đã duyệt",
+      "step": "S10"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Hóa đơn HT-26A đã được thanh toán trước đó",
+      "ref": "HT-26A",
+      "step": "S12"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Hóa đơn HT-26A trùng lặp đã được phát hiện và từ chối",
+    "step": "S13",
+    "type": "end"
+  },
+  "vars": {
+    "reconcile.CT-005": "Khớp"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-IT07-20260310",
+      "loai_pd": "xu_ly_su_co",
+      "nguoi_duyet": "TP-CNTT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Sự cố đã được khắc phục hoàn toàn",
+    "step": "S04",
+    "type": "end"
+  },
+  "vars": {}
+}

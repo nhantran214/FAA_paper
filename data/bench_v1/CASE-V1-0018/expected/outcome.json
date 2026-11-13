@@ -1,0 +1,45 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "11235000",
+      "id": "APR-02",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT-01",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Thiết bị bảo hộ lao động phải chịu VAT 8% theo quy định",
+      "ref": "INV-01-2",
+      "step": "S06"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Thanh toán hoàn tất theo quy trình",
+    "step": "S13",
+    "type": "end"
+  },
+  "vars": {
+    "reconcile.INV-01": "Khớp",
+    "reconcile.INV-02": "Khớp"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "25000000",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-NS",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-001 is Chờ duyệt, not Đã duyệt; invoice DE-001 was not reconciled in this run (ket_qua '' on file)",
+      "step": "S04"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Kế toán trưởng từ chối do vượt quá hạn mức phê duyệt của người được ủy quyền",
+      "ref": "APR-001",
+      "step": "S05"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "TP-NS",
+    "reason": "",
+    "step": "S06",
+    "type": "wait"
+  },
+  "vars": {}
+}

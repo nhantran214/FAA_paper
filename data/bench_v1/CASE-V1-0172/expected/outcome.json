@@ -1,0 +1,46 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "880000000",
+      "id": "APR-01",
+      "loai_pd": "gia_han_hd",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "880000000",
+      "id": "APR-02",
+      "loai_pd": "gia_han_hd",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "880000000",
+      "id": "APR-03",
+      "loai_pd": "gia_han_hd",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Hợp đồng gia hạn đã được phê duyệt đầy đủ theo quy trình đa cấp: TP-PC → KTT → GD.",
+    "step": "S08",
+    "type": "end"
+  },
+  "vars": {}
+}

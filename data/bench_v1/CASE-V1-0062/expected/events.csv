@@ -1,0 +1,4 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0062,S01,DRAFTED,PH-001,DE-KT,
+2,CASE-V1-0062,S02,FLAGGED,KH-05,DE-KT,Khách hàng có khoản nợ quá hạn 3 ngày cần xử lý
+3,CASE-V1-0062,S04,REQUESTED,APR-001,KTT,

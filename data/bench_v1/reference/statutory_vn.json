@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "status": "unreviewed",
+  "reviewer": null,
+  "decided_at": null,
+  "entries": [
+    {
+      "id": "VAT_0",
+      "desc": "VAT rate 0%",
+      "value": "0",
+      "source": "Luật Thuế giá trị gia tăng số 48/2024/QH15 (hiệu lực 2025-07-01)",
+      "status": "unreviewed"
+    },
+    {
+      "id": "VAT_5",
+      "desc": "VAT rate 5%",
+      "value": "0.05",
+      "source": "Luật Thuế giá trị gia tăng số 48/2024/QH15 (hiệu lực 2025-07-01)",
+      "status": "unreviewed"
+    },
+    {
+      "id": "VAT_8",
+      "desc": "VAT rate 8% (temporary reduction from 10%; validity period to confirm)",
+      "value": "0.08",
+      "source": "Nghị quyết của Quốc hội về giảm thuế giá trị gia tăng; văn bản áp dụng và thời hạn hiệu lực cần xác nhận",
+      "status": "unreviewed"
+    },
+    {
+      "id": "VAT_10",
+      "desc": "VAT standard rate 10%",
+      "value": "0.1",
+      "source": "Luật Thuế giá trị gia tăng số 48/2024/QH15 (hiệu lực 2025-07-01)",
+      "status": "unreviewed"
+    },
+    {
+      "id": "CASH_PAYMENT_LIMIT_VND",
+      "desc": "Invoice amount from which non-cash payment is required for input-VAT deduction (2024 VAT Law, in force 2025-07-01; to confirm)",
+      "value": "5000000",
+      "source": "Luật Thuế giá trị gia tăng số 48/2024/QH15 (hiệu lực 2025-07-01)",
+      "status": "unreviewed"
+    },
+    {
+      "id": "BHXH_EMPLOYEE",
+      "desc": "Social insurance (BHXH), employee share of the contribution base",
+      "value": "0.08",
+      "source": "Luật Bảo hiểm xã hội; Nghị định hướng dẫn về mức đóng bảo hiểm bắt buộc",
+      "status": "unreviewed"
+    },
+    {
+      "id": "BHYT_EMPLOYEE",
+      "desc": "Health insurance (BHYT), employee share of the contribution base",
+      "value": "0.015",
+      "source": "Luật Bảo hiểm y tế; Nghị định hướng dẫn về mức đóng bảo hiểm bắt buộc",
+      "status": "unreviewed"
+    },
+    {
+      "id": "BHTN_EMPLOYEE",
+      "desc": "Unemployment insurance (BHTN), employee share of the contribution base",
+      "value": "0.01",
+      "source": "Luật Việc làm; Nghị định hướng dẫn về bảo hiểm thất nghiệp",
+      "status": "unreviewed"
+    },
+    {
+      "id": "BHXH_EMPLOYER",
+      "desc": "Social insurance (BHXH), employer share of the contribution base",
+      "value": "0.175",
+      "source": "Luật Bảo hiểm xã hội; Nghị định hướng dẫn về mức đóng bảo hiểm bắt buộc",
+      "status": "unreviewed"
+    },
+    {
+      "id": "BHYT_EMPLOYER",
+      "desc": "Health insurance (BHYT), employer share of the contribution base",
+      "value": "0.03",
+      "source": "Luật Bảo hiểm y tế; Nghị định hướng dẫn về mức đóng bảo hiểm bắt buộc",
+      "status": "unreviewed"
+    },
+    {
+      "id": "BHTN_EMPLOYER",
+      "desc": "Unemployment insurance (BHTN), employer share of the contribution base",
+      "value": "0.01",
+      "source": "Luật Việc làm; Nghị định hướng dẫn về bảo hiểm thất nghiệp",
+      "status": "unreviewed"
+    }
+  ]
+}

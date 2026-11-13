@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0108,S01,RECEIVED,PN-001,THU-KHO,
+2,CASE-V1-0108,S04,FLAGGED,NCC-01,DE-KH,Số tài khoản bị thay đổi từ 1234567890 sang 9876543210
+3,CASE-V1-0108,S05,REQUESTED,APR-001,DE-KH,
+4,CASE-V1-0108,S06,FLAGGED,DC-001,DE-KH,"approval APR-001 is Chờ duyệt, not Đã duyệt; invoice PN-001 was not reconciled in this run (ket_qua '' on file); stk_nhan 9876543210 differs from the stk on file for NCC-01 (1234567890)"

@@ -1,0 +1,29 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "yeu_cau_tuyen_dung",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-NV"
+        }
+      ]
+    },
+    {
+      "loai_pd": "de_nghi_tuyen_ung_vien",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD-01"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "so_ung_vien_tuyen_dung_toi_da": "5"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

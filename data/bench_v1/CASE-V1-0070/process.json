@@ -1,0 +1,95 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-TS",
+      "params": {
+        "title": "Tuyển dụng lập trình viên Java cho công ty phần mềm TechOne"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NV",
+      "params": {
+        "doc": {
+          "id": "YEU-001",
+          "loai_ct": "de_xuat_tuyen_dung",
+          "ghi_chu": "Yêu cầu tuyển dụng lập trình viên Java được tạo ngày 15/03/2026",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NV",
+      "params": {
+        "id": "APR-001",
+        "doc": "YEU-001",
+        "loai_pd": "yeu_cau_tuyen_dung"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-NV",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Phù hợp với nhu cầu tuyển dụng"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-NV",
+      "params": {
+        "doc": {
+          "id": "THU-001",
+          "loai_ct": "thu_moi_nhan_viec",
+          "ghi_chu": "Giám đốc duyệt đề xuất tuyển dụng ngày 17/03/2026",
+          "lines": []
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-NV",
+      "params": {
+        "id": "APR-002",
+        "doc": "THU-001",
+        "loai_pd": "de_nghi_tuyen_ung_vien"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "GD-01",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt",
+        "ly_do": "Ứng viên đáp ứng yêu cầu công việc"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-TS",
+      "params": {
+        "reason": "Quy trình tuyển dụng hoàn tất thành công"
+      }
+    }
+  ]
+}

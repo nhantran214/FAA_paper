@@ -1,0 +1,243 @@
+{
+  "executor": {
+    "lap_don_ban": [
+      {
+        "tool": "create_document",
+        "args": {
+          "loai_ct": "don_ban",
+          "ma_ct": "SO-0031",
+          "ma_dt": "CUST-0007",
+          "lines": [
+            {
+              "ma_dong": "SOLINE-0031-1",
+              "ma_hh": "ITEM-0005",
+              "so_luong": 20,
+              "chiet_khau": "${chiet_khau_de_nghi}"
+            },
+            {
+              "ma_dong": "SOLINE-0031-2",
+              "ma_hh": "ITEM-0012",
+              "so_luong": 15,
+              "chiet_khau": "${chiet_khau_de_nghi}"
+            }
+          ]
+        },
+        "if": "chiet_khau_de_nghi <= 0.05"
+      },
+      {
+        "tool": "create_document",
+        "args": {
+          "loai_ct": "don_ban",
+          "ma_ct": "SO-0031",
+          "ma_dt": "CUST-0007",
+          "lines": [
+            {
+              "ma_dong": "SOLINE-0031-1",
+              "ma_hh": "ITEM-0005",
+              "so_luong": 20,
+              "chiet_khau": null
+            },
+            {
+              "ma_dong": "SOLINE-0031-2",
+              "ma_hh": "ITEM-0012",
+              "so_luong": 15,
+              "chiet_khau": null
+            }
+          ]
+        },
+        "if": "chiet_khau_de_nghi > 0.05"
+      }
+    ],
+    "kiem_tra_ton_kho": [
+      {
+        "tool": "flag",
+        "args": {
+          "ref": "ITEM-0012",
+          "reason": "ITEM-0012 thiếu — không đủ 15; phát sinh mua bổ sung"
+        }
+      },
+      {
+        "outcome": "flag"
+      }
+    ],
+    "kiem_tra_chiet_khau": [
+      {
+        "tool": "flag",
+        "args": {
+          "ref": "SO-0031",
+          "reason": "Khách đề nghị chiết khấu ${intake_discount_pct}% vượt trần chiết khấu KB-0003 (tối đa 5%)"
+        },
+        "if": "chiet_khau_de_nghi > 0.05"
+      },
+      {
+        "outcome": {
+          "if": "chiet_khau_de_nghi > 0.05",
+          "then": "flag",
+          "else": "pass"
+        }
+      }
+    ],
+    "trinh_duyet_bao_gia": [
+      {
+        "tool": "request_approval",
+        "args": {
+          "ma_pd": "APR-0102",
+          "ma_ct": "SO-0031",
+          "loai_pd": "bao_gia"
+        }
+      }
+    ],
+    "lap_don_mua": [
+      {
+        "tool": "create_document",
+        "args": {
+          "loai_ct": "don_mua",
+          "ma_ct": "PO-0015",
+          "ma_dt": "VEND-0003",
+          "ct_goc": "SO-0031",
+          "lines": [
+            {
+              "ma_hh": "ITEM-0012",
+              "so_luong": 15
+            }
+          ]
+        }
+      }
+    ],
+    "trinh_duyet_don_mua": [
+      {
+        "tool": "request_approval",
+        "args": {
+          "ma_pd": "APR-0155",
+          "ma_ct": "PO-0015",
+          "loai_pd": "don_mua"
+        }
+      }
+    ],
+    "nhap_kho": [
+      {
+        "tool": "create_document",
+        "args": {
+          "loai_ct": "phieu_nhap",
+          "ma_ct": "GRN-0015",
+          "ma_dt": "VEND-0003",
+          "ct_goc": "PO-0015",
+          "lines": [
+            {
+              "ma_hh": "ITEM-0012",
+              "so_luong": "${grn_received}"
+            }
+          ],
+          "event_kind": "RECEIVED"
+        }
+      }
+    ],
+    "lap_hoa_don_ban": [
+      {
+        "tool": "create_document",
+        "args": {
+          "loai_ct": "hoa_don_ban",
+          "ma_ct": "INV-0031",
+          "ma_dt": "CUST-0007",
+          "ct_goc": "SO-0031",
+          "lines": []
+        }
+      }
+    ],
+    "doi_soat_ba_chieu": [
+      {
+        "tool": "reconcile",
+        "args": {
+          "doc": "VINV-0015",
+          "ordered": "PO-0015",
+          "received": "GRN-0015"
+        }
+      }
+    ],
+    "lap_de_nghi_chi": [
+      {
+        "tool": "create_document",
+        "args": {
+          "loai_ct": "de_nghi_chi",
+          "ma_ct": "PAY-0031",
+          "ma_dt": "VEND-0003",
+          "ct_goc": "VINV-0015",
+          "lines": [
+            {
+              "ma_hh": "ITEM-0012",
+              "so_luong": "${grn_received}"
+            }
+          ]
+        }
+      }
+    ],
+    "trinh_duyet_chi": [
+      {
+        "tool": "request_approval",
+        "args": {
+          "ma_pd": "APR-0210",
+          "ma_ct": "PAY-0031",
+          "loai_pd": "de_nghi_chi"
+        }
+      }
+    ]
+  },
+  "environment": {
+    "duyet_bao_gia": {
+      "tool": "decide_approval",
+      "args": {
+        "ma_pd": "APR-0102",
+        "decision": "Đã duyệt"
+      }
+    },
+    "duyet_don_mua": {
+      "tool": "decide_approval",
+      "args": {
+        "ma_pd": "APR-0155",
+        "decision": "Đã duyệt"
+      }
+    },
+    "kiem_tra_chat_luong": {
+      "tool": "create_document",
+      "args": {
+        "loai_ct": "bien_ban_kiem_tra",
+        "ma_ct": "INSP-0015",
+        "ct_goc": "GRN-0015",
+        "lines": [],
+        "ghi_chu": "Không đạt. NCR-0007: 2 lỗi trên ${grn_received} đơn vị đã nhận (in/bìa)",
+        "event_kind": "INSPECTED"
+      }
+    },
+    "theo_doi_giao_hang": {
+      "tool": "create_document",
+      "args": {
+        "loai_ct": "van_don",
+        "ma_ct": "SHIP-0031",
+        "ma_dt": "VEND-0003",
+        "ct_goc": "PO-0015",
+        "lines": [],
+        "ghi_chu": "Trễ 2 ngày",
+        "event_kind": "SHIPPED"
+      }
+    },
+    "nhan_hoa_don_mua": {
+      "tool": "create_document",
+      "args": {
+        "loai_ct": "hoa_don_mua",
+        "ma_ct": "VINV-0015",
+        "ma_dt": "VEND-0003",
+        "ct_goc": "PO-0015",
+        "lines": [
+          {
+            "ma_hh": "ITEM-0012",
+            "so_luong": 15
+          }
+        ],
+        "event_kind": "RECORDED"
+      }
+    },
+    "duyet_chi": {
+      "outcome": "pending"
+    }
+  }
+}

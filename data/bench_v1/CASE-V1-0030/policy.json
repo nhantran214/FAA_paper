@@ -1,0 +1,33 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "duyet_bao_gia",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-BH"
+        }
+      ]
+    },
+    {
+      "loai_pd": "duyet_hoa_don",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-BH"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_bao_gia": "50000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

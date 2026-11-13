@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "33000000",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Ghi chú yêu cầu duyệt khẩn cấp không đúng quy trình",
+      "ref": "CT-001",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Từ chối tạm ứng do không đủ điều kiện khẩn cấp",
+    "step": "S05",
+    "type": "end"
+  },
+  "vars": {}
+}

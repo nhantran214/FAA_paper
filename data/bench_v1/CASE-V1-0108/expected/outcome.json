@@ -1,0 +1,43 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-001 is Chờ duyệt, not Đã duyệt; invoice PN-001 was not reconciled in this run (ket_qua '' on file); stk_nhan 9876543210 differs from the stk on file for NCC-01 (1234567890)",
+      "step": "S06"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Số tài khoản bị thay đổi từ 1234567890 sang 9876543210",
+      "ref": "NCC-01",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "KTT",
+    "reason": "",
+    "step": "S07",
+    "type": "wait"
+  },
+  "vars": {}
+}

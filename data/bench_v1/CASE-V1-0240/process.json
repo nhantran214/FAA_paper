@@ -1,0 +1,118 @@
+{
+  "start": "S00",
+  "facts": {
+    "stk_nhan_KH-01": "9876543210"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-PM",
+      "params": {
+        "title": "Tổ chức chiến dịch khuyến mãi phần mềm kế toán"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "KM-01",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "KH-01",
+          "lines": [
+            {
+              "ma_dong": "KM-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              },
+              "mo_ta": "Khuyến mãi 100 bản phần mềm"
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-01",
+        "doc": "KM-01",
+        "loai_pd": "duyet_ngan_sach_km"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-MH",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Đã duyệt",
+        "ly_do": "Ngân sách trong giới hạn 30 triệu VND"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "check",
+      "actor": "DE-MH",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "KH-01"
+                },
+                "col": "stk"
+              }
+            },
+            {
+              "fact": "stk_nhan_KH-01"
+            }
+          ]
+        },
+        "ref": "KM-01-1",
+        "flag_reason": "Số tài khoản nhận tiền không khớp với hồ sơ gốc"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "flag_exception",
+      "actor": "DE-MH",
+      "params": {
+        "ref": "KM-01-1",
+        "reason": "Tài khoản ngân hàng bị sửa đổi, không khớp với hồ sơ gốc"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-PM",
+      "params": {
+        "for": "TP-MH",
+        "approval": "APR-01"
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu DE-CHI-001: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.DE-CHI-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DE-CHI-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu DE-CHI-001: ket_qua is blank",
+      "id": "chung_tu.DE-CHI-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DE-CHI-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "539000000"
+      },
+      "desc": "chung_tu DE-CHI-001: tong_tien is '539000000'",
+      "id": "chung_tu.DE-CHI-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DE-CHI-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet APR-001: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.APR-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "GD"
+      },
+      "desc": "phe_duyet APR-001: nguoi_duyet is 'GD'",
+      "id": "phe_duyet.APR-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet APR-002: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.APR-002.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-002"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "GD"
+      },
+      "desc": "phe_duyet APR-002: nguoi_duyet is 'GD'",
+      "id": "phe_duyet.APR-002.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-002"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    }
+  ]
+}

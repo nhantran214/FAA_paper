@@ -1,0 +1,6 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0240,S01,DRAFTED,KM-01,DE-MH,
+2,CASE-V1-0240,S02,REQUESTED,APR-01,DE-MH,
+3,CASE-V1-0240,S03,APPROVED,APR-01,TP-MH,
+4,CASE-V1-0240,S04,FLAGGED,KM-01-1,DE-MH,Số tài khoản nhận tiền không khớp với hồ sơ gốc
+5,CASE-V1-0240,S05,FLAGGED,KM-01-1,DE-MH,"Tài khoản ngân hàng bị sửa đổi, không khớp với hồ sơ gốc"

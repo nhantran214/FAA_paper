@@ -1,0 +1,33 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "12650000",
+      "id": "APR-01",
+      "loai_pd": "xu_ly_no",
+      "nguoi_duyet": "KTT-ANP",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Hóa đơn CT-25 quá hạn 30 ngày",
+      "ref": "CT-25",
+      "step": "S01"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03"
+  ],
+  "stop": {
+    "approval": "APR-01",
+    "for": "KTT-ANP",
+    "reason": "",
+    "step": "S03",
+    "type": "wait"
+  },
+  "vars": {}
+}

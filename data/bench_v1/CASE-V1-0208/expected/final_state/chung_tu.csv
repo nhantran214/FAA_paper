@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+DON-001,don_mua,CASE-V1-0208,NCC-01,,DE-TSCD,Đã duyệt,,VND,,,
+HD-001,hoa_don_mua,CASE-V1-0208,NCC-01,DON-001,DE-TSCD,Nháp,Khớp,VND,,,
+DNC-001,de_nghi_chi,CASE-V1-0208,NCC-01,HD-001,DE-TSCD,Đã duyệt,,VND,160000000,1760000000,

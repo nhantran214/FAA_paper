@@ -1,0 +1,3 @@
+ma_pd,case_id,ma_ct,loai_pd,nguoi_yeu_cau,nguoi_duyet,gia_tri,trang_thai,ly_do
+APR-001,CASE-V1-0190,REQ-001,phien_quyen_hethong,DE-CNTT,TP-CNTT,,Đã duyệt,Đồng ý cấp quyền truy cập theo yêu cầu
+APR-002,CASE-V1-0190,REQ-001,phien_quyen_hethong_capcao,DE-CNTT,GD-CT,,Đã duyệt,Xác nhận phê duyệt theo quy trình

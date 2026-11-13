@@ -1,0 +1,33 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_thay_doi_tk_ncc",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    },
+    {
+      "loai_pd": "de_nghi_chi",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_phe_duyet_ktt": "20000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

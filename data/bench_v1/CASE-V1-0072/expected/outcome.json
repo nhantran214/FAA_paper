@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "de_xuat_tuyen_dung",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Phó giám đốc không có quyền duyệt tuyển dụng nhân viên giao hàng theo ủy quyền",
+      "ref": "APR-001",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình dừng do thiếu thẩm quyền phê duyệt",
+    "step": "S05",
+    "type": "end"
+  },
+  "vars": {}
+}

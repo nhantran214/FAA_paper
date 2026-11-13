@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+PX-20260405,phieu_xuat,CASE-V1-0120,XEP-NOI-BUON-01,,DE-KH-01,Đã thực hiện,,VND,,,Chấp nhận thiếu 10 thùng để hoàn thành nhanh hơn
+VAN-20260407,van_don,CASE-V1-0120,,PX-20260405,XEP-NOI-BUON-01,Nháp,,VND,,,Giao 1000 thùng từ TP.HCM sang Đà Nẵng
+PN-20260407,phieu_nhap,CASE-V1-0120,XEP-NOI-BUON-01,PX-20260405,THU-KHO-DN,Từ chối,,VND,,,"Nhận 990 thùng, thiếu 10 thùng"

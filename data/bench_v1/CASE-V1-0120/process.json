@@ -1,0 +1,210 @@
+{
+  "start": "S00",
+  "facts": {
+    "thieu_hang": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Chuyển kho giấy in giữa hai trung tâm phân phối"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KH-01",
+      "params": {
+        "doc": {
+          "id": "PX-20260405",
+          "loai_ct": "phieu_xuat",
+          "ma_dt": "XEP-NOI-BUON-01",
+          "ghi_chu": "Chấp nhận thiếu 10 thùng để hoàn thành nhanh hơn",
+          "lines": [
+            {
+              "ma_dong": "PX-20260405-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1000
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KH-01",
+      "params": {
+        "id": "APR-01",
+        "doc": "PX-20260405",
+        "loai_pd": "don_xuat_kho"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "update_status",
+      "actor": "THU-KHO-TPHCM",
+      "params": {
+        "table": "chung_tu",
+        "key": {
+          "ma_ct": "PX-20260405"
+        },
+        "trang_thai": "Đã thực hiện"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "record_external_fact",
+      "actor": "XEP-NOI-BUON-01",
+      "params": {
+        "event_kind": "SHIPPED",
+        "doc": {
+          "id": "VAN-20260407",
+          "loai_ct": "van_don",
+          "ct_goc": "PX-20260405",
+          "ghi_chu": "Giao 1000 thùng từ TP.HCM sang Đà Nẵng",
+          "lines": []
+        }
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "create_document",
+      "actor": "THU-KHO-DN",
+      "params": {
+        "doc": {
+          "id": "PN-20260407",
+          "loai_ct": "phieu_nhap",
+          "ct_goc": "PX-20260405",
+          "ma_dt": "XEP-NOI-BUON-01",
+          "ghi_chu": "Nhận 990 thùng, thiếu 10 thùng",
+          "lines": [
+            {
+              "ma_dong": "PN-20260407-1",
+              "ma_hh": "HH-01",
+              "so_luong": 990
+            }
+          ]
+        },
+        "event_kind": "RECEIVED"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "request_approval",
+      "actor": "DE-KH-01",
+      "params": {
+        "id": "APR-02",
+        "doc": "PN-20260407",
+        "loai_pd": "don_nhan_kho"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "check",
+      "actor": "DE-KH-01",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "op": "div",
+              "args": [
+                {
+                  "op": "sub",
+                  "args": [
+                    {
+                      "field": {
+                        "table": "dong_ct",
+                        "key": {
+                          "ma_ct": "PX-20260405"
+                        },
+                        "col": "so_luong"
+                      }
+                    },
+                    {
+                      "field": {
+                        "table": "dong_ct",
+                        "key": {
+                          "ma_ct": "PN-20260407"
+                        },
+                        "col": "so_luong"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "field": {
+                    "table": "dong_ct",
+                    "key": {
+                      "ma_ct": "PX-20260405"
+                    },
+                    "col": "so_luong"
+                  }
+                }
+              ]
+            },
+            {
+              "policy": "tolerances.so_luong"
+            }
+          ]
+        },
+        "ref": "PN-20260407",
+        "flag_reason": "Số lượng nhận thấp hơn 5% so với yêu cầu"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-02",
+        "decision": "Từ chối",
+        "ly_do": "Số lượng nhận thấp hơn 5% so với yêu cầu"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "pay",
+      "actor": "DE-KH-01",
+      "params": {
+        "id": "PAY-01",
+        "request": "PN-20260407",
+        "approval": "APR-02",
+        "invoice": "PX-20260405",
+        "stk_nhan": "0071000123456"
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình hoàn tất với sự khác biệt đã được ghi nhận"
+      }
+    }
+  ]
+}

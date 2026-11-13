@@ -1,0 +1,205 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Nháp"
+      },
+      "desc": "chung_tu PO-001: trang_thai is 'Nháp'",
+      "id": "chung_tu.PO-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PO-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu PO-001: ket_qua is blank",
+      "id": "chung_tu.PO-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PO-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "7150000"
+      },
+      "desc": "chung_tu PO-001: tong_tien is '7150000'",
+      "id": "chung_tu.PO-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PO-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Nháp"
+      },
+      "desc": "chung_tu GRN-001: trang_thai is 'Nháp'",
+      "id": "chung_tu.GRN-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "GRN-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu GRN-001: ket_qua is blank",
+      "id": "chung_tu.GRN-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "GRN-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu GRN-001: tong_tien is blank",
+      "id": "chung_tu.GRN-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "GRN-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Nháp"
+      },
+      "desc": "chung_tu INV-001: trang_thai is 'Nháp'",
+      "id": "chung_tu.INV-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "INV-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "eq": "Khớp"
+      },
+      "desc": "chung_tu INV-001: ket_qua is 'Khớp'",
+      "id": "chung_tu.INV-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "INV-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "7150000"
+      },
+      "desc": "chung_tu INV-001: tong_tien is '7150000'",
+      "id": "chung_tu.INV-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "INV-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "chung_tu PAY-001: trang_thai is 'Đã duyệt'",
+      "id": "chung_tu.PAY-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PAY-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu PAY-001: ket_qua is blank",
+      "id": "chung_tu.PAY-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PAY-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu PAY-001: tong_tien is blank",
+      "id": "chung_tu.PAY-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PAY-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "phe_duyet APR-001: trang_thai is 'Đã duyệt'",
+      "id": "phe_duyet.APR-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "KTT"
+      },
+      "desc": "phe_duyet APR-001: nguoi_duyet is 'KTT'",
+      "id": "phe_duyet.APR-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "count": 1
+      },
+      "desc": "thanh_toan has 1 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã chi"
+      },
+      "desc": "thanh_toan PAY-001: trang_thai is 'Đã chi'",
+      "id": "thanh_toan.PAY-001.trang_thai",
+      "table": "thanh_toan",
+      "where": {
+        "ma_tt": "PAY-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "so_tien",
+        "is_blank": true
+      },
+      "desc": "thanh_toan PAY-001: so_tien is blank",
+      "id": "thanh_toan.PAY-001.so_tien",
+      "table": "thanh_toan",
+      "where": {
+        "ma_tt": "PAY-001"
+      }
+    }
+  ]
+}

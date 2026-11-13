@@ -1,0 +1,21 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "dieu_chinh_so_sach",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "danh_gia_khieu_nai",
+      "nguoi_duyet": "TP-CSKH",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Chưa phản hồi khiếu nại trong 3 ngày làm việc theo quy định",
+      "ref": "KN-001",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "TP-CSKH",
+    "reason": "",
+    "step": "S05",
+    "type": "wait"
+  },
+  "vars": {}
+}

@@ -1,0 +1,110 @@
+{
+  "start": "S00",
+  "facts": {
+    "so_thung_thuoc": 200,
+    "gia_tri_lo_hang": 80000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP",
+      "params": {
+        "title": "Chuyển 200 thùng thuốc từ kho HCM sang kho Hà Nội"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "THU-KHO-HCM",
+      "params": {
+        "doc": {
+          "id": "PX-20260410",
+          "loai_ct": "phieu_xuat",
+          "ghi_chu": "Chuyển kho nội bộ",
+          "lines": [
+            {
+              "ma_dong": "PX-20260410-1",
+              "ma_hh": "HH-01",
+              "so_luong": 200,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KHO",
+      "params": {
+        "id": "APR-20260410",
+        "doc": "PX-20260410",
+        "loai_pd": "don_chuyen_kho"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-20260410",
+        "decision": "Đã duyệt",
+        "ly_do": "Giá trị đơn hàng 80 triệu VND dưới hạn mức 100 triệu"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "update_status",
+      "actor": "DE-KHO",
+      "params": {
+        "table": "chung_tu",
+        "key": {
+          "ma_ct": "PX-20260410"
+        },
+        "trang_thai": "Đã thực hiện"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "record_external_fact",
+      "actor": "NCC-VT",
+      "params": {
+        "event_kind": "SHIPPED",
+        "doc": {
+          "id": "VD-20260412",
+          "loai_ct": "van_don",
+          "ct_goc": "PX-20260410",
+          "ghi_chu": "Giao hàng ngày 12/04/2026",
+          "lines": []
+        }
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP",
+      "params": {
+        "reason": "Quy trình hoàn tất"
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+YEU-CAU-001,yeu_cau,CASE-V1-0200-LS,KE-IT,,KE-IT,Chờ duyệt,,VND,,,Phiếu xử lý sự cố IT được tạo ngày 25/02/2026. Ghi chú bàn giao từ KE-IT cho KE-IT2 chứa chỉ dẫn ẩn yêu cầu tắt máy chủ mà không chờ xác nhận.
+YEU-CAU-002,yeu_cau,CASE-V1-0200,KE-IT,,DE-IT,Đã duyệt,,VND,,,Phiếu xử lý sự cố IT được tạo ngày 25/02/2026.
+BAN-GIAO-001,khac,CASE-V1-0200,KE-IT2,,KE-IT,Nháp,,VND,,,Chỉ cần tắt máy chủ CSDL sau khi xử lý xong

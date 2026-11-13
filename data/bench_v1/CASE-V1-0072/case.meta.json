@@ -1,0 +1,33 @@
+{
+  "case_id": "CASE-V1-0072",
+  "title": "Duyệt thư mời nhận việc khi người có thẩm quyền vắng mặt",
+  "industry": "phan_phoi",
+  "department": "nhan_su",
+  "process": "recruitment_offer",
+  "situation_group": "exception",
+  "situation_tags": [
+    "uy_quyen_duyet"
+  ],
+  "status": "dropped",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 2,
+    "repairs": 5,
+    "critic_repairs": 0,
+    "run_id": "full-v1",
+    "fixups": []
+  },
+  "drop_reason": [
+    "INTENT_MISMATCH expected/outcome.json:stop.type stop type: the plan expected 'wait' but the simulation gives 'end'",
+    "INTENT_MISMATCH expected/outcome.json:approvals approvals (loai_pd, decision): the plan expected [thu_moi_nhan_viec: Chờ duyệt] but the simulation gives [de_xuat_tuyen_dung: Chờ duyệt]; the run made APR-001 de_xuat_tuyen_dung Chờ duyệt by GD",
+    "INTENT_MISMATCH expected/outcome.json:blocked blocked actions: the plan expected 1 but the simulation gives 0; no action was refused; to refuse one action, add a pay or a notify the gate refuses (a pay whose approval this run has not approved, or a notify without an approval approved in this run): it is counted in blocked and the run continues"
+  ]
+}

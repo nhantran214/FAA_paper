@@ -1,0 +1,30 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "0",
+      "id": "APR-001",
+      "loai_pd": "doi_stk_ncc",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Đã cập nhật tài khoản nhà cung cấp",
+    "step": "S06",
+    "type": "end"
+  },
+  "vars": {}
+}

@@ -1,0 +1,23 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xac_nhan_thieu_hang",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-MH-ABC"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "so_luong_thieu_toi_da": "10"
+  },
+  "tolerances": {
+    "so_luong": "0.05"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

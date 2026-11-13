@@ -1,0 +1,90 @@
+{
+  "start": "S00",
+  "facts": {
+    "khong_co_ho_so_mua_hang": true,
+    "thoi_han_bao_hanh_qua_han": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Xử lý khiếu nại bảo hành điện thoại TechPhone 2025"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KH-01",
+      "params": {
+        "doc": {
+          "id": "KH-01",
+          "loai_ct": "khieu_nai",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Khách hàng yêu cầu bảo hành điện thoại mua 12 tháng trước",
+          "lines": [
+            {
+              "ma_dong": "KH-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KH-01",
+      "params": {
+        "expr": {
+          "op": "not",
+          "args": [
+            {
+              "fact": "khong_co_ho_so_mua_hang"
+            }
+          ]
+        },
+        "ref": "KH-01",
+        "flag_reason": "Không tìm thấy hồ sơ mua hàng trong hệ thống TechShop"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KH-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "KH-01",
+        "loai_pd": "kiem_tra_thong_tin_khach_hang"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "TP-CSKH-01",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

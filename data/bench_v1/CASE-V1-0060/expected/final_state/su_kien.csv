@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0060,S02,FLAGGED,HD-01,DE-KT,Hóa đơn có số lượng và giá trị vượt xa hợp đồng gốc
+2,CASE-V1-0060,S03,REQUESTED,APR-001,DE-KT,
+3,CASE-V1-0060,S04,REJECTED,APR-001,GD,
+4,CASE-V1-0060,S05,FLAGGED,HD-01,DE-KT,"approval APR-001 is Từ chối, not Đã duyệt; invoice HD-01 was not reconciled in this run (ket_qua '' on file)"

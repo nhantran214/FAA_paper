@@ -1,0 +1,169 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã thực hiện"
+      },
+      "desc": "chung_tu HD-2024-PL001: trang_thai is 'Đã thực hiện'",
+      "id": "chung_tu.HD-2024-PL001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-2024-PL001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "eq": "Khớp"
+      },
+      "desc": "chung_tu HD-2024-PL001: ket_qua is 'Khớp'",
+      "id": "chung_tu.HD-2024-PL001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-2024-PL001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu HD-2024-PL001: tong_tien is blank",
+      "id": "chung_tu.HD-2024-PL001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-2024-PL001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu HD-PL-0012: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.HD-PL-0012.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-PL-0012"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "eq": "Cần kiểm"
+      },
+      "desc": "chung_tu HD-PL-0012: ket_qua is 'Cần kiểm'",
+      "id": "chung_tu.HD-PL-0012.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-PL-0012"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "39600000"
+      },
+      "desc": "chung_tu HD-PL-0012: tong_tien is '39600000'",
+      "id": "chung_tu.HD-PL-0012.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-PL-0012"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "chung_tu PD-STOP-001: trang_thai is 'Đã duyệt'",
+      "id": "chung_tu.PD-STOP-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PD-STOP-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu PD-STOP-001: ket_qua is blank",
+      "id": "chung_tu.PD-STOP-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PD-STOP-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu PD-STOP-001: tong_tien is blank",
+      "id": "chung_tu.PD-STOP-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PD-STOP-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet PD-PL-001: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.PD-PL-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-PL-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "NV-KT-01"
+      },
+      "desc": "phe_duyet PD-PL-001: nguoi_duyet is 'NV-KT-01'",
+      "id": "phe_duyet.PD-PL-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-PL-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "phe_duyet PD-APR-001: trang_thai is 'Đã duyệt'",
+      "id": "phe_duyet.PD-APR-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "KTT"
+      },
+      "desc": "phe_duyet PD-APR-001: nguoi_duyet is 'KTT'",
+      "id": "phe_duyet.PD-APR-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-APR-001"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    }
+  ]
+}

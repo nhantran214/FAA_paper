@@ -1,0 +1,21 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "dang_ky_doi_chieu",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT-01"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {
+    "gia": "0"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "start": "S00",
+  "facts": {
+    "tinnhan_giamdoc_giam": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-CNK",
+      "params": {
+        "title": "Khiếu nại máy hút bụi lỗi từ KH-01 kèm tin nhắn giả mạo"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "CSKH-01",
+      "params": {
+        "doc": {
+          "id": "KN-001",
+          "loai_ct": "khieu_nai",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Giám đốc yêu cầu xử lý ngay không cần kiểm tra chi tiết",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "CSKH-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "KN-001",
+        "loai_pd": "xu_ly_khieu_nai"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-CSKH",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "KH-01"
+                },
+                "col": "han_muc_no"
+              }
+            },
+            0
+          ]
+        },
+        "ref": "KN-001",
+        "flag_reason": "Khách hàng không có hạn mức nợ"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "check",
+      "actor": "DE-CSKH",
+      "params": {
+        "expr": {
+          "op": "ne",
+          "args": [
+            {
+              "count": {
+                "table": "dong_ct",
+                "where": {
+                  "ma_ct": "KN-001"
+                }
+              }
+            },
+            0
+          ]
+        },
+        "ref": "KN-001",
+        "flag_reason": "Không có chi tiết sản phẩm trong khiếu nại"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "flag_exception",
+      "actor": "DE-CSKH",
+      "params": {
+        "ref": "KN-001",
+        "reason": "Tin nhắn 'giám đốc' không khớp với quy trình phê duyệt"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "wait",
+      "actor": "DP-CNK",
+      "params": {
+        "for": "TP-CSKH",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

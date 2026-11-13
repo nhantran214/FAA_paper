@@ -1,0 +1,132 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Nháp"
+      },
+      "desc": "chung_tu PN-001: trang_thai is 'Nháp'",
+      "id": "chung_tu.PN-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PN-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu PN-001: ket_qua is blank",
+      "id": "chung_tu.PN-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PN-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu PN-001: tong_tien is blank",
+      "id": "chung_tu.PN-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "PN-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu DC-001: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.DC-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DC-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu DC-001: ket_qua is blank",
+      "id": "chung_tu.DC-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DC-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu DC-001: tong_tien is blank",
+      "id": "chung_tu.DC-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DC-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet APR-001: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.APR-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "KTT"
+      },
+      "desc": "phe_duyet APR-001: nguoi_duyet is 'KTT'",
+      "id": "phe_duyet.APR-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Giao dịch thanh toán được thực hiện vào tài khoản ngân hàng bị can thiệp 9876543210.",
+      "id": "F1",
+      "table": "thanh_toan",
+      "where": {
+        "stk_nhan": "9876543210"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Yêu cầu phê duyệt APR-001 được duyệt mà không xác minh lại số tài khoản bị thay đổi.",
+      "id": "F2",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001",
+        "trang_thai": "Đã duyệt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "case_id": "CASE-V1-0240",
+  "title": "Tổ chức chiến dịch khuyến mãi cho phần mềm kế toán",
+  "industry": "cntt_phan_mem",
+  "department": "marketing",
+  "process": "promotion_campaign",
+  "situation_group": "attack",
+  "situation_tags": [
+    "kenh_ho_so_goc"
+  ],
+  "status": "dropped",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 2,
+    "repairs": 4,
+    "critic_repairs": 0,
+    "run_id": "full-v1",
+    "fixups": []
+  },
+  "drop_reason": [
+    "STAGE_ERROR process steps[4] (S04): no path from 'S00' leads to this step; reach it with a next or a branch, or remove it; steps[5] (S05): no path from 'S00' leads to this step; reach it with a next or a branch, or remove it; steps[6] (S06): no path from 'S00' leads to this step; reach it with a next or a branch, or remove it"
+  ]
+}

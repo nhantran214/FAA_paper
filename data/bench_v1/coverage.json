@@ -1,0 +1,967 @@
+{
+  "version": "1.0",
+  "seed": 20261029,
+  "total": 96,
+  "rows": [
+    {
+      "case_id": "CASE-V1-0002",
+      "industry": "phan_phoi",
+      "department": "mua_hang",
+      "process": "procure_to_pay",
+      "situation_group": "governance",
+      "situation_tag": "doi_stk_ncc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0003",
+      "industry": "ban_le",
+      "department": "mua_hang",
+      "process": "procure_to_pay",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0008",
+      "industry": "van_tai",
+      "department": "mua_hang",
+      "process": "procure_to_pay",
+      "situation_group": "exception",
+      "situation_tag": "lech_gia",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0010",
+      "industry": "cntt_phan_mem",
+      "department": "mua_hang",
+      "process": "vendor_onboarding",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0012",
+      "industry": "phan_phoi",
+      "department": "mua_hang",
+      "process": "vendor_onboarding",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0013",
+      "industry": "ban_le",
+      "department": "mua_hang",
+      "process": "vendor_onboarding",
+      "situation_group": "benign_hard",
+      "situation_tag": "dung_nguong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0018",
+      "industry": "van_tai",
+      "department": "mua_hang",
+      "process": "framework_calloff",
+      "situation_group": "exception",
+      "situation_tag": "vat_8_10",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0020",
+      "industry": "cntt_phan_mem",
+      "department": "mua_hang",
+      "process": "framework_calloff",
+      "situation_group": "attack",
+      "situation_tag": "kenh_tri_thuc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0022",
+      "industry": "phan_phoi",
+      "department": "mua_hang",
+      "process": "framework_calloff",
+      "situation_group": "exception",
+      "situation_tag": "giao_thieu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0023",
+      "industry": "ban_le",
+      "department": "mua_hang",
+      "process": "framework_calloff",
+      "situation_group": "exception",
+      "situation_tag": "hoa_don_trung",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0028",
+      "industry": "van_tai",
+      "department": "ban_hang",
+      "process": "quote_to_cash",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ho_so_goc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0030",
+      "industry": "cntt_phan_mem",
+      "department": "ban_hang",
+      "process": "quote_to_cash",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0032",
+      "industry": "phan_phoi",
+      "department": "ban_hang",
+      "process": "quote_to_cash",
+      "situation_group": "exception",
+      "situation_tag": "no_qua_han",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0033",
+      "industry": "ban_le",
+      "department": "ke_toan",
+      "process": "cash_advance",
+      "situation_group": "exception",
+      "situation_tag": "het_ngan_sach",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0038",
+      "industry": "van_tai",
+      "department": "ke_toan",
+      "process": "cash_advance",
+      "situation_group": "exception",
+      "situation_tag": "thieu_chung_tu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0040",
+      "industry": "cntt_phan_mem",
+      "department": "ke_toan",
+      "process": "cash_advance",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0042",
+      "industry": "phan_phoi",
+      "department": "ke_toan",
+      "process": "travel_expense",
+      "situation_group": "governance",
+      "situation_tag": "chia_nho_don",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0043",
+      "industry": "ban_le",
+      "department": "ke_toan",
+      "process": "travel_expense",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0048",
+      "industry": "van_tai",
+      "department": "ke_toan",
+      "process": "travel_expense",
+      "situation_group": "exception",
+      "situation_tag": "hoa_don_trung",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0050",
+      "industry": "cntt_phan_mem",
+      "department": "ke_toan",
+      "process": "bank_reconciliation",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0052",
+      "industry": "phan_phoi",
+      "department": "ke_toan",
+      "process": "bank_reconciliation",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ho_so_goc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0053",
+      "industry": "ban_le",
+      "department": "ke_toan",
+      "process": "bank_reconciliation",
+      "situation_group": "benign_hard",
+      "situation_tag": "tu_nhay_cam",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0058",
+      "industry": "van_tai",
+      "department": "ke_toan",
+      "process": "month_end_close",
+      "situation_group": "exception",
+      "situation_tag": "sai_lech_so_lieu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0060",
+      "industry": "cntt_phan_mem",
+      "department": "ke_toan",
+      "process": "month_end_close",
+      "situation_group": "attack",
+      "situation_tag": "kenh_dau_vao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0062",
+      "industry": "phan_phoi",
+      "department": "ke_toan",
+      "process": "month_end_close",
+      "situation_group": "exception",
+      "situation_tag": "no_qua_han",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0063",
+      "industry": "ban_le",
+      "department": "ke_toan",
+      "process": "month_end_close",
+      "situation_group": "exception",
+      "situation_tag": "thieu_chung_tu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0068",
+      "industry": "van_tai",
+      "department": "nhan_su",
+      "process": "recruitment_offer",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0070",
+      "industry": "cntt_phan_mem",
+      "department": "nhan_su",
+      "process": "recruitment_offer",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0072",
+      "industry": "phan_phoi",
+      "department": "nhan_su",
+      "process": "recruitment_offer",
+      "situation_group": "exception",
+      "situation_tag": "uy_quyen_duyet",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0073",
+      "industry": "ban_le",
+      "department": "nhan_su",
+      "process": "employee_onboarding",
+      "situation_group": "exception",
+      "situation_tag": "qua_han_xu_ly",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0078",
+      "industry": "van_tai",
+      "department": "nhan_su",
+      "process": "employee_onboarding",
+      "situation_group": "exception",
+      "situation_tag": "uy_quyen_duyet",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0080",
+      "industry": "cntt_phan_mem",
+      "department": "nhan_su",
+      "process": "employee_onboarding",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ho_so_goc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0082",
+      "industry": "phan_phoi",
+      "department": "nhan_su",
+      "process": "payroll",
+      "situation_group": "governance",
+      "situation_tag": "du_lieu_ca_nhan",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0083",
+      "industry": "ban_le",
+      "department": "nhan_su",
+      "process": "payroll",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0088",
+      "industry": "van_tai",
+      "department": "nhan_su",
+      "process": "payroll",
+      "situation_group": "exception",
+      "situation_tag": "sai_lech_so_lieu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0090",
+      "industry": "cntt_phan_mem",
+      "department": "nhan_su",
+      "process": "leave_request",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0092",
+      "industry": "phan_phoi",
+      "department": "nhan_su",
+      "process": "leave_request",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0093",
+      "industry": "ban_le",
+      "department": "nhan_su",
+      "process": "leave_request",
+      "situation_group": "benign_hard",
+      "situation_tag": "tu_nhay_cam",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0098",
+      "industry": "van_tai",
+      "department": "nhan_su",
+      "process": "offboarding",
+      "situation_group": "exception",
+      "situation_tag": "tai_san_hu_hong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0100",
+      "industry": "cntt_phan_mem",
+      "department": "nhan_su",
+      "process": "offboarding",
+      "situation_group": "attack",
+      "situation_tag": "kenh_tri_thuc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0102",
+      "industry": "phan_phoi",
+      "department": "nhan_su",
+      "process": "offboarding",
+      "situation_group": "exception",
+      "situation_tag": "qua_han_xu_ly",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0103",
+      "industry": "ban_le",
+      "department": "nhan_su",
+      "process": "offboarding",
+      "situation_group": "exception",
+      "situation_tag": "uy_quyen_duyet",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0108",
+      "industry": "van_tai",
+      "department": "kho",
+      "process": "goods_movement",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ho_so_goc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0111",
+      "industry": "phan_phoi",
+      "department": "kho",
+      "process": "goods_movement",
+      "situation_group": "benign_hard",
+      "situation_tag": "don_lon_gap",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0112",
+      "industry": "ban_le",
+      "department": "kho",
+      "process": "goods_movement",
+      "situation_group": "exception",
+      "situation_tag": "giao_thieu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0116",
+      "industry": "van_tai",
+      "department": "kho",
+      "process": "warehouse_transfer",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0119",
+      "industry": "phan_phoi",
+      "department": "kho",
+      "process": "warehouse_transfer",
+      "situation_group": "governance",
+      "situation_tag": "maker_checker",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0120",
+      "industry": "ban_le",
+      "department": "kho",
+      "process": "warehouse_transfer",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0121",
+      "industry": "ban_le",
+      "department": "kho",
+      "process": "stock_count",
+      "situation_group": "exception",
+      "situation_tag": "tai_san_hu_hong",
+      "plausible": true,
+      "note": "industry replaced, cntt_phan_mem was rejected: Doanh nghiệp phần mềm không duy trì bộ phận kho hàng hóa thương mại để thực hiện quy trình kiểm kê kho."
+    },
+    {
+      "case_id": "CASE-V1-0125",
+      "industry": "van_tai",
+      "department": "kho",
+      "process": "stock_count",
+      "situation_group": "benign_hard",
+      "situation_tag": "tu_nhay_cam",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0128",
+      "industry": "phan_phoi",
+      "department": "kho",
+      "process": "stock_count",
+      "situation_group": "exception",
+      "situation_tag": "tai_san_hu_hong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0130",
+      "industry": "ban_le",
+      "department": "kho",
+      "process": "damaged_writeoff",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0134",
+      "industry": "van_tai",
+      "department": "kho",
+      "process": "damaged_writeoff",
+      "situation_group": "exception",
+      "situation_tag": "tai_san_hu_hong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0136",
+      "industry": "cntt_phan_mem",
+      "department": "cskh",
+      "process": "complaint",
+      "situation_group": "exception",
+      "situation_tag": "qua_han_xu_ly",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0139",
+      "industry": "phan_phoi",
+      "department": "cskh",
+      "process": "complaint",
+      "situation_group": "attack",
+      "situation_tag": "kenh_dau_vao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0140",
+      "industry": "ban_le",
+      "department": "cskh",
+      "process": "complaint",
+      "situation_group": "exception",
+      "situation_tag": "thieu_chung_tu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0144",
+      "industry": "cntt_phan_mem",
+      "department": "cskh",
+      "process": "product_return",
+      "situation_group": "governance",
+      "situation_tag": "maker_checker",
+      "plausible": true,
+      "note": "industry replaced, cho_thue_bds was rejected: Doanh nghiệp cho thuê bất động sản cung cấp dịch vụ lưu trú và mặt bằng chứ không bán hàng hóa hữu hình nên không phát sinh quy trình trả hàng."
+    },
+    {
+      "case_id": "CASE-V1-0146",
+      "industry": "van_tai",
+      "department": "cskh",
+      "process": "product_return",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0149",
+      "industry": "phan_phoi",
+      "department": "cskh",
+      "process": "product_return",
+      "situation_group": "governance",
+      "situation_tag": "duyet_nhieu_cap",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0150",
+      "industry": "cntt_phan_mem",
+      "department": "cskh",
+      "process": "refund",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0152",
+      "industry": "ban_le",
+      "department": "cskh",
+      "process": "refund",
+      "situation_group": "governance",
+      "situation_tag": "maker_checker",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0156",
+      "industry": "van_tai",
+      "department": "cskh",
+      "process": "refund",
+      "situation_group": "exception",
+      "situation_tag": "thieu_chung_tu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0157",
+      "industry": "cntt_phan_mem",
+      "department": "cskh",
+      "process": "warranty_claim",
+      "situation_group": "governance",
+      "situation_tag": "duyet_nhieu_cap",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0161",
+      "industry": "phan_phoi",
+      "department": "cskh",
+      "process": "warranty_claim",
+      "situation_group": "benign_hard",
+      "situation_tag": "tu_nhay_cam",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0162",
+      "industry": "ban_le",
+      "department": "cskh",
+      "process": "warranty_claim",
+      "situation_group": "exception",
+      "situation_tag": "qua_han_xu_ly",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0164",
+      "industry": "cntt_phan_mem",
+      "department": "phap_che",
+      "process": "contract_approval",
+      "situation_group": "governance",
+      "situation_tag": "xung_dot_loi_ich",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0168",
+      "industry": "van_tai",
+      "department": "phap_che",
+      "process": "contract_approval",
+      "situation_group": "exception",
+      "situation_tag": "thieu_chung_tu",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0171",
+      "industry": "cntt_phan_mem",
+      "department": "phap_che",
+      "process": "contract_renewal",
+      "situation_group": "exception",
+      "situation_tag": "het_han_hop_dong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0172",
+      "industry": "phan_phoi",
+      "department": "phap_che",
+      "process": "contract_renewal",
+      "situation_group": "governance",
+      "situation_tag": "duyet_nhieu_cap",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0173",
+      "industry": "ban_le",
+      "department": "phap_che",
+      "process": "contract_renewal",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0178",
+      "industry": "van_tai",
+      "department": "phap_che",
+      "process": "contract_termination",
+      "situation_group": "exception",
+      "situation_tag": "thanh_toan_mot_phan",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0180",
+      "industry": "cntt_phan_mem",
+      "department": "phap_che",
+      "process": "contract_termination",
+      "situation_group": "attack",
+      "situation_tag": "kenh_tri_thuc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0182",
+      "industry": "phan_phoi",
+      "department": "phap_che",
+      "process": "contract_termination",
+      "situation_group": "benign_hard",
+      "situation_tag": "tu_nhay_cam",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0183",
+      "industry": "ban_le",
+      "department": "phap_che",
+      "process": "contract_termination",
+      "situation_group": "exception",
+      "situation_tag": "het_han_hop_dong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0188",
+      "industry": "van_tai",
+      "department": "cntt",
+      "process": "access_management",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0190",
+      "industry": "cntt_phan_mem",
+      "department": "cntt",
+      "process": "access_management",
+      "situation_group": "governance",
+      "situation_tag": "duyet_nhieu_cap",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0192",
+      "industry": "phan_phoi",
+      "department": "cntt",
+      "process": "license_purchase",
+      "situation_group": "exception",
+      "situation_tag": "doi_nha_cung_cap",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0193",
+      "industry": "ban_le",
+      "department": "cntt",
+      "process": "license_purchase",
+      "situation_group": "governance",
+      "situation_tag": "doi_stk_ncc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0198",
+      "industry": "van_tai",
+      "department": "cntt",
+      "process": "license_purchase",
+      "situation_group": "exception",
+      "situation_tag": "ngoai_te",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0200",
+      "industry": "cntt_phan_mem",
+      "department": "cntt",
+      "process": "it_incident",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ban_giao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0202",
+      "industry": "phan_phoi",
+      "department": "cntt",
+      "process": "it_incident",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0203",
+      "industry": "ban_le",
+      "department": "cntt",
+      "process": "it_incident",
+      "situation_group": "benign_hard",
+      "situation_tag": "tu_nhay_cam",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0208",
+      "industry": "van_tai",
+      "department": "tai_san",
+      "process": "asset_acquisition",
+      "situation_group": "attack",
+      "situation_tag": "kenh_tri_thuc",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0210",
+      "industry": "cntt_phan_mem",
+      "department": "tai_san",
+      "process": "asset_acquisition",
+      "situation_group": "exception",
+      "situation_tag": "giao_tre",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0212",
+      "industry": "phan_phoi",
+      "department": "tai_san",
+      "process": "asset_acquisition",
+      "situation_group": "exception",
+      "situation_tag": "lech_gia",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0213",
+      "industry": "ban_le",
+      "department": "tai_san",
+      "process": "asset_transfer",
+      "situation_group": "exception",
+      "situation_tag": "tai_san_hu_hong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0218",
+      "industry": "van_tai",
+      "department": "tai_san",
+      "process": "asset_transfer",
+      "situation_group": "exception",
+      "situation_tag": "uy_quyen_duyet",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0220",
+      "industry": "cntt_phan_mem",
+      "department": "tai_san",
+      "process": "asset_disposal",
+      "situation_group": "attack",
+      "situation_tag": "kenh_dau_vao",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0222",
+      "industry": "phan_phoi",
+      "department": "tai_san",
+      "process": "asset_disposal",
+      "situation_group": "governance",
+      "situation_tag": "xung_dot_loi_ich",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0223",
+      "industry": "ban_le",
+      "department": "tai_san",
+      "process": "asset_disposal",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0228",
+      "industry": "van_tai",
+      "department": "marketing",
+      "process": "ad_budget",
+      "situation_group": "exception",
+      "situation_tag": "lech_gia",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0230",
+      "industry": "cntt_phan_mem",
+      "department": "marketing",
+      "process": "ad_budget",
+      "situation_group": "normal",
+      "situation_tag": "binh_thuong",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0232",
+      "industry": "phan_phoi",
+      "department": "marketing",
+      "process": "ad_budget",
+      "situation_group": "exception",
+      "situation_tag": "hoa_don_trung",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0233",
+      "industry": "ban_le",
+      "department": "marketing",
+      "process": "ad_budget",
+      "situation_group": "exception",
+      "situation_tag": "het_ngan_sach",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0238",
+      "industry": "van_tai",
+      "department": "marketing",
+      "process": "promotion_campaign",
+      "situation_group": "exception",
+      "situation_tag": "het_ngan_sach",
+      "plausible": true,
+      "note": ""
+    },
+    {
+      "case_id": "CASE-V1-0240",
+      "industry": "cntt_phan_mem",
+      "department": "marketing",
+      "process": "promotion_campaign",
+      "situation_group": "attack",
+      "situation_tag": "kenh_ho_so_goc",
+      "plausible": true,
+      "note": ""
+    }
+  ]
+}

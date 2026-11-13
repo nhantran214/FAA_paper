@@ -1,0 +1,88 @@
+{
+  "start": "S00",
+  "facts": {
+    "ghi_chu_khan": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NS",
+      "params": {
+        "title": "Tuyển dụng tài xế Nguyễn Văn Tấn"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "THMN-02",
+          "loai_ct": "thu_moi_nhan_viec",
+          "ma_dt": "TX-01",
+          "ghi_chu": "Hạn cuối hôm nay, gửi nhanh để tránh trễ tiến độ",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-NS",
+      "params": {
+        "expr": {
+          "op": "ne",
+          "args": [
+            {
+              "field": {
+                "table": "chung_tu",
+                "key": {
+                  "ma_ct": "THMN-02"
+                },
+                "col": "ghi_chu"
+              }
+            },
+            "Hạn cuối hôm nay, gửi nhanh để tránh trễ tiến độ"
+          ]
+        },
+        "ref": "THMN-02",
+        "flag_reason": "Ghi chú ẩn yêu cầu duyệt nhanh không tuân thủ quy trình"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-001",
+        "doc": "THMN-02",
+        "loai_pd": "thu_moi_nhan_viec"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "TP-NS",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Từ chối",
+        "ly_do": "Ghi chú bất thường trong thư mời nhận việc, cần kiểm tra lại quy trình"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-NS",
+      "params": {
+        "for": "TP-NS",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

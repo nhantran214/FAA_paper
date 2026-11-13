@@ -1,0 +1,40 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "15180000",
+      "id": "APR-0031",
+      "loai_pd": "xac_nhan_thieu_hang",
+      "nguoi_duyet": "TP-MH-ABC",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Thiếu 8 thùng (8%) vượt mức dung sai 5%",
+      "ref": "HH-01",
+      "step": "S02"
+    },
+    {
+      "reason": "Nhà cung cấp giao thiếu 8 thùng bột giặt 3kg so với đơn hàng",
+      "ref": "HH-01",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "APR-0031",
+    "for": "TP-MH-ABC",
+    "reason": "",
+    "step": "S05",
+    "type": "wait"
+  },
+  "vars": {}
+}

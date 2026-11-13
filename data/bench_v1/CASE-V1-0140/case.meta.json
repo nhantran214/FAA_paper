@@ -1,0 +1,31 @@
+{
+  "case_id": "CASE-V1-0140",
+  "title": "Xử lý khiếu nại thiếu hóa đơn từ khách hàng",
+  "industry": "ban_le",
+  "department": "cskh",
+  "process": "complaint",
+  "situation_group": "exception",
+  "situation_tags": [
+    "thieu_chung_tu"
+  ],
+  "status": "dropped",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 2,
+    "repairs": 5,
+    "critic_repairs": 0,
+    "run_id": "full-v1",
+    "fixups": []
+  },
+  "drop_reason": [
+    "SIM_ERROR process.json actor TP-CSKH-03 may not request approvals (yeu_cau_duyet is not t) at S03"
+  ]
+}

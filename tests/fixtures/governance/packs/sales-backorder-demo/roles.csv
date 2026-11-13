@@ -1,0 +1,14 @@
+ma_vai,loai,soan_bang,yeu_cau_duyet,duyet_loai
+ORC-HUB,dieu_phoi,,,
+DE-SM-02,so,chung_tu|don_ban|dong_ct,t,
+DE-OP-01,so,,,
+DE-FN-04,so,chung_tu|don_mua|dong_ct,t,
+DE-OP-02,so,chung_tu|dong_ct|phieu_nhap,,
+DE-FN-01,so,chung_tu|dong_ct|hoa_don_ban,,
+DE-FN-02,so,chung_tu|dong_ct|hoa_don_mua,,
+DE-FN-03,so,chung_tu|de_nghi_chi|dong_ct|thanh_toan,t,
+P2,nguoi,,,bao_gia
+P4,nguoi,bien_ban_kiem_tra|chung_tu|van_don,,
+P5,nguoi,,,de_nghi_chi
+P6,nguoi,,,don_mua
+VEND-0003,ngoai,chung_tu|dong_ct|hoa_don_mua,,

@@ -1,0 +1,132 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP",
+      "params": {
+        "title": "Tiếp nhận nhân viên mới với ủy quyền duyệt"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NV",
+      "params": {
+        "doc": {
+          "id": "NV-01-FILE",
+          "loai_ct": "thu_moi_nhan_viec",
+          "lines": [
+            {
+              "ma_dong": "NV-01-LINE",
+              "mo_ta": "Thiếu hụt nhân sự Kế toán viên",
+              "so_luong": 1,
+              "don_gia": 0,
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NV",
+      "params": {
+        "id": "APR-001",
+        "doc": "NV-01-FILE",
+        "loai_pd": "hoso_nhanvien"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-NV",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "nhan_su",
+                "key": {
+                  "ma_nv": "NV-03"
+                },
+                "col": "trang_thai"
+              }
+            },
+            "Đang làm"
+          ]
+        },
+        "ref": "KTT",
+        "flag_reason": "Kế toán trưởng không còn làm việc"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "check",
+      "actor": "DE-NV",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "field": {
+                "table": "nhan_su",
+                "key": {
+                  "ma_nv": "NV-01"
+                },
+                "col": "luong"
+              }
+            },
+            {
+              "policy": "caps.han_muc_uy_quyen"
+            }
+          ]
+        },
+        "ref": "NV-01",
+        "flag_reason": "Lương vượt hạn mức ủy quyền"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Ủy quyền từ Kế toán trưởng, lương trong hạn mức"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "update_status",
+      "actor": "DE-NV",
+      "params": {
+        "table": "nhan_su",
+        "key": {
+          "ma_nv": "NV-01"
+        },
+        "trang_thai": "Đang làm"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP",
+      "params": {
+        "reason": "Hồ sơ nhân viên đã được phê duyệt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "start": "S00",
+  "facts": {
+    "ngay_qua_han": 1
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NS",
+      "params": {
+        "title": "Tiếp nhận nhân viên mới bị quá hạn xử lý"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "YE-001",
+          "loai_ct": "yeu_cau",
+          "lines": [
+            {
+              "ma_dong": "YE-001-1",
+              "ma_hh": "",
+              "so_luong": 1,
+              "mo_ta": "Yêu cầu xử lý ngoại lệ cho Nguyễn Văn A"
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-NS",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "fact": "ngay_qua_han"
+            },
+            0
+          ]
+        },
+        "ref": "YE-001",
+        "flag_reason": "Quá hạn 1 ngày so với cam kết 3 ngày"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "flag_exception",
+      "actor": "DE-NS",
+      "params": {
+        "ref": "YE-001",
+        "reason": "Quá hạn 1 ngày so với cam kết 3 ngày"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-001",
+        "doc": "YE-001",
+        "loai_pd": "xac_nhan_bhxh"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-002",
+        "doc": "YE-001",
+        "loai_pd": "xu_ly_ngoai_le"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-NS",
+      "params": {
+        "for": "GD",
+        "approval": "APR-002"
+      }
+    }
+  ]
+}

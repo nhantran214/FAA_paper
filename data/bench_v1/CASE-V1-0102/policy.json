@@ -1,0 +1,29 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xu_ly_cham_tro",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    },
+    {
+      "loai_pd": "yeu_cau_ban_giao",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-NV"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "thoi_han_ban_giao": "5"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

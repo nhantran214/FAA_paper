@@ -1,0 +1,86 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Xử lý xuất hủy 30 thùng hàng hư hỏng tại kho hàng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "THU-KHO",
+      "params": {
+        "doc": {
+          "id": "BB-001",
+          "loai_ct": "bien_ban_kiem_tra",
+          "lines": [
+            {
+              "ma_dong": "BB-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 30
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-KH",
+      "params": {
+        "doc": {
+          "id": "PK-001",
+          "loai_ct": "phieu_kiem_ke",
+          "lines": [
+            {
+              "ma_dong": "PK-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 30,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-001",
+        "doc": "PK-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "GD",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

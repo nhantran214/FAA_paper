@@ -1,0 +1,74 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KT",
+      "params": {
+        "title": "Đối chiếu ngân hàng từ BIDV"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "record_external_fact",
+      "actor": "BIDV",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "BANK-001",
+          "loai_ct": "sao_ke_ngan_hang",
+          "ghi_chu": "Chuyển khoản lương nhân viên VinMart Plus",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "RC-001",
+          "loai_ct": "khac",
+          "ct_goc": "BANK-001",
+          "ghi_chu": "Báo cáo đối chiếu ngân hàng - Số dư khớp hoàn toàn với sổ kế toán",
+          "lines": []
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "RC-001",
+        "loai_pd": "doi_chieu_ngan_hang"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-KT",
+      "params": {
+        "reason": "Quy trình đối chiếu ngân hàng kết thúc với trạng thái khớp"
+      }
+    }
+  ]
+}

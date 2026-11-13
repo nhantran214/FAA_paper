@@ -1,0 +1,56 @@
+{
+  "start": "S00",
+  "facts": {
+    "no_days_overdue_CT-25": 30
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-ANP",
+      "params": {
+        "title": "Khách hàng KH-01 quá hạn thanh toán 30 ngày, yêu cầu xử lý nợ"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "check",
+      "actor": "DE-KT-ANP",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "fact": "no_days_overdue_CT-25"
+            },
+            30
+          ]
+        },
+        "ref": "CT-25",
+        "flag_reason": "Hóa đơn CT-25 quá hạn 30 ngày"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT-ANP",
+      "params": {
+        "id": "APR-01",
+        "doc": "CT-25",
+        "loai_pd": "xu_ly_no"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "wait",
+      "actor": "DP-ANP",
+      "params": {
+        "for": "KTT-ANP",
+        "approval": "APR-01"
+      }
+    }
+  ]
+}

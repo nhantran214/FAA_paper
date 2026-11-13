@@ -1,0 +1,17 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "yeu_cau_ho_tro_it",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-IT"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {},
+  "statutory_refs": []
+}

@@ -1,0 +1,21 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_dung_thanhtoan",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_duyet_hop_dong": "50000000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

@@ -1,0 +1,7 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+PO-MP-2604,don_mua,CASE-V1-0111,NCC-01,,DE-KH,Đã duyệt,,VND,14999700000,164996700000,
+DN-CHI-2604,de_nghi_chi,CASE-V1-0111,NCC-01,PO-MP-2604,DE-KH,Đã duyệt,,VND,4999500000,54994500000,
+VAN-2604,van_don,CASE-V1-0111,,PO-MP-2604,NCC-01,Nháp,,VND,,,Giao hàng đúng hạn 24 giờ
+PN-2604,phieu_nhap,CASE-V1-0111,,PO-MP-2604,THU-KHO,Nháp,,VND,,,
+BBKT-2604,bien_ban_kiem_tra,CASE-V1-0111,,PN-2604,THU-KHO,Nháp,,VND,,,"Không phát hiện lỗi, hàng hóa nguyên đai nguyên kiện"
+VINV-2604,hoa_don_mua,CASE-V1-0111,NCC-01,PO-MP-2604,DE-KH,Nháp,Cần kiểm,VND,4999500000,54994500000,

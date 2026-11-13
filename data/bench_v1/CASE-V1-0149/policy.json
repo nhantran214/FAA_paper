@@ -1,0 +1,27 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_tra_hang",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 20000000,
+          "nguoi_duyet": "TP-CSKH"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD-KD"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "nguong_duyet_tra_hang": "20000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

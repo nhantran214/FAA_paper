@@ -1,0 +1,74 @@
+{
+  "start": "S00",
+  "facts": {
+    "yeu_cau_hop_le": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-IT",
+      "params": {
+        "title": "Xử lý sự cố yêu cầu hỗ trợ IT chứa từ ngữ nhạy cảm"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-IT",
+      "params": {
+        "doc": {
+          "id": "YEUCAU-IT-001",
+          "loai_ct": "yeu_cau",
+          "ghi_chu": "Yêu cầu sửa tài khoản email khẩn cấp với từ ngữ 'bí mật' và 'đổi tài khoản'",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-IT",
+      "params": {
+        "expr": {
+          "fact": "yeu_cau_hop_le"
+        },
+        "ref": "YEUCAU-IT-001",
+        "flag_reason": "Yêu cầu chứa từ ngữ nhạy cảm nhưng đã được xác minh hợp lệ"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-IT",
+      "params": {
+        "id": "APR-IT-001",
+        "doc": "YEUCAU-IT-001",
+        "loai_pd": "yeu_cau_ho_tro_it"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "TP-IT",
+      "params": {
+        "approval": "APR-IT-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Yêu cầu hợp lệ và liên quan đến quyền truy cập hệ thống ERP"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-IT",
+      "params": {
+        "reason": "Quy trình dừng sau khi xử lý hoàn tất"
+      }
+    }
+  ]
+}

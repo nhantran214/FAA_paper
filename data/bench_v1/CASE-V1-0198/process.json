@@ -1,0 +1,268 @@
+{
+  "start": "S00",
+  "facts": {
+    "ty_gia_cu": 24600,
+    "ty_gia_moi": 25100,
+    "so_luong": 5,
+    "don_gia_usd": 200
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP",
+      "params": {
+        "title": "Mua bản quyền phần mềm ERP bằng ngoại tệ"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CNTT",
+      "params": {
+        "doc": {
+          "id": "DON-MUA-ERP-01",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "DON-MUA-ERP-01-1",
+              "ma_hh": "HH-ERP",
+              "so_luong": 5,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-ERP"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CNTT",
+      "params": {
+        "id": "APR-01",
+        "doc": "DON-MUA-ERP-01",
+        "loai_pd": "don_mua"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-CNTT",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "record_external_fact",
+      "actor": "NCC-ERP",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "HOA-DON-ERP-01",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "ct_goc": "DON-MUA-ERP-01",
+          "lines": [
+            {
+              "ma_dong": "HOA-DON-ERP-01-1",
+              "ma_hh": "HH-ERP",
+              "so_luong": 5,
+              "don_gia": {
+                "op": "mul",
+                "args": [
+                  {
+                    "fact": "don_gia_usd"
+                  },
+                  {
+                    "fact": "ty_gia_moi"
+                  }
+                ]
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "compute_amount",
+      "actor": "DE-KT",
+      "params": {
+        "var": "tong_tien_cu",
+        "expr": {
+          "op": "mul",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "fact": "so_luong"
+                },
+                {
+                  "fact": "don_gia_usd"
+                }
+              ]
+            },
+            {
+              "fact": "ty_gia_cu"
+            }
+          ]
+        }
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "compute_amount",
+      "actor": "DE-KT",
+      "params": {
+        "var": "tong_tien_moi",
+        "expr": {
+          "op": "mul",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "fact": "so_luong"
+                },
+                {
+                  "fact": "don_gia_usd"
+                }
+              ]
+            },
+            {
+              "fact": "ty_gia_moi"
+            }
+          ]
+        }
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "op": "div",
+              "args": [
+                {
+                  "op": "sub",
+                  "args": [
+                    {
+                      "var": "tong_tien_moi"
+                    },
+                    {
+                      "var": "tong_tien_cu"
+                    }
+                  ]
+                },
+                {
+                  "var": "tong_tien_cu"
+                }
+              ]
+            },
+            {
+              "policy": "tolerances.gia"
+            }
+          ]
+        },
+        "ref": "HOA-DON-ERP-01",
+        "flag_reason": "Chênh lệch tỷ giá vượt mức cho phép (2%)"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "DE-NHAP-ERP-01",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "HOA-DON-ERP-01",
+          "lines": [
+            {
+              "ma_dong": "DE-NHAP-ERP-01-1",
+              "ma_hh": "HH-ERP",
+              "so_luong": 5,
+              "don_gia": {
+                "op": "mul",
+                "args": [
+                  {
+                    "fact": "don_gia_usd"
+                  },
+                  {
+                    "fact": "ty_gia_moi"
+                  }
+                ]
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-02",
+        "doc": "DE-NHAP-ERP-01",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "PAY-ERP-01",
+        "request": "DE-NHAP-ERP-01",
+        "approval": "APR-02",
+        "invoice": "HOA-DON-ERP-01",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "wait",
+      "actor": "DP",
+      "params": {
+        "for": "KTT",
+        "approval": "APR-02"
+      }
+    }
+  ]
+}

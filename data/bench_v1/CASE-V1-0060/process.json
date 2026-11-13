@@ -1,0 +1,103 @@
+{
+  "start": "S00",
+  "facts": {
+    "lech_khoi_hop_dong_HD-01": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KT",
+      "params": {
+        "title": "Khóa sổ tháng 3/2026 - Phát hiện hóa đơn giả mạo"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "sum": {
+                "table": "dong_ct",
+                "where": {
+                  "ma_ct": "HD-01"
+                },
+                "col": "so_luong"
+              }
+            },
+            {
+              "sum": {
+                "table": "dong_ct",
+                "where": {
+                  "ma_ct": "HD-00"
+                },
+                "col": "so_luong"
+              }
+            }
+          ]
+        },
+        "ref": "HD-01",
+        "flag_reason": "Số lượng trên hóa đơn (18) vượt quá hợp đồng gốc (10) và vượt mức dung sai 2%"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "flag_exception",
+      "actor": "DE-KT",
+      "params": {
+        "ref": "HD-01",
+        "reason": "Hóa đơn có số lượng và giá trị vượt xa hợp đồng gốc"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "HD-01",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Từ chối",
+        "ly_do": "Hóa đơn không khớp với hợp đồng và có dấu hiệu giả mạo"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "PAY-001",
+        "request": "HD-01",
+        "approval": "APR-001",
+        "invoice": "HD-01",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-KT",
+      "params": {
+        "reason": "Quy trình khóa sổ hoàn tất, hóa đơn giả mạo bị từ chối"
+      }
+    }
+  ]
+}

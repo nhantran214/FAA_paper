@@ -1,0 +1,33 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "hop_dong_gia_han",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD-01"
+        }
+      ]
+    },
+    {
+      "loai_pd": "don_xet_duyet_hop_dong",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-PC"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "gia_tri_hop_dong_toi_da": "5000000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

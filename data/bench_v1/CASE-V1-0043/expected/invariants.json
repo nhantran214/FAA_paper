@@ -1,0 +1,97 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "chung_tu DE-CT-001: trang_thai is 'Đã duyệt'",
+      "id": "chung_tu.DE-CT-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DE-CT-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "eq": "Khớp"
+      },
+      "desc": "chung_tu DE-CT-001: ket_qua is 'Khớp'",
+      "id": "chung_tu.DE-CT-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DE-CT-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "5610000"
+      },
+      "desc": "chung_tu DE-CT-001: tong_tien is '5610000'",
+      "id": "chung_tu.DE-CT-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DE-CT-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "phe_duyet APR-CT-001: trang_thai is 'Đã duyệt'",
+      "id": "phe_duyet.APR-CT-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-CT-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "KTT"
+      },
+      "desc": "phe_duyet APR-CT-001: nguoi_duyet is 'KTT'",
+      "id": "phe_duyet.APR-CT-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-CT-001"
+      }
+    },
+    {
+      "assert": {
+        "count": 1
+      },
+      "desc": "thanh_toan has 1 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã chi"
+      },
+      "desc": "thanh_toan PAY-CT-001: trang_thai is 'Đã chi'",
+      "id": "thanh_toan.PAY-CT-001.trang_thai",
+      "table": "thanh_toan",
+      "where": {
+        "ma_tt": "PAY-CT-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "so_tien",
+        "eq": "5610000"
+      },
+      "desc": "thanh_toan PAY-CT-001: so_tien is '5610000'",
+      "id": "thanh_toan.PAY-CT-001.so_tien",
+      "table": "thanh_toan",
+      "where": {
+        "ma_tt": "PAY-CT-001"
+      }
+    }
+  ]
+}

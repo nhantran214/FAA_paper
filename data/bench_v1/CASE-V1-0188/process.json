@@ -1,0 +1,92 @@
+{
+  "start": "S00",
+  "facts": {
+    "ngay_cap_quyen": "17/03/2026"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Cấp quyền ERP cho nhân viên mới NV-CNTT-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CNTT",
+      "params": {
+        "doc": {
+          "id": "YEUCAU-001",
+          "loai_ct": "yeu_cau",
+          "lines": [
+            {
+              "ma_dong": "YC-001-1",
+              "mo_ta": "Quyền truy cập ERP",
+              "so_luong": 1
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CNTT",
+      "params": {
+        "id": "APR-001",
+        "doc": "YEUCAU-001",
+        "loai_pd": "yeu_cau_cap_quyen"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-CNTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "IT-SYSTEM",
+      "params": {
+        "doc": {
+          "id": "XACNHAN-001",
+          "loai_ct": "khac",
+          "ghi_chu": "Hệ thống ERP đã cấp quyền truy cập",
+          "lines": []
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "update_status",
+      "actor": "IT-SYSTEM",
+      "params": {
+        "table": "nhan_su",
+        "key": {
+          "ma_nv": "NV-CNTT-01"
+        },
+        "trang_thai": "Đang làm"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quyền truy cập đã được cấp thành công"
+      }
+    }
+  ]
+}

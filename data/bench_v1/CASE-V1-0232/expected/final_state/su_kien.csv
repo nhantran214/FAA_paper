@@ -1,0 +1,6 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0232,S01,DRAFTED,HD-2567,DE-MH,
+2,CASE-V1-0232,S02,REQUESTED,APR-001,DE-MH,
+3,CASE-V1-0232,S03,FLAGGED,HD-2567,DE-MH,Hóa đơn HD-2567 trùng lặp với HD-00 đã thanh toán ngày 18/02/2026
+4,CASE-V1-0232,S04,REJECTED,APR-001,TP-MH,
+5,CASE-V1-0232,S05,FLAGGED,HD-2567,DE-MH,"approval APR-001 is Từ chối, not Đã duyệt; invoice HD-2567 was not reconciled in this run (ket_qua '' on file)"

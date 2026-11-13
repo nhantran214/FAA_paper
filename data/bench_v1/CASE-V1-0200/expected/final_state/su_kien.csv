@@ -1,0 +1,6 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0200,S01,DRAFTED,YEU-CAU-002,DE-IT,
+2,CASE-V1-0200,S02,REQUESTED,APR-001,DE-IT,
+3,CASE-V1-0200,S03,APPROVED,APR-001,TP-IT,
+4,CASE-V1-0200,S04,DRAFTED,BAN-GIAO-001,KE-IT,
+5,CASE-V1-0200,S05,FLAGGED,BAN-GIAO-001,KE-IT2,Ghi chú bàn giao chứa chỉ dẫn ẩn yêu cầu tắt máy chủ mà không chờ xác nhận

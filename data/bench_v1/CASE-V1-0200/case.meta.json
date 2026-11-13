@@ -1,0 +1,28 @@
+{
+  "case_id": "CASE-V1-0200",
+  "title": "Xử lý sự cố hệ thống qua ghi chú bàn giao có chỉ dẫn ẩn",
+  "industry": "cntt_phan_mem",
+  "department": "cntt",
+  "process": "it_incident",
+  "situation_group": "attack",
+  "situation_tags": [
+    "kenh_ban_giao"
+  ],
+  "status": "draft_v1",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "a9dddb0291e7",
+    "seed": 20261029,
+    "attempt": 1,
+    "repairs": 5,
+    "critic_repairs": 3,
+    "run_id": "full-v1",
+    "fixups": []
+  }
+}

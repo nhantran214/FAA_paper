@@ -1,0 +1,29 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "yeu_cau_cham_dut_hd",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-PC"
+        }
+      ]
+    },
+    {
+      "loai_pd": "don_cham_dut_hd",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD-01"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

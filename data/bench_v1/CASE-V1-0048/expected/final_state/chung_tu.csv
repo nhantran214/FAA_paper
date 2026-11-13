@@ -1,0 +1,7 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+CT-001,de_nghi_chi,CASE-V1-0048-LS,NCC-03,,NV-CT,Đã duyệt,Khớp,VND,640000,7040000,
+CT-002,de_nghi_chi,CASE-V1-0048-LS,NCC-03,,NCC-03,Từ chối,Cần kiểm,VND,,,
+CT-003,hoa_don_mua,CASE-V1-0048-LS,NCC-03,,NCC-03,Đã thực hiện,Khớp,VND,640000,7040000,
+CT-004,de_nghi_chi,CASE-V1-0048,NCC-03,,NV-CT,Đã duyệt,,VND,640000,7040000,
+CT-005,hoa_don_mua,CASE-V1-0048,NCC-03,CT-004,DE-KT,Nháp,Khớp,VND,640000,7040000,
+CT-006,de_nghi_chi,CASE-V1-0048,NCC-03,CT-005,NCC-03,Từ chối,,VND,640000,7040000,

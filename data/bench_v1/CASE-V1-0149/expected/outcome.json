@@ -1,0 +1,37 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "2200000000",
+      "id": "APR-01",
+      "loai_pd": "de_nghi_tra_hang",
+      "nguoi_duyet": "GD-KD",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "2200000000",
+      "id": "APR-02",
+      "loai_pd": "de_nghi_tra_hang",
+      "nguoi_duyet": "GD-KD",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Cả hai cấp phê duyệt đã hoàn thành",
+    "step": "S06",
+    "type": "end"
+  },
+  "vars": {}
+}

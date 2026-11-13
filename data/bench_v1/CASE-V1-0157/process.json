@@ -1,0 +1,119 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-CST",
+      "params": {
+        "title": "Yêu cầu bảo hành phần mềm ERP cho KH-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH",
+      "params": {
+        "doc": {
+          "id": "YCBH-001",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Yêu cầu bảo hành phần mềm ERP",
+          "lines": [
+            {
+              "ma_dong": "YCBH-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 3,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-001",
+        "doc": "YCBH-001",
+        "loai_pd": "yeu_cau_bao_hanh"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "GD-CST",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-002",
+        "doc": "YCBH-001",
+        "loai_pd": "yeu_cau_bao_hanh"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "GD-CST",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-003",
+        "doc": "YCBH-001",
+        "loai_pd": "yeu_cau_bao_hanh"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "decide_approval",
+      "actor": "GD-CST",
+      "params": {
+        "approval": "APR-003",
+        "decision": "Đã duyệt"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "stop",
+      "actor": "DP-CST",
+      "params": {
+        "reason": "Yêu cầu bảo hành đã được phê duyệt đầy đủ"
+      }
+    }
+  ]
+}

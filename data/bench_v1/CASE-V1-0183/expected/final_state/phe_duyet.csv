@@ -1,0 +1,3 @@
+ma_pd,case_id,ma_ct,loai_pd,nguoi_yeu_cau,nguoi_duyet,gia_tri,trang_thai,ly_do
+PD-PL-001,CASE-V1-0183-LS,HD-PL-0012,de_nghi_dung_thanhtoan,NV-PL-02,NV-KT-01,39600000,Chờ duyệt,"Hợp đồng cung cấp thiết bị POS hết hiệu lực từ ngày 01/01/2026, giao dịch sau ngày này không còn hợp lệ."
+PD-APR-001,CASE-V1-0183,PD-STOP-001,de_nghi_dung_thanhtoan,DE-PL,KTT,,Đã duyệt,"Hợp đồng HD-2024-PL001 hết hiệu lực từ 01/01/2026, giao dịch sau ngày này không hợp lệ"

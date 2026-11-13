@@ -1,0 +1,19 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_xuat_tuyen_dung",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_tuyen_dung": "3"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

@@ -1,0 +1,58 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-IT01",
+      "params": {
+        "title": "Xử lý sự cố phần mềm tại cửa hàng 07"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "NV-CNTT07",
+      "params": {
+        "doc": {
+          "id": "BG-IT07-20260310",
+          "loai_ct": "bien_ban_kiem_tra",
+          "ghi_chu": "Phần mềm treo hoàn toàn sau cập nhật",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CNTT01",
+      "params": {
+        "id": "APR-IT07-20260310",
+        "doc": "BG-IT07-20260310",
+        "loai_pd": "xu_ly_su_co"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-CNTT",
+      "params": {
+        "approval": "APR-IT07-20260310",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "stop",
+      "actor": "DP-IT01",
+      "params": {
+        "reason": "Sự cố đã được khắc phục hoàn toàn"
+      }
+    }
+  ]
+}

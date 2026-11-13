@@ -1,0 +1,49 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "550000000",
+      "id": "APR-001",
+      "loai_pd": "hop_dong_phan_mem",
+      "nguoi_duyet": "GD-MA",
+      "trang_thai": "Chờ duyệt"
+    },
+    {
+      "gia_tri": "550000000",
+      "id": "APR-002",
+      "loai_pd": "hop_dong_phan_mem",
+      "nguoi_duyet": "GD-MA",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Người ký hợp đồng là người thân của thành viên hội đồng quản trị",
+      "ref": "NCC-01",
+      "step": "S03"
+    },
+    {
+      "reason": "Xung đột lợi ích: Người ký hợp đồng là người thân của thành viên hội đồng quản trị",
+      "ref": "NCC-01",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Hợp đồng đã được giám đốc điều hành phê duyệt sau khi khai báo xung đột lợi ích",
+    "step": "S07",
+    "type": "end"
+  },
+  "vars": {}
+}

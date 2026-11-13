@@ -1,0 +1,236 @@
+# The exact environment of the paper's baselines: `pip freeze` of the project venv
+# (.venv, Python 3.13) on the development machine, which holds the project with its dev
+# and analysis tools (`pip install -e '.[dev,analysis]'`) and requirements-baselines.txt,
+# with every editable line rewritten to a path relative to the repository root (`-e .` for
+# the project, `-e ./baselines/<name>` for each vendored clone). It is portable to any
+# machine with the same Python and platform (Linux x86_64; the torch wheel is the default
+# PyPI CUDA build).
+#
+# Install it from the repository root, after cloning the baselines at their pinned commits
+# (baselines/README.md, section 1):
+#   baselines/agentdojo        089ed468cf3ed0322acc66b0211f26d9d90dbf60
+#   baselines/camel            f083b6b396399d3b3c7f2ddaf613a5945eaf32d8
+#   baselines/nemo_guardrails  83d03ad529d2be1399f1dede24be59d4381ee42e
+#   baselines/progent          b02783b896d4bf01a2adf24738015e258db8d35b
+#   baselines/purple_llama     172c1074069eb88ec834124272c1b1c4f8893445 (not installed)
+# then
+#   python3.13 -m venv .venv
+#   .venv/bin/pip install -r requirements-baselines.lock
+# The engine freeze records each clone's HEAD and a hash of the installed packages, so the
+# paper run refuses a venv or a clone that differs from the frozen one.
+-e .
+-e ./baselines/agentdojo
+aiohappyeyeballs==2.7.1
+aiohttp==3.14.5
+aiohttp-retry==2.9.1
+aiosignal==1.4.0
+annotated-doc==0.0.6
+annotated-types==0.8.0
+anthropic==2.8.0
+anyio==4.16.0
+argcomplete==3.7.2
+ast_serialize==0.13.1
+attrs==26.1.0
+boto3==1.44.2
+botocore==1.44.2
+cachebox==5.2.3
+-e ./baselines/camel
+certifi==2026.10.23
+cffi==2.1.1
+charset-normalizer==3.5.2
+click==8.5.1
+cohere==7.3.1
+colorama==0.4.6
+cryptography==50.0.2
+cuda-bindings==13.5.0
+cuda-pathfinder==1.8.6
+cuda-toolkit==13.2.2
+cyclopts==5.4.2
+dataclasses-json==0.6.7
+deepdiff==9.1.0
+Deprecated==3.0.1
+distro==1.9.0
+dnspython==2.9.2
+docstring_parser==0.18.0
+email-validator==2.3.0
+eval_type_backport==0.4.0
+fasta2a==0.2.12
+fastapi==0.162.5
+fastavro==1.13.1
+fastembed==0.9.1
+filelock==4.2.10
+flatbuffers==25.12.19
+formulaic==1.2.2
+frozenlist==1.8.0
+fsspec==2026.9.0
+google-api-core==2.33.0
+google-auth==2.62.2
+google-cloud-aiplatform==1.71.1
+google-cloud-bigquery==3.47.0
+google-cloud-core==2.8.0
+google-cloud-resource-manager==1.18.0
+google-cloud-storage==2.19.0
+google-crc32c==1.9.0
+google-genai==3.3.0
+google-resumable-media==2.11.0
+googleapis-common-protos==1.75.0
+griffe==2.4.1
+griffecli==2.4.1
+griffelib==2.4.1
+groq==1.7.0
+grpc-google-iam-v1==0.14.4
+grpcio==1.85.1
+grpcio-status==1.71.2
+h11==0.16.0
+hf-xet==1.8.0
+httpcore==1.0.9
+httpcore2==2.16.0
+httptools==0.9.0
+httpx==0.28.1
+httpx2==2.16.0
+huggingface_hub==1.33.0
+idna==3.20
+importlib_metadata==8.6.1
+iniconfig==2.3.1
+interface_meta==2.0.1
+invoke==2.2.1
+Jinja2==3.1.6
+jiter==0.19.0
+jmespath==1.1.0
+jsonpatch==1.47
+jsonpath-python==1.1.6
+jsonpointer==3.12
+jsonref==1.1.0
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+langchain==1.5.0
+langchain-core==1.8.0
+langchain-protocol==0.0.21
+langgraph==1.2.21
+langgraph-checkpoint==4.3.1
+langgraph-prebuilt==1.1.1
+langgraph-sdk==0.4.14
+langsmith==0.14.17
+lark==1.3.1
+librt==0.16.0
+logfire-api==5.6.0
+loguru==0.7.3
+markdown-it-py==4.3.0
+MarkupSafe==3.0.4
+marshmallow==3.26.2
+mcp==2.3.0
+mcp-types==2.3.0
+mdurl==0.1.2
+mistralai==1.9.11
+mmh3==5.3.1
+mpmath==1.3.0
+multidict==7.2.1
+mypy==2.4.1
+mypy_extensions==1.2.0
+narwhals==2.28.0
+-e ./baselines/nemo_guardrails
+nest-asyncio==1.6.0
+networkx==3.7
+numpy==2.5.4
+nvidia-cublas==13.4.1.3
+nvidia-cuda-cccl==13.3.5.0.6
+nvidia-cuda-cupti==13.2.86
+nvidia-cuda-nvrtc==13.2.86
+nvidia-cuda-runtime==13.2.86
+nvidia-cudnn-cu13==9.26.0.51
+nvidia-cufft==12.2.0.57
+nvidia-cufile==1.17.1.22
+nvidia-cusolver==12.2.0.11
+nvidia-cusparse==12.7.10.12
+nvidia-cusparselt-cu13==0.8.1
+nvidia-nccl-cu13==2.30.7
+nvidia-nvjitlink==13.5.37
+nvidia-nvshmem-cu13==3.7.2
+nvidia-nvtx==13.2.86
+onnxruntime==1.31.1
+openai==1.82.1
+openapi-pydantic==0.6.0
+opentelemetry-api==1.33.1
+opentelemetry-semantic-conventions==0.54b1
+orderly-set==5.5.0
+orjson==3.13.0
+ormsgpack==1.13.1
+packaging==26.3
+pandas==3.1.1
+pathspec==1.1.1
+patsy==1.0.3
+pillow==13.0.0
+pluggy==1.7.0
+prompt_toolkit==3.0.53
+propcache==0.5.4
+proto-plus==1.28.2
+protobuf==5.29.6
+psycopg==3.3.8
+psycopg-binary==3.3.8
+py_rust_stemmers==0.1.8
+pyasn1==0.6.5
+pyasn1_modules==0.4.2
+pycparser==3.12
+pydantic==2.14.3
+pydantic-ai==0.2.12
+pydantic-ai-slim==0.2.12
+pydantic-evals==0.2.12
+pydantic-graph==0.2.12
+pydantic_core==2.50.4
+Pygments==2.21.0
+PyJWT==2.15.1
+pytest==9.2.0
+python-dateutil==2.9.0.post0
+python-dotenv==1.2.4
+python-multipart==0.0.33
+PyYAML==6.0.3
+referencing==0.37.0
+regex==2026.11.9
+requests==2.34.2
+requests-toolbelt==1.0.0
+rich==15.0.0
+rich-rst==2.2.0
+rpds-py==2026.9.1
+ruff==0.17.4
+s3transfer==0.19.3
+safetensors==0.8.0
+scipy==1.18.1
+-e ./baselines/progent
+setuptools==84.2.1
+shapely==2.2.0
+shellingham==1.5.4
+simpleeval==1.0.8
+six==1.17.0
+sniffio==1.3.1
+sse-starlette==3.7.0
+starlette==1.10.0
+statsmodels==0.15.0
+sympy==1.14.0
+tenacity==9.1.4
+tiktoken==0.14.0
+tokenizers==0.23.3
+torch==2.15.0
+tqdm==4.70.1
+transformers==5.22.2
+triton==3.9.0
+truststore==0.10.5
+typer==0.29.1
+types-requests==2.33.0.20261030
+typing-inspect==0.9.0
+typing-inspection==0.4.5
+typing_extensions==4.16.0
+tzdata==2026.6
+urllib3==2.8.0
+uuid_utils==0.19.0
+uvicorn==0.54.0
+uvloop==0.23.0
+vertexai==1.71.1
+watchfiles==1.3.0
+wcwidth==0.9.4
+websockets==17.4
+wrapt==2.6.0.dev1
+xxhash==4.1.0
+yarl==1.25.1
+z3-solver==5.4.1.0
+zipp==4.1.2
+zstandard==0.25.0

@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "36000000",
+      "id": "APR-NGS-01",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Chênh lệch vượt ngưỡng phê duyệt phòng Marketing",
+      "ref": "DE-NGS-01",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Giám đốc từ chối do vượt ngưỡng phê duyệt",
+    "step": "S05",
+    "type": "end"
+  },
+  "vars": {}
+}

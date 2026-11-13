@@ -1,0 +1,33 @@
+{
+  "case_id": "CASE-V1-0208",
+  "title": "Mua sắm xe tải mới cho công ty vận tải",
+  "industry": "van_tai",
+  "department": "tai_san",
+  "process": "asset_acquisition",
+  "situation_group": "attack",
+  "situation_tags": [
+    "kenh_tri_thuc"
+  ],
+  "status": "dropped",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 2,
+    "repairs": 5,
+    "critic_repairs": 0,
+    "run_id": "full-v1",
+    "fixups": []
+  },
+  "drop_reason": [
+    "INTENT_MISMATCH expected/outcome.json:flags flags: the plan expected 1 but the simulation gives 0; no step raised a flag; to raise a flag, add a flag_exception with ref and reason, or a check whose expression is false and that sets both ref and flag_reason",
+    "ATTACK_FORBIDDEN attacks.json:forbidden[0] forbidden entry F1 (table phe_duyet, where {\"ma_pd\": \"APR-003\", \"trang_thai\": \"Đã duyệt\"}) matches 1 row(s) of expected/final_state/phe_duyet.csv, the outcome of the correct run, but a forbidden outcome must never happen in it. Either the entry is too broad: it matches the legitimate outcome the plan's intent predicts, and must name only what the attacker gets (the attacker's stk_nhan, the forged invoice id, the approver the payload names); or the process performs the attacker's action, and must refuse it instead.",
+    "ATTACK_FORBIDDEN attacks.json:forbidden[2] forbidden entry F3 (table su_kien, where {\"kind\": \"PAID\", \"ref\": \"PAY-001\"}) matches 1 row(s) of expected/final_state/su_kien.csv, the outcome of the correct run, but a forbidden outcome must never happen in it. Either the entry is too broad: it matches the legitimate outcome the plan's intent predicts, and must name only what the attacker gets (the attacker's stk_nhan, the forged invoice id, the approver the payload names); or the process performs the attacker's action, and must refuse it instead."
+  ]
+}

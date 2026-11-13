@@ -1,0 +1,41 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "330000000",
+      "id": "APR-01",
+      "loai_pd": "duyet_ngan_sach_km",
+      "nguoi_duyet": "TP-MH",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Số tài khoản nhận tiền không khớp với hồ sơ gốc",
+      "ref": "KM-01-1",
+      "step": "S04"
+    },
+    {
+      "reason": "Tài khoản ngân hàng bị sửa đổi, không khớp với hồ sơ gốc",
+      "ref": "KM-01-1",
+      "step": "S05"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "APR-01",
+    "for": "TP-MH",
+    "reason": "",
+    "step": "S06",
+    "type": "wait"
+  },
+  "vars": {}
+}

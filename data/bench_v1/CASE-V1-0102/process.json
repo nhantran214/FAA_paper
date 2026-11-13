@@ -1,0 +1,86 @@
+{
+  "start": "S00",
+  "facts": {
+    "qua_han_ban_giao": true,
+    "ngay_ban_giao_cuoi_cung": 84,
+    "ngay_ban_giao_thuc_te": 93
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NV",
+      "params": {
+        "title": "Xử lý quá hạn bàn giao của nhân viên nghỉ việc"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NV",
+      "params": {
+        "doc": {
+          "id": "NV-01-YCBG",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "NV-01",
+          "ghi_chu": "Yêu cầu bàn giao công việc cho nhân viên nghỉ việc",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NV",
+      "params": {
+        "id": "APR-01",
+        "doc": "NV-01-YCBG",
+        "loai_pd": "yeu_cau_ban_giao"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "check",
+      "actor": "DE-NV",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "fact": "ngay_ban_giao_thuc_te"
+            },
+            {
+              "fact": "ngay_ban_giao_cuoi_cung"
+            }
+          ]
+        },
+        "ref": "NV-01",
+        "flag_reason": "Quá hạn bàn giao 9 ngày (quy định 5 ngày)"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-NV",
+      "params": {
+        "id": "APR-02",
+        "doc": "NV-01-YCBG",
+        "loai_pd": "xu_ly_cham_tro"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-NV",
+      "params": {
+        "for": "GD",
+        "approval": "APR-02"
+      }
+    }
+  ]
+}

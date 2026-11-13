@@ -1,0 +1,5 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+PO-001,don_mua,CASE-V1-0210,NCC-01,,DE-MH,Nháp,,VND,,,
+SHIP-001,van_don,CASE-V1-0210,,PO-001,NCC-01,Nháp,,VND,,,Giao trễ 10 ngày so với 20/03/2026
+INV-001,hoa_don_mua,CASE-V1-0210,NCC-01,PO-001,DE-MH,Nháp,Cần kiểm,VND,,,
+PAY-001,de_nghi_chi,CASE-V1-0210,NCC-01,INV-001,DE-MH,Chờ duyệt,,VND,0,49500000,

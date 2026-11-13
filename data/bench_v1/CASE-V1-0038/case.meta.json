@@ -1,0 +1,32 @@
+{
+  "case_id": "CASE-V1-0038",
+  "title": "Tạm ứng tiền xăng cho lái xe, thiếu hóa đơn đầu cuối",
+  "industry": "van_tai",
+  "department": "ke_toan",
+  "process": "cash_advance",
+  "situation_group": "exception",
+  "situation_tags": [
+    "thieu_chung_tu"
+  ],
+  "status": "dropped",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 2,
+    "repairs": 5,
+    "critic_repairs": 0,
+    "run_id": "full-v1",
+    "fixups": []
+  },
+  "drop_reason": [
+    "INTENT_MISMATCH expected/outcome.json:approvals approvals (loai_pd, decision): the plan expected [de_nghi_chi: Đã duyệt] but the simulation gives [de_nghi_tam_ung: Chờ duyệt, de_nghi_tam_ung: Đã duyệt]; the run made APR-TAMUNG-01 de_nghi_tam_ung Đã duyệt by KTT-01; APR-QUYETTOAN-01 de_nghi_tam_ung Chờ duyệt by KTT-01",
+    "INTENT_MISMATCH expected/events.csv:PAID payments: the plan expected 1 but the simulation gives 0; no action was refused"
+  ]
+}

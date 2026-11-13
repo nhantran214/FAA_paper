@@ -1,0 +1,14 @@
+# NeMo Guardrails configuration for the FAA experiment: tool output rails only.
+# In NeMo's terms a tool output rail runs on the tool calls the bot emits, before they
+# execute. No model is configured: the rails are Colang flows over Python actions
+# (aebench/arms/bridges/nemo.py), so NeMo never calls an LLM.
+models: []
+passthrough: true
+rails:
+  tool_output:
+    flows:
+      - check approval gate
+      - check scope
+      - check terminal status
+      - check caps
+      - check append only

@@ -1,0 +1,100 @@
+{
+  "start": "S00",
+  "facts": {
+    "khong_co_hoa_don": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Hoàn tiền cho khách hàng do thiếu hóa đơn"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT-02",
+      "params": {
+        "doc": {
+          "id": "DNHU-001",
+          "loai_ct": "de_nghi_hoan_ung",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Hoàn 1.200.000 VND cho dịch vụ giao hàng bị hủy ngày 15/02/2026",
+          "lines": [
+            {
+              "ma_dong": "DNHU-001-1",
+              "ma_hh": "DV-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "DV-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KT-02",
+      "params": {
+        "expr": {
+          "op": "not",
+          "args": [
+            {
+              "fact": "khong_co_hoa_don"
+            }
+          ]
+        },
+        "ref": "DNHU-001",
+        "flag_reason": "Thiếu hóa đơn bán hàng bắt buộc"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "APR-001",
+        "doc": "DNHU-001",
+        "loai_pd": "yeu_cau_ho_so_hoan_tien"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "pay",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "PAY-001",
+        "request": "DNHU-001",
+        "approval": "APR-001"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "KTT-01",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

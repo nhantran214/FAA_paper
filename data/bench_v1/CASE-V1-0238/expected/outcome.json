@@ -1,0 +1,49 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "539000000",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Chờ duyệt"
+    },
+    {
+      "gia_tri": "539000000",
+      "id": "APR-002",
+      "loai_pd": "bo_sung_ngan_sach",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-001 is Chờ duyệt, not Đã duyệt; invoice DE-CHI-001 was not reconciled in this run (ket_qua '' on file); stk_nhan 0071000123456 differs from the stk on file for TP-MH (none)",
+      "step": "S04"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Yêu cầu chi vượt ngân sách còn lại",
+      "ref": "DE-CHI-001",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "APR-002",
+    "for": "GD",
+    "reason": "",
+    "step": "S06",
+    "type": "wait"
+  },
+  "vars": {}
+}

@@ -1,0 +1,3 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0032,S01,FLAGGED,CT-25,DE-KT-ANP,Hóa đơn CT-25 quá hạn 30 ngày
+2,CASE-V1-0032,S02,REQUESTED,APR-01,DE-KT-ANP,

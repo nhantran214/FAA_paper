@@ -1,0 +1,135 @@
+{
+  "start": "S00",
+  "facts": {
+    "tong_ngan_sach": 1500000000,
+    "ngay_gui_ktt": "02/01/2026",
+    "ngay_duyet_ktt": "05/01/2026",
+    "ngay_duyet_gd": "08/01/2026"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MK",
+      "params": {
+        "title": "Duyệt ngân sách quảng cáo quý I/2026 cho công ty phần mềm"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "DE-NGAN-01",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "DP-MK",
+          "lines": [
+            {
+              "ma_dong": "DE-01-01",
+              "ma_hh": "HH-AD-01",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-02",
+              "ma_hh": "HH-AD-02",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-03",
+              "ma_hh": "HH-AD-03",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-04",
+              "ma_hh": "HH-AD-04",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-05",
+              "ma_hh": "HH-AD-05",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-06",
+              "ma_hh": "HH-AD-06",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-07",
+              "ma_hh": "HH-AD-07",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-08",
+              "ma_hh": "HH-AD-08",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-09",
+              "ma_hh": "HH-AD-09",
+              "so_luong": 1
+            },
+            {
+              "ma_dong": "DE-01-10",
+              "ma_hh": "HH-AD-10",
+              "so_luong": 1
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-NGAN-01",
+        "doc": "DE-NGAN-01",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-NGAN-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-NGAN-02",
+        "doc": "DE-NGAN-01",
+        "loai_pd": "duyet_ngan_sach"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-NGAN-02",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-MK",
+      "params": {
+        "reason": "Quy trình duyệt ngân sách quảng cáo quý I/2026 đã hoàn thành thành công"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "actor_kinds": ["dieu_phoi", "so", "nguoi", "ngoai"],
+  "types": {
+    "open_case": {"required": ["title"], "optional": [], "actors": ["dieu_phoi"], "emits": []},
+    "create_document": {"required": ["doc"], "optional": ["event_kind"], "actors": ["so", "nguoi"], "emits": ["DRAFTED", "event_kind"]},
+    "record_external_fact": {"required": ["doc", "event_kind"], "optional": [], "actors": ["nguoi", "ngoai"], "emits": ["event_kind"]},
+    "check": {"required": ["expr"], "optional": ["ref", "flag_reason", "store"], "actors": ["so", "dieu_phoi"], "emits": ["FLAGGED"]},
+    "flag_exception": {"required": ["ref", "reason"], "optional": [], "actors": ["so", "nguoi", "dieu_phoi"], "emits": ["FLAGGED"]},
+    "compute_amount": {"required": ["var", "expr"], "optional": [], "actors": ["so", "dieu_phoi"], "emits": []},
+    "update_status": {"required": ["table", "key", "trang_thai"], "optional": [], "actors": ["so", "nguoi"], "emits": ["STATUS_CHANGED"]},
+    "request_approval": {"required": ["id", "doc", "loai_pd"], "optional": [], "actors": ["so", "nguoi"], "emits": ["REQUESTED"]},
+    "decide_approval": {"required": ["approval", "decision"], "optional": ["ly_do"], "actors": ["nguoi"], "emits": ["APPROVED", "REJECTED"]},
+    "reconcile": {"required": ["doc", "ordered", "received"], "optional": [], "actors": ["so"], "emits": ["RECONCILED"]},
+    "pay": {"required": ["id", "request", "approval"], "optional": ["invoice", "stk_nhan"], "actors": ["so"], "emits": ["PAID", "FLAGGED"]},
+    "notify": {"required": ["ref", "to", "approval"], "optional": [], "actors": ["so"], "emits": ["SENT", "FLAGGED"]},
+    "wait": {"required": ["for"], "optional": ["approval"], "actors": ["dieu_phoi"], "emits": []},
+    "stop": {"required": ["reason"], "optional": [], "actors": ["dieu_phoi"], "emits": []}
+  }
+}

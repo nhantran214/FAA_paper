@@ -1,0 +1,3 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+BB-001,bien_ban_kiem_tra,CASE-V1-0130,,,THU-KHO-01,Nháp,,VND,0,30000000,
+XH-001,phieu_xuat,CASE-V1-0130,,BB-001,DE-KH-01,Đã duyệt,,VND,0,30000000,

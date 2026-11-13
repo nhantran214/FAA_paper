@@ -1,0 +1,91 @@
+{
+  "start": "S00",
+  "facts": {
+    "thieu_hoa_don_KH-01": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Xử lý khiếu nại thiếu hóa đơn từ KH-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH-02",
+      "params": {
+        "doc": {
+          "id": "KN-001",
+          "loai_ct": "khieu_nai",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Khách hàng phản ánh sản phẩm lỗi, kèm biên bản giao hàng nhưng không có hóa đơn",
+          "lines": [
+            {
+              "ma_dong": "KN-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-CSKH-02",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_ct": "KN-001"
+                },
+                "col": "ma_hh"
+              }
+            },
+            {
+              "field": {
+                "table": "hang_hoa",
+                "key": {
+                  "ma_hh": "HH-01"
+                },
+                "col": "ma_hh"
+              }
+            }
+          ]
+        },
+        "ref": "KN-001-1",
+        "flag_reason": "Thiếu hóa đơn mua hàng"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "TP-CSKH-03",
+      "params": {
+        "id": "APR-001",
+        "doc": "KN-001",
+        "loai_pd": "yeu_cau_bo_sung_chung_tu"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "TP-CSKH-03",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

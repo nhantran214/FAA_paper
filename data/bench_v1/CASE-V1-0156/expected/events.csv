@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0156,S01,DRAFTED,DNHU-001,DE-KT-02,
+2,CASE-V1-0156,S02,FLAGGED,DNHU-001,DE-KT-02,Thiếu hóa đơn bán hàng bắt buộc
+3,CASE-V1-0156,S03,REQUESTED,APR-001,DE-KT-02,
+4,CASE-V1-0156,S04,FLAGGED,DNHU-001,DE-KT-02,"approval APR-001 is Chờ duyệt, not Đã duyệt"

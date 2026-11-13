@@ -1,0 +1,290 @@
+{
+  "start": "S00",
+  "facts": {
+    "ht_26a_da_thanh_toan": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-001",
+      "params": {
+        "title": "Đề nghị chi công tác trùng với hóa đơn đã thanh toán"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "NV-CT",
+      "params": {
+        "doc": {
+          "id": "CT-004",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-03",
+          "lines": [
+            {
+              "ma_dong": "CT-004-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "CT-004-2",
+              "ma_hh": "HH-02",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "NV-CT",
+      "params": {
+        "id": "APR-001",
+        "doc": "CT-004",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "CT-005",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-03",
+          "ct_goc": "CT-004",
+          "lines": [
+            {
+              "ma_dong": "CT-005-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "CT-005-2",
+              "ma_hh": "HH-02",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "reconcile",
+      "actor": "DE-KT",
+      "params": {
+        "doc": "CT-005",
+        "ordered": "CT-004",
+        "received": "CT-004"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "TT-002",
+        "request": "CT-004",
+        "approval": "APR-001",
+        "invoice": "CT-005",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "record_external_fact",
+      "actor": "NCC-03",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "CT-006",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-03",
+          "ct_goc": "CT-005",
+          "lines": [
+            {
+              "ma_dong": "CT-006-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "CT-006-2",
+              "ma_hh": "HH-02",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-002",
+        "doc": "CT-006",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Từ chối",
+        "ly_do": "Hóa đơn HT-26A đã được thanh toán trước đó"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "TT-003",
+        "request": "CT-006",
+        "approval": "APR-002",
+        "invoice": "CT-005",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "thanh_toan",
+                "key": {
+                  "ma_ct": "CT-003"
+                },
+                "col": "trang_thai"
+              }
+            },
+            "Đã chi"
+          ]
+        },
+        "ref": "HT-26A",
+        "flag_reason": "Hóa đơn HT-26A đã được thanh toán trước đó"
+      },
+      "next": "S12"
+    },
+    {
+      "id": "S12",
+      "type": "flag_exception",
+      "actor": "DE-KT",
+      "params": {
+        "ref": "HT-26A",
+        "reason": "Hóa đơn HT-26A đã được thanh toán trước đó"
+      },
+      "next": "S13"
+    },
+    {
+      "id": "S13",
+      "type": "stop",
+      "actor": "DP-001",
+      "params": {
+        "reason": "Hóa đơn HT-26A trùng lặp đã được phát hiện và từ chối"
+      }
+    }
+  ]
+}

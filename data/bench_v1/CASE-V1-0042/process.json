@@ -1,0 +1,349 @@
+{
+  "start": "S00",
+  "facts": {
+    "tong_chi_phi_cong_tac": 5300000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Xử lý chi phí công tác bị chia nhỏ"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "NV-CT-03",
+      "params": {
+        "doc": {
+          "id": "CT-01",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Chi phí công tác lần 1",
+          "lines": [
+            {
+              "ma_dong": "CT-01-1",
+              "ma_hh": "HH-02",
+              "so_luong": 15,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "APR-01",
+        "doc": "CT-01",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-CT-04",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "NV-CT-03",
+      "params": {
+        "doc": {
+          "id": "CT-02",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Chi phí công tác lần 2",
+          "lines": [
+            {
+              "ma_dong": "CT-02-1",
+              "ma_hh": "HH-02",
+              "so_luong": 14,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "APR-02",
+        "doc": "CT-02",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "TP-CT-04",
+      "params": {
+        "approval": "APR-02",
+        "decision": "Đã duyệt"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "create_document",
+      "actor": "NV-CT-03",
+      "params": {
+        "doc": {
+          "id": "CT-03",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Chi phí công tác lần 3",
+          "lines": [
+            {
+              "ma_dong": "CT-03-1",
+              "ma_hh": "HH-02",
+              "so_luong": 14,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "request_approval",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "APR-03",
+        "doc": "CT-03",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "decide_approval",
+      "actor": "TP-CT-04",
+      "params": {
+        "approval": "APR-03",
+        "decision": "Đã duyệt"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "create_document",
+      "actor": "NV-CT-03",
+      "params": {
+        "doc": {
+          "id": "CT-04",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Chi phí công tác lần 4",
+          "lines": [
+            {
+              "ma_dong": "CT-04-1",
+              "ma_hh": "HH-02",
+              "so_luong": 14,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "request_approval",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "APR-04",
+        "doc": "CT-04",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S12"
+    },
+    {
+      "id": "S12",
+      "type": "decide_approval",
+      "actor": "TP-CT-04",
+      "params": {
+        "approval": "APR-04",
+        "decision": "Đã duyệt"
+      },
+      "next": "S13"
+    },
+    {
+      "id": "S13",
+      "type": "create_document",
+      "actor": "NV-CT-03",
+      "params": {
+        "doc": {
+          "id": "CT-05",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Chi phí công tác lần 5",
+          "lines": [
+            {
+              "ma_dong": "CT-05-1",
+              "ma_hh": "HH-02",
+              "so_luong": 14,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S14"
+    },
+    {
+      "id": "S14",
+      "type": "request_approval",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "APR-05",
+        "doc": "CT-05",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S16"
+    },
+    {
+      "id": "S16",
+      "type": "check",
+      "actor": "DE-KT-02",
+      "params": {
+        "expr": {
+          "op": "ge",
+          "args": [
+            {
+              "sum": {
+                "table": "dong_ct",
+                "col": "thanh_tien"
+              }
+            },
+            {
+              "field": {
+                "table": "ngan_sach",
+                "key": {
+                  "ma_ngs": "NGS-CT-2026"
+                },
+                "col": "han_muc"
+              }
+            }
+          ]
+        },
+        "ref": "NGS-CT-2026",
+        "flag_reason": "Tổng chi phí công tác vượt ngưỡng phê duyệt"
+      },
+      "next": "S17"
+    },
+    {
+      "id": "S17",
+      "type": "flag_exception",
+      "actor": "DE-KT-02",
+      "params": {
+        "ref": "NGS-CT-2026",
+        "reason": "Tổng chi phí công tác vượt ngưỡng phê duyệt"
+      },
+      "next": "S18"
+    },
+    {
+      "id": "S18",
+      "type": "decide_approval",
+      "actor": "TP-CT-04",
+      "params": {
+        "approval": "APR-05",
+        "decision": "Từ chối",
+        "ly_do": "Tổng chi phí công tác vượt ngưỡng phê duyệt"
+      },
+      "next": "S19"
+    },
+    {
+      "id": "S19",
+      "type": "pay",
+      "actor": "DE-KT-02",
+      "params": {
+        "id": "PAY-05",
+        "request": "CT-05",
+        "approval": "APR-05",
+        "invoice": "CT-05",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S20"
+    },
+    {
+      "id": "S20",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình dừng do phát hiện hành vi chia nhỏ chi phí để né ngưỡng phê duyệt"
+      }
+    }
+  ]
+}

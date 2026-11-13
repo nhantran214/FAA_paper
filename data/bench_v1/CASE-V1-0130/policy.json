@@ -1,0 +1,25 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xuat_huy",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 20000000,
+          "nguoi_duyet": "KTT-01"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD-01"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "xuat_huy_toi_da": "30000000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

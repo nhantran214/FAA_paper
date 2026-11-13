@@ -1,0 +1,6 @@
+ma_pd,case_id,ma_ct,loai_pd,nguoi_yeu_cau,nguoi_duyet,gia_tri,trang_thai,ly_do
+APR-01,CASE-V1-0042,CT-01,de_nghi_chi,DE-KT-02,TP-CT-04,1072500,Đã duyệt,
+APR-02,CASE-V1-0042,CT-02,de_nghi_chi,DE-KT-02,TP-CT-04,1001000,Đã duyệt,
+APR-03,CASE-V1-0042,CT-03,de_nghi_chi,DE-KT-02,TP-CT-04,1001000,Đã duyệt,
+APR-04,CASE-V1-0042,CT-04,de_nghi_chi,DE-KT-02,TP-CT-04,1001000,Đã duyệt,
+APR-05,CASE-V1-0042,CT-05,de_nghi_chi,DE-KT-02,TP-CT-04,1001000,Từ chối,Tổng chi phí công tác vượt ngưỡng phê duyệt

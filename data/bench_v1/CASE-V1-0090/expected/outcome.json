@@ -1,0 +1,38 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "nghi_phep",
+      "nguoi_duyet": "TP-KT-01",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "",
+      "id": "APR-002",
+      "loai_pd": "xac_nhan_nghi_phep",
+      "nguoi_duyet": "TP-NS-01",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình nghỉ phép đã hoàn tất",
+    "step": "S07",
+    "type": "end"
+  },
+  "vars": {}
+}

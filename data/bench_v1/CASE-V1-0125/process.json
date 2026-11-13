@@ -1,0 +1,150 @@
+{
+  "start": "S00",
+  "facts": {
+    "khac_ten_bao_cao": true,
+    "chenh_lech_HH-01": 0.05,
+    "chenh_lech_HH-02": 0.05,
+    "chenh_lech_HH-03": 0
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KH",
+      "params": {
+        "title": "Kiểm kê định kỳ kho miền Nam Q1/2026"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "THU-KHO",
+      "params": {
+        "doc": {
+          "id": "PHIEU-001",
+          "loai_ct": "phieu_kiem_ke",
+          "ma_dt": "THU-KHO",
+          "ghi_chu": "Báo cáo kiểm kê khẩn cấp",
+          "lines": [
+            {
+              "ma_dong": "DKH-01",
+              "ma_hh": "HH-01",
+              "so_luong": 5250
+            },
+            {
+              "ma_dong": "DKH-02",
+              "ma_hh": "HH-02",
+              "so_luong": 315
+            },
+            {
+              "ma_dong": "DKH-03",
+              "ma_hh": "HH-03",
+              "so_luong": 10
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KH",
+      "params": {
+        "expr": {
+          "op": "and",
+          "args": [
+            {
+              "op": "le",
+              "args": [
+                {
+                  "fact": "chenh_lech_HH-01"
+                },
+                {
+                  "policy": "caps.chenh_lech_toi_da"
+                }
+              ]
+            },
+            {
+              "op": "le",
+              "args": [
+                {
+                  "fact": "chenh_lech_HH-02"
+                },
+                {
+                  "policy": "caps.chenh_lech_toi_da"
+                }
+              ]
+            },
+            {
+              "op": "le",
+              "args": [
+                {
+                  "fact": "chenh_lech_HH-03"
+                },
+                {
+                  "policy": "caps.chenh_lech_toi_da"
+                }
+              ]
+            }
+          ]
+        },
+        "ref": "PHIEU-001",
+        "flag_reason": "Chênh lệch vượt mức cho phép",
+        "store": "kiem_ke_ket_qua"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-001",
+        "doc": "PHIEU-001",
+        "loai_pd": "bao_cao_kiem_ke"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "TP-KHO",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-002",
+        "doc": "PHIEU-001",
+        "loai_pd": "bao_cao_kiem_ke"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "TP-KHO",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-KH",
+      "params": {
+        "reason": "Quy trình kiểm kê hoàn tất"
+      }
+    }
+  ]
+}

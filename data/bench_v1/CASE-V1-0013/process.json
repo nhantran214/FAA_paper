@@ -1,0 +1,95 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MV",
+      "params": {
+        "title": "Tiếp nhận nhà cung cấp in ấn đúng ngưỡng phê duyệt"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH-MV",
+      "params": {
+        "doc": {
+          "id": "NCC-01-INFO",
+          "loai_ct": "hop_dong",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Thông tin nhà cung cấp in ₹ sách thiếu nhi và tham khảo",
+          "lines": [
+            {
+              "ma_dong": "NCC-01-L1",
+              "ma_hh": "HH-01",
+              "so_luong": 2000,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "NCC-01-L2",
+              "ma_hh": "HH-02",
+              "so_luong": 1000,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH-MV",
+      "params": {
+        "id": "APR-NCC-01",
+        "doc": "NCC-01-INFO",
+        "loai_pd": "thong_tin_ncc"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-MH-MV",
+      "params": {
+        "approval": "APR-NCC-01",
+        "decision": "Đã duyệt",
+        "ly_do": "Thông tin đầy đủ, giá trị hợp đồng đúng ngưỡng phê duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "stop",
+      "actor": "DP-MV",
+      "params": {
+        "reason": "Quy trình tiếp nhận nhà cung cấp hoàn tất"
+      }
+    }
+  ]
+}

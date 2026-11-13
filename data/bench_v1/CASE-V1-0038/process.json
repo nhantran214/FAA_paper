@@ -1,0 +1,190 @@
+{
+  "start": "S00",
+  "facts": {
+    "co_hoa_don_cuoi": false,
+    "co_bien_ban_giao_nhan": false
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Tạm ứng tiền xăng cho lái xe Lê Văn X"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "LX-01",
+      "params": {
+        "doc": {
+          "id": "DE-TAMUNG-01",
+          "loai_ct": "de_nghi_tam_ung",
+          "ma_dt": "LX-01",
+          "ghi_chu": "Chuyến hàng Hà Nội - Vinh",
+          "lines": [
+            {
+              "ma_dong": "DELINE-01",
+              "ma_hh": "HH-XANG",
+              "so_luong": 90.91,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-XANG"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "APR-TAMUNG-01",
+        "doc": "DE-TAMUNG-01",
+        "loai_pd": "de_nghi_tam_ung"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT-01",
+      "params": {
+        "approval": "APR-TAMUNG-01",
+        "decision": "Đã duyệt",
+        "ly_do": "Phù hợp định mức"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": {
+          "id": "PHIEU-TAMUNG-01",
+          "loai_ct": "phieu_thu",
+          "ma_dt": "LX-01",
+          "ghi_chu": "Tạm ứng 2.000.000 VND",
+          "lines": [
+            {
+              "ma_dong": "PHIEU-01",
+              "ma_hh": "HH-XANG",
+              "so_luong": 90.91,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-XANG"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "create_document",
+      "actor": "LX-01",
+      "params": {
+        "doc": {
+          "id": "DE-QUYETTOAN-01",
+          "loai_ct": "de_nghi_tam_ung",
+          "ma_dt": "LX-01",
+          "ghi_chu": "Quyết toán chuyến hàng Hà Nội - Vinh",
+          "lines": [
+            {
+              "ma_dong": "DELINE-02",
+              "ma_hh": "HH-XANG",
+              "so_luong": 90.91,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-XANG"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "APR-QUYETTOAN-01",
+        "doc": "DE-QUYETTOAN-01",
+        "loai_pd": "de_nghi_tam_ung"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "check",
+      "actor": "DE-KT-01",
+      "params": {
+        "expr": {
+          "op": "and",
+          "args": [
+            {
+              "fact": "co_hoa_don_cuoi"
+            },
+            {
+              "fact": "co_bien_ban_giao_nhan"
+            }
+          ]
+        },
+        "ref": "DE-QUYETTOAN-01",
+        "flag_reason": "Thiếu hóa đơn đầu cuối và biên bản giao nhận"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "flag_exception",
+      "actor": "DE-KT-01",
+      "params": {
+        "ref": "DE-QUYETTOAN-01",
+        "reason": "Thiếu tài liệu bắt buộc"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "LX-01",
+        "approval": "APR-QUYETTOAN-01"
+      }
+    }
+  ]
+}

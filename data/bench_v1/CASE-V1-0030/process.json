@@ -1,0 +1,154 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-BH",
+      "params": {
+        "title": "Bán phần mềm quản lý bán hàng cho chuỗi cửa hàng cà phê"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-BH",
+      "params": {
+        "doc": {
+          "id": "BG-001",
+          "loai_ct": "bao_gia",
+          "ma_dt": "KH-01",
+          "lines": [
+            {
+              "ma_dong": "BG-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 3,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-BH",
+      "params": {
+        "id": "APR-001",
+        "doc": "BG-001",
+        "loai_pd": "duyet_bao_gia"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-BH",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-BH",
+      "params": {
+        "doc": {
+          "id": "HD-001",
+          "loai_ct": "hoa_don_ban",
+          "ma_dt": "KH-01",
+          "ct_goc": "BG-001",
+          "lines": [
+            {
+              "ma_dong": "HD-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 3,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-BH",
+      "params": {
+        "id": "APR-002",
+        "doc": "HD-001",
+        "loai_pd": "duyet_hoa_don"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "TP-BH",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "reconcile",
+      "actor": "DE-KT",
+      "params": {
+        "doc": "HD-001",
+        "ordered": "BG-001",
+        "received": "BG-001"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "TT-001",
+        "request": "HD-001",
+        "approval": "APR-002",
+        "invoice": "HD-001",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "stop",
+      "actor": "DP-BH",
+      "params": {
+        "reason": "Hoàn tất quy trình bán hàng"
+      }
+    }
+  ]
+}

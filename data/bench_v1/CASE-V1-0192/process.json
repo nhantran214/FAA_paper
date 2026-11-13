@@ -1,0 +1,117 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Mua bản quyền phần mềm khi đổi nhà cung cấp"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH-01",
+      "params": {
+        "doc": {
+          "id": "HD-03",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-02",
+          "lines": [
+            {
+              "ma_dong": "HD-03-1",
+              "ma_hh": "HH-01",
+              "so_luong": 50,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-MH-01",
+      "params": {
+        "expr": {
+          "op": "ne",
+          "args": [
+            {
+              "field": {
+                "table": "chung_tu",
+                "key": {
+                  "ma_ct": "HD-03"
+                },
+                "col": "ma_dt"
+              }
+            },
+            {
+              "field": {
+                "table": "chung_tu",
+                "key": {
+                  "ma_ct": "HD-01"
+                },
+                "col": "ma_dt"
+              }
+            }
+          ]
+        },
+        "ref": "HD-03",
+        "flag_reason": "Nhà cung cấp thay đổi từ NCC-01 sang NCC-02"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-MH-01",
+      "params": {
+        "id": "PD-03",
+        "doc": "HD-03",
+        "loai_pd": "yeu_cau_kiem_tra_thay_doi_ncc"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-MH-01",
+      "params": {
+        "id": "PD-04",
+        "doc": "HD-03",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": [
+          "TP-MH-01",
+          "KTT-01"
+        ],
+        "approval": [
+          "PD-03",
+          "PD-04"
+        ]
+      }
+    }
+  ]
+}

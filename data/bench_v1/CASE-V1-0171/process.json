@@ -1,0 +1,122 @@
+{
+  "start": "S00",
+  "facts": {
+    "hop_dong_het_han_01/10/2025": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-CT",
+      "params": {
+        "title": "Gia hạn hợp đồng phần mềm bị quá hạn"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "check",
+      "actor": "DE-PC",
+      "params": {
+        "expr": {
+          "op": "not",
+          "args": [
+            {
+              "fact": "hop_dong_het_han_01/10/2025"
+            }
+          ]
+        },
+        "ref": "HD-01",
+        "flag_reason": "Hợp đồng đã hết hiệu lực vào 01/10/2025 nhưng vẫn có giao dịch phát sinh"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-PC",
+      "params": {
+        "doc": {
+          "id": "HD-01",
+          "loai_ct": "hop_dong",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Hợp đồng bản quyền phần mềm từ 01/10/2024 đến 01/10/2025",
+          "lines": [
+            {
+              "ma_dong": "HD-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "create_document",
+      "actor": "DE-PC",
+      "params": {
+        "doc": {
+          "id": "HD-01-PL",
+          "loai_ct": "phu_luc_hop_dong",
+          "ma_dt": "KH-01",
+          "ct_goc": "HD-01",
+          "ghi_chu": "Gia hạn hợp đồng bản quyền phần mềm từ 01/10/2025 đến 01/10/2026",
+          "lines": [
+            {
+              "ma_dong": "HD-01-PL-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-01",
+        "doc": "HD-01-PL",
+        "loai_pd": "gia_han_hd"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-CT",
+      "params": {
+        "for": "GD-C",
+        "approval": "APR-01"
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "start": "S00",
+  "facts": {
+    "hu_hong_SP-007": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Kiểm kê kho phát hiện hàng hóa hư hỏng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KH",
+      "params": {
+        "doc": {
+          "id": "PHIEU-001",
+          "loai_ct": "phieu_kiem_ke",
+          "lines": [
+            {
+              "ma_dong": "PHIEU-001-1",
+              "ma_hh": "SP-007",
+              "so_luong": 30,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "SP-007"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KH",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "sum": {
+                "table": "dong_ct",
+                "where": {
+                  "ma_ct": "PHIEU-001"
+                },
+                "col": "thanh_tien"
+              }
+            },
+            {
+              "policy": "approval_rules[0].tiers[0].max"
+            }
+          ]
+        },
+        "ref": "PHIEU-001",
+        "flag_reason": "Giá trị hàng hư vượt ngưỡng phê duyệt của kế toán trưởng (5.000.000 VND)"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "record_external_fact",
+      "actor": "THU-KHO",
+      "params": {
+        "event_kind": "INSPECTED",
+        "doc": {
+          "id": "BB-001",
+          "loai_ct": "bien_ban_kiem_tra",
+          "lines": []
+        }
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DE-KH",
+      "params": {
+        "ref": "PHIEU-001",
+        "reason": "Giá trị hàng hư vượt ngưỡng phê duyệt của kế toán trưởng (5.000.000 VND)"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-001",
+        "doc": "PHIEU-001",
+        "loai_pd": "danh_gia_hu_hong"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-MH",
+      "params": {
+        "for": "TP-KHO",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

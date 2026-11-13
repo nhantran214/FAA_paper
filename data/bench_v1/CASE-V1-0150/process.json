@@ -1,0 +1,187 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Hoàn tiền lỗi phần mềm cho KH-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "record_external_fact",
+      "actor": "KH-01",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "HD-001",
+          "loai_ct": "hoa_don_ban",
+          "ma_dt": "KH-01",
+          "lines": [
+            {
+              "ma_dong": "HD-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "doc": {
+          "id": "DON-001",
+          "loai_ct": "don_ban",
+          "ma_dt": "KH-01",
+          "lines": [
+            {
+              "ma_dong": "DON-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "create_document",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "doc": {
+          "id": "PX-001",
+          "loai_ct": "phieu_xuat",
+          "ct_goc": "DON-001",
+          "lines": [
+            {
+              "ma_dong": "PX-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1
+            }
+          ]
+        },
+        "event_kind": "RECORDED"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "reconcile",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "doc": "HD-001",
+        "ordered": "DON-001",
+        "received": "PX-001"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "create_document",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "doc": {
+          "id": "DE-001",
+          "loai_ct": "de_nghi_hoan_ung",
+          "ma_dt": "KH-01",
+          "ct_goc": "HD-001",
+          "lines": [
+            {
+              "ma_dong": "DE-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "DE-001",
+        "loai_pd": "yeu_cau_hoan_tien"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "decide_approval",
+      "actor": "KT-01",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "pay",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "id": "PAY-001",
+        "request": "DE-001",
+        "approval": "APR-001",
+        "invoice": "HD-001",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Hoàn tiền thành công"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "gia_han_hd",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 500000000,
+          "nguoi_duyet": "TP-PC"
+        },
+        {
+          "max": 800000000,
+          "nguoi_duyet": "KTT"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_duyet_tp_pc": "500000000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

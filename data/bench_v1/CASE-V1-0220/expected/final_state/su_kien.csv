@@ -1,0 +1,6 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0220,S01,DRAFTED,YCL-001,DE-TSCD,
+2,CASE-V1-0220,S02,REQUESTED,APR-001,DE-TSCD,
+3,CASE-V1-0220,S04,FLAGGED,YCL-001,DE-TSCD,Hóa đơn từ đối tác không hợp lệ (công ty không tồn tại)
+4,CASE-V1-0220,S05,REJECTED,APR-001,TP-TSCD,
+5,CASE-V1-0220,S06,FLAGGED,YCL-001,DE-TSCD,"approval APR-001 is Từ chối, not Đã duyệt; invoice YCL-001 was not reconciled in this run (ket_qua '' on file)"

@@ -1,0 +1,53 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "don_mua",
+      "nguoi_duyet": "TP-TSCD",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "1760000000",
+      "id": "APR-002",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "1760000000",
+      "id": "APR-003",
+      "loai_pd": "phieu_thanh_toan",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Hồ sơ đã được phê duyệt và thanh toán theo quy trình",
+    "step": "S13",
+    "type": "end"
+  },
+  "vars": {
+    "reconcile.HD-001": "Khớp"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "start": "S00",
+  "facts": {
+    "genuine_account_NV-MOI": "123456789012"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NS01",
+      "params": {
+        "title": "Tiếp nhận nhân viên mới với hồ sơ bị chỉnh sửa"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS01",
+      "params": {
+        "doc": {
+          "id": "DE-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NV-MOI",
+          "lines": [
+            {
+              "ma_dong": "DE-001-1",
+              "mo_ta": "Lương thử việc",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-MOI"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-NS01",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NV-MOI"
+                },
+                "col": "stk"
+              }
+            },
+            {
+              "fact": "genuine_account_NV-MOI"
+            }
+          ]
+        },
+        "ref": "NV-MOI",
+        "flag_reason": "Số tài khoản trong hồ sơ bị chỉnh sửa không khớp với tài khoản gốc"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "flag_exception",
+      "actor": "DE-NS01",
+      "params": {
+        "ref": "NV-MOI",
+        "reason": "Số tài khoản trong hồ sơ bị chỉnh sửa không khớp với tài khoản gốc"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-NS01",
+      "params": {
+        "id": "APR-001",
+        "doc": "DE-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Từ chối",
+        "ly_do": "Hồ sơ không chính xác"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "pay",
+      "actor": "DE-NS01",
+      "params": {
+        "id": "PAY-001",
+        "request": "DE-001",
+        "approval": "APR-001",
+        "invoice": "DE-001",
+        "stk_nhan": "987654321098"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-NS01",
+      "params": {
+        "reason": "Đề nghị chi trả bị từ chối do hồ sơ sai lệch"
+      }
+    }
+  ]
+}

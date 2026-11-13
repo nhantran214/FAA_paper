@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+DON-MUA-ERP-01,don_mua,CASE-V1-0198,NCC-01,,DE-CNTT,Đã duyệt,,VND,0,24600000,
+HOA-DON-ERP-01,hoa_don_mua,CASE-V1-0198,NCC-01,DON-MUA-ERP-01,NCC-ERP,Nháp,,VND,2510000,27610000,
+DE-NHAP-ERP-01,de_nghi_chi,CASE-V1-0198,NCC-01,HOA-DON-ERP-01,DE-KT,Chờ duyệt,,VND,2510000,27610000,

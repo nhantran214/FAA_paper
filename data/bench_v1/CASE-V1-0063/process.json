@@ -1,0 +1,87 @@
+{
+  "start": "S00",
+  "facts": {
+    "thieu_hoa_don": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KT",
+      "params": {
+        "title": "Khóa sổ cuối tháng chuỗi cửa hàng bán lẻ: thiếu hóa đơn nhập hàng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "PN-001",
+          "loai_ct": "phieu_nhap",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PN-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "not",
+          "args": [
+            {
+              "fact": "thieu_hoa_don"
+            }
+          ]
+        },
+        "ref": "PN-001",
+        "flag_reason": "Thiếu hóa đơn VAT cho lô hàng giấy in A4"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "PN-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "wait",
+      "actor": "DP-KT",
+      "params": {
+        "for": "KTT",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

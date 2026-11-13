@@ -1,0 +1,86 @@
+{
+  "start": "S00",
+  "facts": {
+    "hu_hong_TSCD-1204": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Điều chuyển máy tính bị hư giữa hai cửa hàng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-TSCD-01",
+      "params": {
+        "doc": {
+          "id": "BB-001",
+          "loai_ct": "bien_ban_kiem_tra",
+          "lines": [
+            {
+              "ma_dong": "BB-001-1",
+              "ma_hh": "TSCD-1204",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "TSCD-1204"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "INSPECTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-TSCD-01",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "fact": "hu_hong_TSCD-1204"
+            },
+            false
+          ]
+        },
+        "ref": "TSCD-1204",
+        "flag_reason": "Tài sản bị hư hỏng màn hình cần xử lý theo quy trình hủy tài sản"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-TSCD-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "BB-001",
+        "loai_pd": "xu_ly_hu_hong_tscd"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "GD-TSCD",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

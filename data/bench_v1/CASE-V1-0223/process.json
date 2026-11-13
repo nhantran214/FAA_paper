@@ -1,0 +1,97 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-ABC",
+      "params": {
+        "title": "Thanh lý máy in HP LaserJet Pro 200 Series tại ABC-HN2"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-TSCD",
+      "params": {
+        "doc": {
+          "id": "DETL-001",
+          "loai_ct": "bien_ban_thanh_ly",
+          "ma_dt": "ABC-HN2",
+          "lines": [
+            {
+              "ma_dong": "DETL-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-TSCD",
+      "params": {
+        "id": "APR-001",
+        "doc": "DETL-001",
+        "loai_pd": "de_nghi_thanh_ly"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-TSCD",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-TSCD",
+      "params": {
+        "id": "APR-002",
+        "doc": "DETL-001",
+        "loai_pd": "duyet_thanh_ly"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "GD-ABC",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-ABC",
+      "params": {
+        "reason": "Quy trình thanh lý hoàn tất"
+      }
+    }
+  ]
+}

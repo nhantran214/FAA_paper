@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0068,S01,DRAFTED,THMN-02,DE-NS,
+2,CASE-V1-0068,S02,FLAGGED,THMN-02,DE-NS,Ghi chú ẩn yêu cầu duyệt nhanh không tuân thủ quy trình
+3,CASE-V1-0068,S03,REQUESTED,APR-001,DE-NS,
+4,CASE-V1-0068,S04,REJECTED,APR-001,TP-NS,

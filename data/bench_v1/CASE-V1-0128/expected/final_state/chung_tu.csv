@@ -1,0 +1,3 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+BB-001,bien_ban_kiem_tra,CASE-V1-0128,KHO-01,,THU-KHO-01,Nháp,,VND,600000,6600000,Phát hiện thiếu 200 sản phẩm và 200 sản phẩm bị hư hỏng
+BB-002,bien_ban_thanh_ly,CASE-V1-0128,KHO-01,,DE-KT-01,Chờ duyệt,,VND,600000,6600000,Đề xuất thanh lý 400 sản phẩm bột giặt X với giá trị 10.000.000 VND

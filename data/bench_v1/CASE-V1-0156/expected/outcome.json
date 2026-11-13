@@ -1,0 +1,41 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "1320000",
+      "id": "APR-001",
+      "loai_pd": "yeu_cau_ho_so_hoan_tien",
+      "nguoi_duyet": "KTT-01",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-001 is Chờ duyệt, not Đã duyệt",
+      "step": "S04"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Thiếu hóa đơn bán hàng bắt buộc",
+      "ref": "DNHU-001",
+      "step": "S02"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "KTT-01",
+    "reason": "",
+    "step": "S05",
+    "type": "wait"
+  },
+  "vars": {}
+}

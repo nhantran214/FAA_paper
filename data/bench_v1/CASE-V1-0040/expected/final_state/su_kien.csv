@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0040,S01,DRAFTED,CT-001,DE-KT,
+2,CASE-V1-0040,S02,REQUESTED,APR-001,DE-KT,
+3,CASE-V1-0040,S03,FLAGGED,CT-001,DE-KT,Ghi chú yêu cầu duyệt khẩn cấp không đúng quy trình
+4,CASE-V1-0040,S04,REJECTED,APR-001,GD,

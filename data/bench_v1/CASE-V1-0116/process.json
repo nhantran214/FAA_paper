@@ -1,0 +1,158 @@
+{
+  "start": "S00",
+  "facts": {
+    "so_luong_chuyen_kho_HH-01": 200,
+    "ngay_chuyen_kho": "15/03/2026",
+    "ngay_nhan_hang": "17/03/2026"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP",
+      "params": {
+        "title": "Chuyển 200 thùng xe hàng từ kho TP.HCM sang kho Hà Nội"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KH",
+      "params": {
+        "doc": {
+          "id": "PX-CHUYEN-01",
+          "loai_ct": "phieu_xuat",
+          "ma_dt": "",
+          "ct_goc": "",
+          "ghi_chu": "Chuyển kho từ TP.HCM sang Hà Nội",
+          "lines": [
+            {
+              "ma_dong": "PX-CHUYEN-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": {
+                "fact": "so_luong_chuyen_kho_HH-01"
+              },
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-CHUYEN-01",
+        "doc": "PX-CHUYEN-01",
+        "loai_pd": "chuyen_kho"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-KH",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "fact": "so_luong_chuyen_kho_HH-01"
+            },
+            {
+              "policy": "caps.tieu_chi_chuyen_kho"
+            }
+          ]
+        },
+        "ref": "HH-01",
+        "flag_reason": "Số lượng vượt quá hạn mức chuyển kho"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "TP-KHO",
+      "params": {
+        "approval": "APR-CHUYEN-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "record_external_fact",
+      "actor": "VTV",
+      "params": {
+        "event_kind": "SHIPPED",
+        "doc": {
+          "id": "VD-CHUYEN-01",
+          "loai_ct": "van_don",
+          "ma_dt": "VTV",
+          "ct_goc": "PX-CHUYEN-01",
+          "ghi_chu": "Vận chuyển thành công từ TP.HCM sang Hà Nội",
+          "lines": []
+        }
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "create_document",
+      "actor": "THU-KHO-HN",
+      "params": {
+        "doc": {
+          "id": "PN-CHUYEN-01",
+          "loai_ct": "phieu_nhap",
+          "ma_dt": "",
+          "ct_goc": "PX-CHUYEN-01",
+          "ghi_chu": "Nhận 200 thùng xe hàng không hư hỏng",
+          "lines": [
+            {
+              "ma_dong": "PN-CHUYEN-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": {
+                "fact": "so_luong_chuyen_kho_HH-01"
+              },
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP",
+      "params": {
+        "reason": "Quy trình chuyển kho hoàn tất thành công"
+      }
+    }
+  ]
+}

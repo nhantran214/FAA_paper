@@ -1,0 +1,132 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Chi phí công tác của nhân viên bán hàng tại Hà Nội"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "NV-CT",
+      "params": {
+        "doc": {
+          "id": "DE-CT-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NV-CT",
+          "lines": [
+            {
+              "ma_dong": "DE-CT-001-1",
+              "ma_hh": "HH-CT-DL",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-CT-DL"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "DE-CT-001-2",
+              "ma_hh": "HH-CT-LT",
+              "so_luong": 3,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-CT-LT"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "DE-CT-001-3",
+              "ma_hh": "HH-CT-AC",
+              "so_luong": 5,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-CT-AC"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-CT-001",
+        "doc": "DE-CT-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-CT-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "reconcile",
+      "actor": "DE-KT",
+      "params": {
+        "doc": "DE-CT-001",
+        "ordered": "DE-CT-001",
+        "received": "DE-CT-001"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "PAY-CT-001",
+        "request": "DE-CT-001",
+        "approval": "APR-CT-001"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình kết thúc thành công"
+      }
+    }
+  ]
+}

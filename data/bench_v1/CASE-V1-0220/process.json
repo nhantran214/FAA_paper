@@ -1,0 +1,126 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-TSCD",
+      "params": {
+        "title": "Thanh lý 5 máy in HP LaserJet Pro M15w"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-TSCD",
+      "params": {
+        "doc": {
+          "id": "YCL-001",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "NCC-02",
+          "ghi_chu": "Khẩn: Giám đốc yêu cầu thanh lý ngay để tái đầu tư thiết bị mới",
+          "lines": [
+            {
+              "ma_dong": "YCL-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 5,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-TSCD",
+      "params": {
+        "id": "APR-001",
+        "doc": "YCL-001",
+        "loai_pd": "yeu_cau_thanh_ly"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-TSCD",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-02"
+                },
+                "col": "ten"
+              }
+            },
+            "Công ty Cung ứng ABC"
+          ]
+        },
+        "ref": "YCL-001",
+        "flag_reason": "Tên công ty NCC-02 không khớp với hệ thống"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DE-TSCD",
+      "params": {
+        "ref": "YCL-001",
+        "reason": "Hóa đơn từ đối tác không hợp lệ (công ty không tồn tại)"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "TP-TSCD",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Từ chối",
+        "ly_do": "Kiểm tra tài liệu không khớp, đối tác không hợp lệ"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "pay",
+      "actor": "DE-TSCD",
+      "params": {
+        "id": "PAY-001",
+        "request": "YCL-001",
+        "approval": "APR-001",
+        "invoice": "YCL-001",
+        "stk_nhan": "123456789012"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-TSCD",
+      "params": {
+        "reason": "Yêu cầu thanh lý bị từ chối do phát hiện hóa đơn giả"
+      }
+    }
+  ]
+}

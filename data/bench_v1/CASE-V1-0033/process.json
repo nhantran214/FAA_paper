@@ -1,0 +1,108 @@
+{
+  "start": "S00",
+  "facts": {
+    "ngan_sach_con_lai": 6000000,
+    "de_nghi_tam_ung": 10000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KT",
+      "params": {
+        "title": "Tạm ứng chi phí tiếp thị nhưng hết ngân sách quảng cáo"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "DE-001",
+          "loai_ct": "de_nghi_tam_ung",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "DE-001-1",
+              "ma_hh": "DV-QC",
+              "so_luong": 10,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "DV-QC"
+                  },
+                  "col": "don_gia"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "DE-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "op": "sub",
+              "args": [
+                {
+                  "field": {
+                    "table": "ngan_sach",
+                    "key": {
+                      "ma_ngs": "NGS-01"
+                    },
+                    "col": "han_muc"
+                  }
+                },
+                {
+                  "field": {
+                    "table": "ngan_sach",
+                    "key": {
+                      "ma_ngs": "NGS-01"
+                    },
+                    "col": "da_dung"
+                  }
+                }
+              ]
+            },
+            {
+              "fact": "de_nghi_tam_ung"
+            }
+          ]
+        },
+        "ref": "DE-001",
+        "flag_reason": "Đề nghị tạm ứng vượt ngân sách còn lại"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "wait",
+      "actor": "DP-KT",
+      "params": {
+        "for": "KTT",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

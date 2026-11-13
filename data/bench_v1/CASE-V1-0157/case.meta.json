@@ -1,0 +1,31 @@
+{
+  "case_id": "CASE-V1-0157",
+  "title": "Xử lý yêu cầu bảo hành sản phẩm phần mềm cho khách hàng lớn",
+  "industry": "cntt_phan_mem",
+  "department": "cskh",
+  "process": "warranty_claim",
+  "situation_group": "governance",
+  "situation_tags": [
+    "duyet_nhieu_cap"
+  ],
+  "status": "draft_v1",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 1,
+    "repairs": 3,
+    "critic_repairs": 3,
+    "run_id": "full-v1",
+    "fixups": [
+      "S03.actor TP-CNTT → GD-CST (routed approver)",
+      "S05.actor QL-DUAN → GD-CST (routed approver)"
+    ]
+  }
+}

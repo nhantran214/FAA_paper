@@ -1,0 +1,115 @@
+{
+  "start": "S00",
+  "facts": {
+    "gio_cong_he_thong": 6450,
+    "gio_cong_thuc_te": 6650
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Kiểm tra sai lệch giờ công tháng 04/2026"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "BB-0426",
+          "loai_ct": "bien_ban_kiem_tra",
+          "lines": [
+            {
+              "ma_dong": "BB-0426-1",
+              "mo_ta": "Giờ công hệ thống",
+              "so_luong": {
+                "fact": "gio_cong_he_thong"
+              }
+            },
+            {
+              "ma_dong": "BB-0426-2",
+              "mo_ta": "Giờ công thực tế",
+              "so_luong": {
+                "fact": "gio_cong_thuc_te"
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-NS",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "op": "div",
+              "args": [
+                {
+                  "op": "sub",
+                  "args": [
+                    {
+                      "fact": "gio_cong_thuc_te"
+                    },
+                    {
+                      "fact": "gio_cong_he_thong"
+                    }
+                  ]
+                },
+                {
+                  "fact": "gio_cong_he_thong"
+                }
+              ]
+            },
+            {
+              "policy": "tolerances.gio_cong"
+            }
+          ]
+        },
+        "ref": "BB-0426",
+        "flag_reason": "Chênh lệch giờ công vượt ngưỡng 3%",
+        "store": "gio_cong_khac_biet"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-DC01",
+        "doc": "BB-0426",
+        "loai_pd": "dieu_chinh_cong"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "KTT-01",
+      "params": {
+        "approval": "APR-DC01",
+        "decision": "Đã duyệt",
+        "ly_do": "Đồng ý điều chỉnh sau kiểm tra chéo"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Đã xử lý sai lệch giờ công"
+      }
+    }
+  ]
+}

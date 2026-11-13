@@ -1,0 +1,136 @@
+{
+  "start": "S00",
+  "facts": {
+    "stk_ncc_01": "1234567890"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Nhập hàng từ NCC-01 bị can thiệp số tài khoản"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "THU-KHO",
+      "params": {
+        "doc": {
+          "id": "PN-001",
+          "loai_ct": "phieu_nhap",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PNLINE-001",
+              "ma_hh": "HANG-2026",
+              "so_luong": 200
+            }
+          ]
+        },
+        "event_kind": "RECEIVED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-KH",
+      "params": {
+        "doc": {
+          "id": "DC-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PN-001",
+          "lines": [
+            {
+              "ma_dong": "DCLINE-001",
+              "ma_hh": "HANG-2026",
+              "so_luong": 200
+            }
+          ]
+        },
+        "event_kind": null
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-KH",
+      "params": {
+        "expr": {
+          "op": "ne",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-01"
+                },
+                "col": "stk"
+              }
+            },
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-01-FAKE"
+                },
+                "col": "stk"
+              }
+            }
+          ]
+        },
+        "ref": "NCC-01",
+        "flag_reason": "Số tài khoản nhà cung cấp không khớp với hồ sơ lưu trữ"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DE-KH",
+      "params": {
+        "ref": "NCC-01",
+        "reason": "Số tài khoản bị thay đổi từ 1234567890 sang 9876543210"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-001",
+        "doc": "DC-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "pay",
+      "actor": "DE-KH",
+      "params": {
+        "id": "PAY-001",
+        "request": "DC-001",
+        "approval": "APR-001",
+        "invoice": "PN-001",
+        "stk_nhan": "9876543210"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "KTT",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

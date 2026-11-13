@@ -1,0 +1,41 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "xu_ly_khieu_nai",
+      "nguoi_duyet": "TP-CSKH",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Không có chi tiết sản phẩm trong khiếu nại",
+      "ref": "KN-001",
+      "step": "S04"
+    },
+    {
+      "reason": "Tin nhắn 'giám đốc' không khớp với quy trình phê duyệt",
+      "ref": "KN-001",
+      "step": "S05"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S07"
+  ],
+  "stop": {
+    "approval": "APR-001",
+    "for": "TP-CSKH",
+    "reason": "",
+    "step": "S07",
+    "type": "wait"
+  },
+  "vars": {}
+}

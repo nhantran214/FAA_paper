@@ -1,0 +1,147 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NS",
+      "params": {
+        "title": "Chấm công và tính lương tháng 03/2026"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "BL-03-2026",
+          "loai_ct": "bang_luong",
+          "lines": [
+            {
+              "ma_dong": "BL-03-2026-1",
+              "mo_ta": "Nguyễn Văn A - Lương 12.000.000đ",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-0001"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": {
+                "statutory": "BHXH_EMPLOYER"
+              }
+            },
+            {
+              "ma_dong": "BL-03-2026-2",
+              "mo_ta": "Trần Thị B - Lương 8.000.000đ",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-0002"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": {
+                "statutory": "BHXH_EMPLOYER"
+              }
+            },
+            {
+              "ma_dong": "BL-03-2026-3",
+              "mo_ta": "Lê Văn C - Lương 15.000.000đ",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-0003"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": {
+                "statutory": "BHXH_EMPLOYER"
+              }
+            },
+            {
+              "ma_dong": "BL-03-2026-4",
+              "mo_ta": "Phạm Thị D - Lương 20.000.000đ",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "nhan_su",
+                  "key": {
+                    "ma_nv": "NV-0004"
+                  },
+                  "col": "luong"
+                }
+              },
+              "thue_suat": {
+                "statutory": "BHXH_EMPLOYER"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-03-2026-1",
+        "doc": "BL-03-2026",
+        "loai_pd": "bang_luong"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-NS",
+      "params": {
+        "approval": "APR-03-2026-1",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-03-2026-2",
+        "doc": "BL-03-2026",
+        "loai_pd": "bang_luong_kt"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "GD-KT",
+      "params": {
+        "approval": "APR-03-2026-2",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-NS",
+      "params": {
+        "reason": "Quy trình chấm công và tính lương tháng 03/2026 đã hoàn tất với cả hai phê duyệt."
+      }
+    }
+  ]
+}

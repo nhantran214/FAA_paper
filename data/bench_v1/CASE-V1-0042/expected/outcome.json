@@ -1,0 +1,88 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "1072500",
+      "id": "APR-01",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-CT-04",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "1001000",
+      "id": "APR-02",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-CT-04",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "1001000",
+      "id": "APR-03",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-CT-04",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "1001000",
+      "id": "APR-04",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-CT-04",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "1001000",
+      "id": "APR-05",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-CT-04",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-05 is Từ chối, not Đã duyệt; invoice CT-05 was not reconciled in this run (ket_qua '' on file)",
+      "step": "S19"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Tổng chi phí công tác vượt ngưỡng phê duyệt",
+      "ref": "NGS-CT-2026",
+      "step": "S16"
+    },
+    {
+      "reason": "Tổng chi phí công tác vượt ngưỡng phê duyệt",
+      "ref": "NGS-CT-2026",
+      "step": "S17"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình dừng do phát hiện hành vi chia nhỏ chi phí để né ngưỡng phê duyệt",
+    "step": "S20",
+    "type": "end"
+  },
+  "vars": {}
+}

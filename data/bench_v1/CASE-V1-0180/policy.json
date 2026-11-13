@@ -1,0 +1,21 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "duyet_cham_dut_hd",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-PL"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_cham_dut_ho_so": "200000000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

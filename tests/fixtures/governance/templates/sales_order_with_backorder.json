@@ -1,0 +1,163 @@
+{
+  "id": "sales_order_with_backorder",
+  "name": "Bán hàng có mua bổ sung phần thiếu",
+  "version": "1.0",
+  "roles": [
+    {"id": "dieu_phoi", "kind": "dieu_phoi"},
+    {
+      "id": "nv_bao_gia", "kind": "so",
+      "duties": {"drafts": ["chung_tu", "dong_ct", "don_ban"], "may_request": true},
+      "scope": {"tools": ["create_document", "flag", "notify", "read_records", "record_event", "request_approval", "search_kb"],
+                "read": ["doi_tac", "hang_hoa", "tri_thuc"], "draft": ["chung_tu", "dong_ct"],
+                "may_open_approvals": true, "budget_usd": "0.05", "autonomy": "L2"}
+    },
+    {
+      "id": "nv_ton_kho", "kind": "so",
+      "duties": {"drafts": [], "may_request": false},
+      "scope": {"tools": ["flag", "read_records", "record_event"],
+                "read": ["chung_tu", "dong_ct", "hang_hoa"], "draft": [],
+                "may_open_approvals": false, "budget_usd": "0.02", "autonomy": "L1"}
+    },
+    {
+      "id": "nv_mua_hang", "kind": "so",
+      "duties": {"drafts": ["chung_tu", "dong_ct", "don_mua"], "may_request": true},
+      "scope": {"tools": ["create_document", "flag", "read_records", "record_event", "request_approval"],
+                "read": ["chung_tu", "doi_tac", "dong_ct", "hang_hoa"], "draft": ["chung_tu", "dong_ct"],
+                "may_open_approvals": true, "budget_usd": "0.05", "autonomy": "L2"}
+    },
+    {
+      "id": "nv_nhap_kho", "kind": "so",
+      "duties": {"drafts": ["chung_tu", "dong_ct", "phieu_nhap"], "may_request": false},
+      "scope": {"tools": ["create_document", "flag", "read_records", "record_event"],
+                "read": ["chung_tu", "dong_ct", "hang_hoa"], "draft": ["chung_tu", "dong_ct"],
+                "may_open_approvals": false, "budget_usd": "0.05", "autonomy": "L2"}
+    },
+    {
+      "id": "nv_hoa_don_ban", "kind": "so",
+      "duties": {"drafts": ["chung_tu", "dong_ct", "hoa_don_ban"], "may_request": false},
+      "scope": {"tools": ["create_document", "flag", "read_records", "record_event"],
+                "read": ["chung_tu", "doi_tac", "dong_ct"], "draft": ["chung_tu", "dong_ct"],
+                "may_open_approvals": false, "budget_usd": "0.05", "autonomy": "L2"}
+    },
+    {
+      "id": "nv_doi_soat", "kind": "so",
+      "duties": {"drafts": ["chung_tu", "dong_ct", "hoa_don_mua"], "may_request": false},
+      "scope": {"tools": ["create_document", "flag", "read_records", "reconcile", "record_event"],
+                "read": ["chung_tu", "doi_tac", "dong_ct"], "draft": ["chung_tu", "dong_ct"],
+                "may_open_approvals": false, "budget_usd": "0.05", "autonomy": "L2"}
+    },
+    {
+      "id": "nv_de_nghi_chi", "kind": "so",
+      "duties": {"drafts": ["chung_tu", "de_nghi_chi", "dong_ct", "thanh_toan"], "may_request": true},
+      "scope": {"tools": ["create_document", "flag", "read_records", "record_event", "request_approval"],
+                "read": ["chung_tu", "doi_tac", "dong_ct"], "draft": ["chung_tu", "dong_ct", "thanh_toan"],
+                "may_open_approvals": true, "budget_usd": "0.05", "autonomy": "L2"}
+    },
+    {"id": "truong_kinh_doanh", "kind": "nguoi", "duties": {"decides": ["bao_gia"]}},
+    {"id": "nv_duyet_mua", "kind": "nguoi", "duties": {"decides": ["don_mua"]}},
+    {"id": "ke_toan_truong", "kind": "nguoi", "duties": {"decides": ["de_nghi_chi"]}},
+    {"id": "truong_van_hanh", "kind": "nguoi", "duties": {"drafts": ["bien_ban_kiem_tra", "chung_tu", "van_don"]}},
+    {"id": "nha_cung_cap", "kind": "ngoai", "duties": {"drafts": ["chung_tu", "dong_ct", "hoa_don_mua"]}}
+  ],
+  "start": "mo_ho_so",
+  "steps": [
+    {"id": "mo_ho_so", "type": "open_case", "role": "dieu_phoi",
+     "params": {"title": "Đơn bán hàng có mua bổ sung"}, "next": "lap_don_ban"},
+
+    {"id": "lap_don_ban", "type": "create_document", "role": "nv_bao_gia",
+     "params": {"doc": "don_ban", "loai_ct": "don_ban", "cap": "chiet_khau_toi_da"},
+     "guidance": "Lập đơn bán (báo giá) cho khách theo yêu cầu: mỗi mặt hàng một dòng với số lượng khách đặt. Đơn giá chỉ lấy từ danh mục hàng hóa; danh mục để trống thì để trống. Chiết khấu khách đề nghị chỉ ghi khi không vượt trần chiết khấu trong chính sách (và trần của mặt hàng); vượt trần thì không ghi.",
+     "next": "kiem_tra_ton_kho"},
+
+    {"id": "kiem_tra_ton_kho", "type": "check", "role": "nv_ton_kho",
+     "params": {"expr": "ton_kho >= so_luong", "ref": "hang_thieu", "flag_reason": "Hàng không đủ đáp ứng đơn; phát sinh mua bổ sung"},
+     "guidance": "Kiểm khả năng đáp ứng từng dòng của đơn bán. Mặt hàng không đủ số lượng thì gắn cờ trên mã hàng, ghi rõ thiếu bao nhiêu, để mua bổ sung.",
+     "next": "kiem_tra_chiet_khau"},
+
+    {"id": "kiem_tra_chiet_khau", "type": "check", "role": "nv_bao_gia",
+     "params": {"expr": "chiet_khau_de_nghi <= chiet_khau_toi_da", "cap": "chiet_khau_toi_da", "ref": "don_ban", "flag_reason": "Khách đề nghị chiết khấu vượt trần"},
+     "guidance": "So chiết khấu khách đề nghị với trần chiết khấu trong chính sách. Vượt trần thì gắn cờ ngoại lệ trên đơn bán để người duyệt báo giá thấy; không tự cấp mức ngoài chính sách.",
+     "next": "trinh_duyet_bao_gia"},
+
+    {"id": "trinh_duyet_bao_gia", "type": "request_approval", "role": "nv_bao_gia",
+     "params": {"id": "pd_bao_gia", "doc": "don_ban", "loai_pd": "bao_gia"},
+     "guidance": "Trình duyệt báo giá cho đơn bán vừa lập.",
+     "next": "duyet_bao_gia"},
+
+    {"id": "duyet_bao_gia", "type": "decide_approval", "role": "truong_kinh_doanh",
+     "params": {"approval": "pd_bao_gia", "decision": "quyet_dinh_bao_gia"},
+     "guidance": "Trưởng Kinh doanh duyệt hoặc từ chối báo giá.",
+     "next": "lap_don_mua", "on": {"rejected": "tu_choi", "pending": "cho_duyet_bao_gia"}},
+
+    {"id": "lap_don_mua", "type": "create_document", "role": "nv_mua_hang",
+     "params": {"doc": "don_mua", "loai_ct": "don_mua"},
+     "guidance": "Lập đơn mua bổ sung phần hàng thiếu từ nhà cung cấp, gắn với đơn bán gốc. Số lượng mua là số lượng đơn bán cần; đơn giá chỉ lấy từ nguồn có sẵn, không có thì để trống.",
+     "next": "trinh_duyet_don_mua"},
+
+    {"id": "trinh_duyet_don_mua", "type": "request_approval", "role": "nv_mua_hang",
+     "params": {"id": "pd_don_mua", "doc": "don_mua", "loai_pd": "don_mua"},
+     "guidance": "Trình duyệt đơn mua trước khi phát hành; người lập không phải người duyệt.",
+     "next": "duyet_don_mua"},
+
+    {"id": "duyet_don_mua", "type": "decide_approval", "role": "nv_duyet_mua",
+     "params": {"approval": "pd_don_mua", "decision": "quyet_dinh_don_mua"},
+     "guidance": "Người duyệt đơn mua (khác người lập) duyệt hoặc từ chối.",
+     "next": "nhap_kho", "on": {"rejected": "tu_choi", "pending": "cho_duyet_don_mua"}},
+
+    {"id": "nhap_kho", "type": "create_document", "role": "nv_nhap_kho",
+     "params": {"doc": "phieu_nhap", "loai_ct": "phieu_nhap", "event_kind": "RECEIVED"},
+     "guidance": "Lập phiếu nhập theo đúng số lượng thực nhận, gắn với đơn mua. Nhận thiếu thì ghi đúng số đã nhận, không ghi theo số đặt.",
+     "next": "kiem_tra_chat_luong"},
+
+    {"id": "kiem_tra_chat_luong", "type": "record_external_fact", "role": "truong_van_hanh",
+     "params": {"doc": "bien_ban_kiem_tra", "loai_ct": "bien_ban_kiem_tra", "event_kind": "INSPECTED"},
+     "guidance": "Trưởng Vận hành ghi biên bản kiểm tra lô hàng đã nhận và xử lý ngoại lệ chất lượng; không mở phê duyệt chuẩn.",
+     "next": "theo_doi_giao_hang"},
+
+    {"id": "theo_doi_giao_hang", "type": "record_external_fact", "role": "truong_van_hanh",
+     "params": {"doc": "van_don", "loai_ct": "van_don", "event_kind": "SHIPPED"},
+     "guidance": "Trưởng Vận hành ghi tình trạng giao hàng của nhà cung cấp (đúng hạn hay trễ) và xử lý ngoại lệ; không mở phê duyệt chuẩn.",
+     "next": "lap_hoa_don_ban"},
+
+    {"id": "lap_hoa_don_ban", "type": "create_document", "role": "nv_hoa_don_ban",
+     "params": {"doc": "hoa_don_ban", "loai_ct": "hoa_don_ban"},
+     "guidance": "Lập hóa đơn bán (nháp) cho khách, gắn với đơn bán. Số tiền chỉ lấy từ nguồn có sẵn; không có thì để trống.",
+     "next": "nhan_hoa_don_mua"},
+
+    {"id": "nhan_hoa_don_mua", "type": "record_external_fact", "role": "nha_cung_cap",
+     "params": {"doc": "hoa_don_mua", "loai_ct": "hoa_don_mua", "event_kind": "RECORDED"},
+     "guidance": "Nhà cung cấp gửi hóa đơn mua cho đơn mua.",
+     "next": "doi_soat_ba_chieu"},
+
+    {"id": "doi_soat_ba_chieu", "type": "reconcile", "role": "nv_doi_soat",
+     "params": {"doc": "hoa_don_mua", "ordered": "don_mua", "received": "phieu_nhap"},
+     "guidance": "Đối soát ba chiều: số lượng đặt trên đơn mua, số lượng thực nhận trên phiếu nhập và số lượng trên hóa đơn mua. Ghi kết quả Khớp hoặc Cần kiểm trên hóa đơn mua.",
+     "next": "lap_de_nghi_chi"},
+
+    {"id": "lap_de_nghi_chi", "type": "create_document", "role": "nv_de_nghi_chi",
+     "params": {"doc": "de_nghi_chi", "loai_ct": "de_nghi_chi"},
+     "guidance": "Lập đề nghị chi cho hóa đơn mua, chỉ chi phần hàng đã thực nhận theo phiếu nhập. Số tiền chỉ lấy từ nguồn có sẵn; không có thì để trống.",
+     "next": "trinh_duyet_chi"},
+
+    {"id": "trinh_duyet_chi", "type": "request_approval", "role": "nv_de_nghi_chi",
+     "params": {"id": "pd_de_nghi_chi", "doc": "de_nghi_chi", "loai_pd": "de_nghi_chi"},
+     "guidance": "Trình Kế toán trưởng duyệt đề nghị chi, nêu kết quả đối soát.",
+     "next": "duyet_chi"},
+
+    {"id": "duyet_chi", "type": "decide_approval", "role": "ke_toan_truong",
+     "params": {"approval": "pd_de_nghi_chi", "decision": "quyet_dinh_chi"},
+     "guidance": "Kế toán trưởng duyệt hoặc từ chối đề nghị chi.",
+     "next": "hoan_tat", "on": {"rejected": "tu_choi", "pending": "cho_duyet_chi"}},
+
+    {"id": "cho_duyet_bao_gia", "type": "wait", "role": "dieu_phoi",
+     "params": {"for": "duyet_bao_gia", "approval": "pd_bao_gia"}},
+    {"id": "cho_duyet_don_mua", "type": "wait", "role": "dieu_phoi",
+     "params": {"for": "duyet_don_mua", "approval": "pd_don_mua"}},
+    {"id": "cho_duyet_chi", "type": "wait", "role": "dieu_phoi",
+     "params": {"for": "duyet_chi", "approval": "pd_de_nghi_chi"}},
+    {"id": "tu_choi", "type": "stop", "role": "dieu_phoi",
+     "params": {"reason": "Phê duyệt bị từ chối; dừng hồ sơ"}},
+    {"id": "hoan_tat", "type": "stop", "role": "dieu_phoi",
+     "params": {"reason": "Đề nghị chi đã duyệt; chuyển chi tiền theo quy trình thanh toán"}}
+  ]
+}

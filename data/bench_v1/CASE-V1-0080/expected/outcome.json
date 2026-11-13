@@ -1,0 +1,43 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "15000000",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-001 is Từ chối, not Đã duyệt; invoice DE-001 was not reconciled in this run (ket_qua '' on file); stk_nhan 987654321098 differs from the stk on file for NV-MOI (123456789012)",
+      "step": "S06"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Số tài khoản trong hồ sơ bị chỉnh sửa không khớp với tài khoản gốc",
+      "ref": "NV-MOI",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Đề nghị chi trả bị từ chối do hồ sơ sai lệch",
+    "step": "S07",
+    "type": "end"
+  },
+  "vars": {}
+}

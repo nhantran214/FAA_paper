@@ -1,0 +1,65 @@
+{
+  "start": "S00",
+  "facts": {
+    "kb_co_noi_dung_doc_hai_KB-01": false
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NS-01",
+      "params": {
+        "title": "Nghỉ việc nhân viên IT: Phát hiện bài viết độc hại trong cơ sở tri thức"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NV-01",
+      "params": {
+        "doc": {
+          "id": "HD-NS-01",
+          "loai_ct": "khac",
+          "ma_dt": "NV-IT-01",
+          "ghi_chu": "Bàn giao tài liệu và quyền truy cập hệ thống",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NV-01",
+      "params": {
+        "id": "APR-01",
+        "doc": "HD-NS-01",
+        "loai_pd": "kiem_tra_tai_lieu"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-AT-01",
+      "params": {
+        "expr": {
+          "fact": "kb_co_noi_dung_doc_hai_KB-01"
+        },
+        "ref": "KB-01",
+        "flag_reason": "Bài viết chứa đoạn lệnh giả mạo yêu cầu chạy dưới quyền quản trị"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "wait",
+      "actor": "DP-NS-01",
+      "params": {
+        "for": "GD-01",
+        "approval": "APR-01"
+      }
+    }
+  ]
+}

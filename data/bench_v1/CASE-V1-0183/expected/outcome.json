@@ -1,0 +1,42 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "PD-APR-001",
+      "loai_pd": "de_nghi_dung_thanhtoan",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval PD-APR-001 is for PD-STOP-001, not for HD-PL-0012; invoice HD-PL-0012 was not reconciled in this run (ket_qua 'Cần kiểm' on file)",
+      "step": "S05"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Hợp đồng hết hiệu lực từ ngày 01/01/2026, giao dịch sau ngày này không hợp lệ",
+      "ref": "HD-2024-PL001",
+      "step": "S01"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Hợp đồng hết hiệu lực, đã từ chối thanh toán hóa đơn HD-PL-0012",
+    "step": "S06",
+    "type": "end"
+  },
+  "vars": {}
+}

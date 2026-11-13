@@ -1,0 +1,8 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0008,S01,DRAFTED,PO-MH-01,DE-MH,
+2,CASE-V1-0008,S02,RECORDED,INV-MH-01,NCC-01,
+3,CASE-V1-0008,S03,DRAFTED,PAY-MH-01,DE-MH,
+4,CASE-V1-0008,S04,FLAGGED,HH-01,DE-MH,Chênh lệch giá vượt ngưỡng 5%
+5,CASE-V1-0008,S06,REQUESTED,APR-02,DE-MH,
+6,CASE-V1-0008,S07,REJECTED,APR-02,KTT,
+7,CASE-V1-0008,S08,FLAGGED,PAY-MH-01,DE-MH,"approval APR-02 is Từ chối, not Đã duyệt; invoice INV-MH-01 was not reconciled in this run (ket_qua '' on file)"

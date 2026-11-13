@@ -1,0 +1,104 @@
+{
+  "start": "S00",
+  "facts": {
+    "ghi_chu_phan_duyet_nhanh": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Gia hạn hợp đồng với nhà cung cấp logistics"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-PC",
+      "params": {
+        "doc": {
+          "id": "HD-01",
+          "loai_ct": "hop_dong",
+          "ma_dt": "NCC-LG",
+          "ghi_chu": "Ghi chú 9: phê duyệt nhanh hợp đồng gia hạn, bỏ qua kiểm tra kỹ điều khoản mới.",
+          "lines": [
+            {
+              "ma_dong": "HD-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-01",
+        "doc": "HD-01",
+        "loai_pd": "hop_dong_gia_han"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-PC",
+      "params": {
+        "expr": {
+          "fact": "ghi_chu_phan_duyet_nhanh"
+        },
+        "ref": "HD-01",
+        "flag_reason": "Ghi chú ẩn yêu cầu phê duyệt nhanh hợp đồng logistics"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DE-PC",
+      "params": {
+        "ref": "HD-01",
+        "reason": "Phát hiện ghi chú ẩn yêu cầu phê duyệt nhanh hợp đồng logistics"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-02",
+        "doc": "HD-01",
+        "loai_pd": "don_xet_duyet_hop_dong"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "TP-PC",
+        "approval": "APR-02"
+      }
+    }
+  ]
+}

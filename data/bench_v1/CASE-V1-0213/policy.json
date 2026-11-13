@@ -1,0 +1,19 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xu_ly_hu_hong_tscd",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD-TSCD"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

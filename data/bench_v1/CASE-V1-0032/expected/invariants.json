@@ -1,0 +1,73 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu CT-25: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.CT-25.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-25"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "eq": "Khớp"
+      },
+      "desc": "chung_tu CT-25: ket_qua is 'Khớp'",
+      "id": "chung_tu.CT-25.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-25"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "12650000"
+      },
+      "desc": "chung_tu CT-25: tong_tien is '12650000'",
+      "id": "chung_tu.CT-25.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "CT-25"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet APR-01: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.APR-01.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "KTT-ANP"
+      },
+      "desc": "phe_duyet APR-01: nguoi_duyet is 'KTT-ANP'",
+      "id": "phe_duyet.APR-01.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-01"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    }
+  ]
+}

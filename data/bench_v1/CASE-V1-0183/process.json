@@ -1,0 +1,101 @@
+{
+  "start": "S00",
+  "facts": {
+    "hop_dong_het_han": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-PL",
+      "params": {
+        "title": "Chấm dứt hợp đồng cung cấp thiết bị POS khi hợp đồng hết hạn"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "check",
+      "actor": "DE-PL",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "chung_tu",
+                "key": {
+                  "ma_ct": "HD-2024-PL001"
+                },
+                "col": "trang_thai"
+              }
+            },
+            "Khớp"
+          ]
+        },
+        "ref": "HD-2024-PL001",
+        "flag_reason": "Hợp đồng hết hiệu lực từ ngày 01/01/2026, giao dịch sau ngày này không hợp lệ"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-PL",
+      "params": {
+        "doc": {
+          "id": "PD-STOP-001",
+          "loai_ct": "bien_ban_thanh_ly",
+          "ma_dt": "NCC-01",
+          "ct_goc": "HD-PL-0012",
+          "ghi_chu": "Từ chối thanh toán hóa đơn HD-PL-0012 do hợp đồng hết hiệu lực",
+          "lines": []
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "request_approval",
+      "actor": "DE-PL",
+      "params": {
+        "id": "PD-APR-001",
+        "doc": "PD-STOP-001",
+        "loai_pd": "de_nghi_dung_thanhtoan"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "PD-APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Hợp đồng HD-2024-PL001 hết hiệu lực từ 01/01/2026, giao dịch sau ngày này không hợp lệ"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "pay",
+      "actor": "DE-PL",
+      "params": {
+        "id": "PAY-PL-001",
+        "request": "HD-PL-0012",
+        "approval": "PD-APR-001",
+        "invoice": "HD-PL-0012",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-PL",
+      "params": {
+        "reason": "Hợp đồng hết hiệu lực, đã từ chối thanh toán hóa đơn HD-PL-0012"
+      }
+    }
+  ]
+}

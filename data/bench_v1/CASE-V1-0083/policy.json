@@ -1,0 +1,36 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "bang_luong",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-NS"
+        }
+      ]
+    },
+    {
+      "loai_pd": "bang_luong_kt",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD-KT"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_luong_thang": "20000000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "BHXH_EMPLOYEE",
+    "BHYT_EMPLOYEE",
+    "BHTN_EMPLOYEE",
+    "BHXH_EMPLOYER",
+    "BHYT_EMPLOYER",
+    "BHTN_EMPLOYER"
+  ]
+}

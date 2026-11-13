@@ -1,0 +1,20 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xu_ly_su_co",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-CNTT"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "thoi_gian_khac_phuc_toi_da": "14400",
+    "chi_phi_khac_phuc_toi_da": "5000000"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

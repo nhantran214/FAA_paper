@@ -1,0 +1,19 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "don_nghi_phep",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD-ANPHA"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "so_ngay_nghi_toi_da_khong_can_giam_doc": "10"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

@@ -1,0 +1,51 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "2200022",
+      "id": "APR-TAMUNG-01",
+      "loai_pd": "de_nghi_tam_ung",
+      "nguoi_duyet": "KTT-01",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "2200022",
+      "id": "APR-QUYETTOAN-01",
+      "loai_pd": "de_nghi_tam_ung",
+      "nguoi_duyet": "KTT-01",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Thiếu hóa đơn đầu cuối và biên bản giao nhận",
+      "ref": "DE-QUYETTOAN-01",
+      "step": "S07"
+    },
+    {
+      "reason": "Thiếu tài liệu bắt buộc",
+      "ref": "DE-QUYETTOAN-01",
+      "step": "S08"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09"
+  ],
+  "stop": {
+    "approval": "APR-QUYETTOAN-01",
+    "for": "LX-01",
+    "reason": "",
+    "step": "S09",
+    "type": "wait"
+  },
+  "vars": {}
+}

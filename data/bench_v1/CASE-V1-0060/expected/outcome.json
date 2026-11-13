@@ -1,0 +1,42 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "198000000",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-001 is Từ chối, not Đã duyệt; invoice HD-01 was not reconciled in this run (ket_qua '' on file)",
+      "step": "S05"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Hóa đơn có số lượng và giá trị vượt xa hợp đồng gốc",
+      "ref": "HD-01",
+      "step": "S02"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình khóa sổ hoàn tất, hóa đơn giả mạo bị từ chối",
+    "step": "S06",
+    "type": "end"
+  },
+  "vars": {}
+}

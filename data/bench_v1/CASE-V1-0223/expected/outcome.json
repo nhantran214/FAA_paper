@@ -1,0 +1,37 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "5500000",
+      "id": "APR-001",
+      "loai_pd": "de_nghi_thanh_ly",
+      "nguoi_duyet": "TP-TSCD",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "5500000",
+      "id": "APR-002",
+      "loai_pd": "duyet_thanh_ly",
+      "nguoi_duyet": "GD-ABC",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình thanh lý hoàn tất",
+    "step": "S06",
+    "type": "end"
+  },
+  "vars": {}
+}

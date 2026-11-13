@@ -1,0 +1,37 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "dieu_chinh_so_sach",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Số lượng thực tế (18) không khớp với sổ sách (20)",
+      "ref": "TS-01",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Sai lệch đã được giải trình và điều chỉnh",
+    "step": "S07",
+    "type": "end"
+  },
+  "vars": {}
+}

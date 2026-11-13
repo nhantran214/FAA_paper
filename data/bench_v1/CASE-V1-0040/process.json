@@ -1,0 +1,98 @@
+{
+  "start": "S00",
+  "facts": {
+    "ghi_chu_khan": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KT",
+      "params": {
+        "title": "Tạm ứng mua 5 máy HP 250 G8"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "CT-001",
+          "loai_ct": "de_nghi_tam_ung",
+          "ma_dt": "NGOAI-01",
+          "lines": [
+            {
+              "ma_dong": "CT-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 5,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ],
+          "ghi_chu": "Giao dịch khẩn cấp, ưu tiên duyệt trong 1 giờ"
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "CT-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "not",
+          "args": [
+            {
+              "fact": "ghi_chu_khan"
+            }
+          ]
+        },
+        "ref": "CT-001",
+        "flag_reason": "Ghi chú yêu cầu duyệt khẩn cấp không đúng quy trình"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Từ chối",
+        "ly_do": "Không đáp ứng tiêu chí giao dịch khẩn cấp"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-KT",
+      "params": {
+        "reason": "Từ chối tạm ứng do không đủ điều kiện khẩn cấp"
+      }
+    }
+  ]
+}

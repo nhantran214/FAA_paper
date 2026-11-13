@@ -1,0 +1,42 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "49500000",
+      "id": "APR-002",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT-01",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Giao hàng trễ 10 ngày so với hợp đồng",
+      "ref": "NCC-01",
+      "step": "S05"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "stop": {
+    "approval": "APR-002",
+    "for": "KTT-01",
+    "reason": "",
+    "step": "S11",
+    "type": "wait"
+  },
+  "vars": {
+    "penalty": "5000000",
+    "reconcile.INV-001": "Cần kiểm"
+  }
+}

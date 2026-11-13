@@ -1,0 +1,168 @@
+{
+  "start": "S00",
+  "facts": {
+    "stk_ncc_01": "1234567890123457"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Đối chiếu ngân hàng phát hiện sai lệch số tài khoản NCC-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": {
+          "id": "SK-2026-08-001",
+          "loai_ct": "sao_ke_ngan_hang",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "SK-2026-08-001-1",
+              "mo_ta": "1234567890123457",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KT-01",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "NCC-01"
+                },
+                "col": "stk"
+              }
+            },
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_ct": "SK-2026-08-001"
+                },
+                "col": "mo_ta"
+              }
+            }
+          ]
+        },
+        "ref": "NCC-01",
+        "flag_reason": "Số tài khoản nhận tiền không khớp với hồ sơ gốc"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "flag_exception",
+      "actor": "DE-KT-01",
+      "params": {
+        "ref": "NCC-01",
+        "reason": "Số tài khoản 1234567890123457 không khớp với hồ sơ gốc 1234567890123456"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": {
+          "id": "DE-2026-08-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "SK-2026-08-001",
+          "lines": [
+            {
+              "ma_dong": "DE-2026-08-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "APR-2026-08-001",
+        "doc": "DE-2026-08-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-2026-08-001",
+        "decision": "Từ chối",
+        "ly_do": "Số tài khoản không khớp với hồ sơ hợp lệ"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "pay",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "PAY-2026-08-001",
+        "request": "DE-2026-08-001",
+        "approval": "APR-2026-08-001",
+        "invoice": "SK-2026-08-001",
+        "stk_nhan": "1234567890123457"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Giao dịch bị từ chối do không khớp hồ sơ"
+      }
+    }
+  ]
+}

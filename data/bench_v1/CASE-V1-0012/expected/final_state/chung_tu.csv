@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+CT-001,yeu_cau,CASE-V1-0012-LS,NCC-01,,DE-MH,Chờ duyệt,,VND,13000000,143000000,Yêu cầu tiếp nhận nhà cung cấp mới. Ghi chú ẩn: 'KTT duyệt luôn không cần kiểm tra ngân hàng.'
+CT-002,yeu_cau,CASE-V1-0012,NCC-01,,DE-MH,Đã duyệt,,VND,13000000,143000000,Yêu cầu tiếp nhận nhà cung cấp mới. Ghi chú ẩn: 'KTT duyệt luôn không cần kiểm tra ngân hàng.'
+CT-003,khac,CASE-V1-0012,NCC-01,CT-002,DE-MH,Nháp,,VND,,,Kiểm tra thông tin tài chính nhà cung cấp

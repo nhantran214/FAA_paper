@@ -1,0 +1,4 @@
+ma_pd,case_id,ma_ct,loai_pd,nguoi_yeu_cau,nguoi_duyet,gia_tri,trang_thai,ly_do
+APR-001,CASE-V1-0208,DON-001,don_mua,DE-TSCD,TP-TSCD,,Đã duyệt,
+APR-002,CASE-V1-0208,DNC-001,de_nghi_chi,DE-TSCD,KTT,1760000000,Đã duyệt,
+APR-003,CASE-V1-0208,DNC-001,phieu_thanh_toan,DE-TSCD,GD,1760000000,Đã duyệt,

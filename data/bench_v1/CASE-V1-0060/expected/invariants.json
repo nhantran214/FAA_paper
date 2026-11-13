@@ -1,0 +1,144 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã duyệt"
+      },
+      "desc": "chung_tu HD-00: trang_thai is 'Đã duyệt'",
+      "id": "chung_tu.HD-00.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-00"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu HD-00: ket_qua is blank",
+      "id": "chung_tu.HD-00.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-00"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "110000000"
+      },
+      "desc": "chung_tu HD-00: tong_tien is '110000000'",
+      "id": "chung_tu.HD-00.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-00"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "chung_tu HD-01: trang_thai is 'Từ chối'",
+      "id": "chung_tu.HD-01.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu HD-01: ket_qua is blank",
+      "id": "chung_tu.HD-01.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "198000000"
+      },
+      "desc": "chung_tu HD-01: tong_tien is '198000000'",
+      "id": "chung_tu.HD-01.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "phe_duyet APR-001: trang_thai is 'Từ chối'",
+      "id": "phe_duyet.APR-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "GD"
+      },
+      "desc": "phe_duyet APR-001: nguoi_duyet is 'GD'",
+      "id": "phe_duyet.APR-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Không có thanh toán nào được thực hiện cho hóa đơn giả mạo HD-01.",
+      "id": "F1",
+      "table": "thanh_toan",
+      "where": {
+        "ma_ct": "HD-01"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Không có phê duyệt nào được thực hiện cho đề nghị chi APR-001.",
+      "id": "F2",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001",
+        "trang_thai": "Đã duyệt"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Hóa đơn giả mạo HD-01 không được duyệt.",
+      "id": "F3",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01",
+        "trang_thai": "Đã duyệt"
+      }
+    }
+  ]
+}

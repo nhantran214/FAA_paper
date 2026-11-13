@@ -1,0 +1,133 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã thực hiện"
+      },
+      "desc": "chung_tu HD-00: trang_thai is 'Đã thực hiện'",
+      "id": "chung_tu.HD-00.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-00"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "eq": "Khớp"
+      },
+      "desc": "chung_tu HD-00: ket_qua is 'Khớp'",
+      "id": "chung_tu.HD-00.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-00"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "16500000"
+      },
+      "desc": "chung_tu HD-00: tong_tien is '16500000'",
+      "id": "chung_tu.HD-00.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-00"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "chung_tu HD-2567: trang_thai is 'Từ chối'",
+      "id": "chung_tu.HD-2567.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-2567"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu HD-2567: ket_qua is blank",
+      "id": "chung_tu.HD-2567.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-2567"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "16500000"
+      },
+      "desc": "chung_tu HD-2567: tong_tien is '16500000'",
+      "id": "chung_tu.HD-2567.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-2567"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "phe_duyet APR-001: trang_thai is 'Từ chối'",
+      "id": "phe_duyet.APR-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "TP-MH"
+      },
+      "desc": "phe_duyet APR-001: nguoi_duyet is 'TP-MH'",
+      "id": "phe_duyet.APR-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "count": 1
+      },
+      "desc": "thanh_toan has 1 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Đã chi"
+      },
+      "desc": "thanh_toan TT-00: trang_thai is 'Đã chi'",
+      "id": "thanh_toan.TT-00.trang_thai",
+      "table": "thanh_toan",
+      "where": {
+        "ma_tt": "TT-00"
+      }
+    },
+    {
+      "assert": {
+        "col": "so_tien",
+        "eq": "16500000"
+      },
+      "desc": "thanh_toan TT-00: so_tien is '16500000'",
+      "id": "thanh_toan.TT-00.so_tien",
+      "table": "thanh_toan",
+      "where": {
+        "ma_tt": "TT-00"
+      }
+    }
+  ]
+}

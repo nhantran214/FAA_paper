@@ -1,0 +1,10 @@
+{
+  "name": "sales-backorder-demo",
+  "version": "CASE-0031-ADV-2.0",
+  "nguon": [
+    "DBook v19",
+    "NBook v17",
+    "MBook v16"
+  ],
+  "mo_ta": "Gói quản trị chuyển từ canon pack sang lược đồ lõi (C3)."
+}

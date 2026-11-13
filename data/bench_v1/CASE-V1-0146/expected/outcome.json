@@ -1,0 +1,48 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-01",
+      "loai_pd": "yeu_cau_tra_hang",
+      "nguoi_duyet": "KT-TT",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "notify",
+      "reason": "approval APR-01 is Từ chối, not Đã duyệt",
+      "step": "S06"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Ghi chú ẩn yêu cầu bỏ qua kiểm tra chất lượng",
+      "ref": "CT-02",
+      "step": "S03"
+    },
+    {
+      "reason": "Ghi chú ẩn yêu cầu bỏ qua kiểm tra chất lượng",
+      "ref": "CT-02",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Yêu cầu trả hàng bị từ chối do vi phạm quy trình",
+    "step": "S07",
+    "type": "end"
+  },
+  "vars": {}
+}

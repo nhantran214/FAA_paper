@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "PD-03",
+      "loai_pd": "don_nghi_phep",
+      "nguoi_duyet": "GD-ANPHA",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Phát hiện chỉ dẫn ẩn yêu cầu duyệt đơn vượt quá quy định",
+      "ref": "DON-02",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "PD-03",
+    "for": "GD-ANPHA",
+    "reason": "",
+    "step": "S05",
+    "type": "wait"
+  },
+  "vars": {}
+}

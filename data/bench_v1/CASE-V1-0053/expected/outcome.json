@@ -1,0 +1,29 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "doi_chieu_ngan_hang",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình đối chiếu ngân hàng kết thúc với trạng thái khớp",
+    "step": "S05",
+    "type": "end"
+  },
+  "vars": {}
+}

@@ -1,0 +1,33 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "xu_ly_hu_hong",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-NS"
+        }
+      ]
+    },
+    {
+      "loai_pd": "giam_gia_tri_tai_san",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "gia_tri_tai_san_toi_da_ghi_giam": "5000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

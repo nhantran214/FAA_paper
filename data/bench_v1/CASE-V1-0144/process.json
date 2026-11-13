@@ -1,0 +1,69 @@
+{
+  "start": "S00",
+  "facts": {
+    "tien_hoan_vuot_gioi_han": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Xử lý hoàn tiền lỗi cài đặt phần mềm"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH",
+      "params": {
+        "doc": {
+          "id": "PHIEU-DOI-001",
+          "loai_ct": "phieu_doi_tra",
+          "ma_dt": "KH-01",
+          "lines": [
+            {
+              "ma_dong": "DOI-001-1",
+              "ma_hh": "DV-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "DV-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-001",
+        "doc": "PHIEU-DOI-001",
+        "loai_pd": "don_hoan_tien"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "TP-CSKH",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

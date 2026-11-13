@@ -1,0 +1,7 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0164,S01,DRAFTED,HD-001,DE-PC,
+2,CASE-V1-0164,S02,REQUESTED,APR-001,DE-PC,
+3,CASE-V1-0164,S03,FLAGGED,NCC-01,DP-MA,Người ký hợp đồng là người thân của thành viên hội đồng quản trị
+4,CASE-V1-0164,S04,FLAGGED,NCC-01,DP-MA,Xung đột lợi ích: Người ký hợp đồng là người thân của thành viên hội đồng quản trị
+5,CASE-V1-0164,S05,REQUESTED,APR-002,DE-PC,
+6,CASE-V1-0164,S06,APPROVED,APR-002,GD-MA,

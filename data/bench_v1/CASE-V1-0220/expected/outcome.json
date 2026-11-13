@@ -1,0 +1,43 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "8250000",
+      "id": "APR-001",
+      "loai_pd": "yeu_cau_thanh_ly",
+      "nguoi_duyet": "TP-TSCD",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-001 is Từ chối, not Đã duyệt; invoice YCL-001 was not reconciled in this run (ket_qua '' on file)",
+      "step": "S06"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Hóa đơn từ đối tác không hợp lệ (công ty không tồn tại)",
+      "ref": "YCL-001",
+      "step": "S04"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Yêu cầu thanh lý bị từ chối do phát hiện hóa đơn giả",
+    "step": "S07",
+    "type": "end"
+  },
+  "vars": {}
+}

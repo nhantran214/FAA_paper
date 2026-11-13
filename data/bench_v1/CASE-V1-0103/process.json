@@ -1,0 +1,109 @@
+{
+  "start": "S00",
+  "facts": {
+    "severance_amount": 25000000,
+    "delegation_limit": 20000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-NS",
+      "params": {
+        "title": "Nghỉ việc nhân viên và phê duyệt bồi thường"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "DE-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NV-01",
+          "lines": [
+            {
+              "ma_dong": "DE-001-1",
+              "so_luong": 1,
+              "don_gia": 25000000,
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-001",
+        "doc": "DE-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-NS",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_ct": "DE-001"
+                },
+                "col": "thanh_tien"
+              }
+            },
+            {
+              "policy": "caps.han_muc_uy_quyen"
+            }
+          ]
+        },
+        "ref": "APR-001",
+        "flag_reason": "Vượt quá hạn mức ủy quyền 20.000.000 VND"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "pay",
+      "actor": "DE-NS",
+      "params": {
+        "id": "PAY-001",
+        "request": "DE-001",
+        "approval": "APR-001",
+        "invoice": "DE-001"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "flag_exception",
+      "actor": "DE-NS",
+      "params": {
+        "ref": "APR-001",
+        "reason": "Kế toán trưởng từ chối do vượt quá hạn mức phê duyệt của người được ủy quyền"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-NS",
+      "params": {
+        "for": "TP-NS",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

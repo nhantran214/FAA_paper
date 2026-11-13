@@ -1,0 +1,277 @@
+{
+  "start": "S00",
+  "facts": {
+    "ton_kho_HH-01": 0,
+    "ton_kho_HH-02": 0,
+    "ton_kho_HH-03": 0
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MP",
+      "params": {
+        "title": "Nhập 10.000 sản phẩm điện tử từ nhà cung cấp cho chuỗi bán lẻ"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KH",
+      "params": {
+        "doc": {
+          "id": "PO-MP-2604",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PO-2604-1",
+              "ma_hh": "HH-01",
+              "so_luong": 3333,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "PO-2604-2",
+              "ma_hh": "HH-02",
+              "so_luong": 3334,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "PO-2604-3",
+              "ma_hh": "HH-03",
+              "so_luong": 3333,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-03"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-PO-2604",
+        "doc": "PO-MP-2604",
+        "loai_pd": "don_nhap_kho"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "GD-MP",
+      "params": {
+        "approval": "APR-PO-2604",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-KH",
+      "params": {
+        "doc": {
+          "id": "DN-CHI-2604",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PO-MP-2604",
+          "lines": [
+            {
+              "ma_dong": "DN-2604-3",
+              "ma_hh": "HH-03",
+              "so_luong": 3333,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-03"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KH",
+      "params": {
+        "id": "APR-DN-2604",
+        "doc": "DN-CHI-2604",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "TP-KT",
+      "params": {
+        "approval": "APR-DN-2604",
+        "decision": "Đã duyệt"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "event_kind": "SHIPPED",
+        "doc": {
+          "id": "VAN-2604",
+          "loai_ct": "van_don",
+          "ct_goc": "PO-MP-2604",
+          "ghi_chu": "Giao hàng đúng hạn 24 giờ",
+          "lines": []
+        }
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "create_document",
+      "actor": "THU-KHO",
+      "params": {
+        "doc": {
+          "id": "PN-2604",
+          "loai_ct": "phieu_nhap",
+          "ct_goc": "PO-MP-2604",
+          "lines": [
+            {
+              "ma_dong": "PN-2604-1",
+              "ma_hh": "HH-01",
+              "so_luong": 3333
+            },
+            {
+              "ma_dong": "PN-2604-2",
+              "ma_hh": "HH-02",
+              "so_luong": 3334
+            },
+            {
+              "ma_dong": "PN-2604-3",
+              "ma_hh": "HH-03",
+              "so_luong": 3333
+            }
+          ]
+        },
+        "event_kind": "RECEIVED"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "record_external_fact",
+      "actor": "THU-KHO",
+      "params": {
+        "event_kind": "INSPECTED",
+        "doc": {
+          "id": "BBKT-2604",
+          "loai_ct": "bien_ban_kiem_tra",
+          "ct_goc": "PN-2604",
+          "ghi_chu": "Không phát hiện lỗi, hàng hóa nguyên đai nguyên kiện",
+          "lines": []
+        }
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "create_document",
+      "actor": "DE-KH",
+      "params": {
+        "doc": {
+          "id": "VINV-2604",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PO-MP-2604",
+          "lines": [
+            {
+              "ma_dong": "VINV-2604-3",
+              "ma_hh": "HH-03",
+              "so_luong": 3333,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-03"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "RECORDED"
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "reconcile",
+      "actor": "DE-KH",
+      "params": {
+        "doc": "VINV-2604",
+        "ordered": "PO-MP-2604",
+        "received": "PN-2604"
+      },
+      "next": "S12"
+    },
+    {
+      "id": "S12",
+      "type": "stop",
+      "actor": "DP-MP",
+      "params": {
+        "reason": "Quy trình nhập kho hoàn tất thành công"
+      }
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "start": "S00",
+  "facts": {
+    "gia_chenh_lech": 0.1,
+    "tong_chenh": 12000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-ACQ",
+      "params": {
+        "title": "Mua 2 máy in công nghiệp theo hợp đồng số 2026-0413-MINHANH"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PO-2026-0413",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PO-2026-0413-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "VINV-2026-0413",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PO-2026-0413",
+          "lines": [
+            {
+              "ma_dong": "VINV-2026-0413-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": 66000000,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "event_kind": "RECEIVED",
+        "doc": {
+          "id": "GRN-2026-0413",
+          "loai_ct": "phieu_nhap",
+          "ct_goc": "PO-2026-0413",
+          "lines": [
+            {
+              "ma_dong": "GRN-2026-0413-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "reconcile",
+      "actor": "DE-KT",
+      "params": {
+        "doc": "VINV-2026-0413",
+        "ordered": "PO-2026-0413",
+        "received": "GRN-2026-0413"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "op": "div",
+              "args": [
+                {
+                  "field": {
+                    "table": "dong_ct",
+                    "key": {
+                      "ma_ct": "VINV-2026-0413"
+                    },
+                    "col": "don_gia"
+                  }
+                },
+                {
+                  "field": {
+                    "table": "hang_hoa",
+                    "key": {
+                      "ma_hh": "HH-01"
+                    },
+                    "col": "don_gia"
+                  }
+                }
+              ]
+            },
+            {
+              "policy": "tolerances.gia"
+            }
+          ]
+        },
+        "ref": "HH-01",
+        "flag_reason": "Giá hóa đơn vượt quá mức chênh lệch cho phép (2%)"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-2026-0413",
+        "doc": "VINV-2026-0413",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-2026-0413",
+        "decision": "Từ chối",
+        "ly_do": "Không đủ cơ sở minh bạch để chấp nhận chênh lệch giá"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "PAY-2026-0413",
+        "request": "VINV-2026-0413",
+        "approval": "APR-2026-0413",
+        "invoice": "VINV-2026-0413",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "stop",
+      "actor": "DP-ACQ",
+      "params": {
+        "reason": "Giám đốc từ chối phê duyệt chênh lệch giá, giao dịch dừng lại"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "132000000",
+      "id": "APR-001",
+      "loai_pd": "yeu_cau_bao_hanh",
+      "nguoi_duyet": "GD-CST",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "132000000",
+      "id": "APR-002",
+      "loai_pd": "yeu_cau_bao_hanh",
+      "nguoi_duyet": "GD-CST",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "132000000",
+      "id": "APR-003",
+      "loai_pd": "yeu_cau_bao_hanh",
+      "nguoi_duyet": "GD-CST",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Yêu cầu bảo hành đã được phê duyệt đầy đủ",
+    "step": "S08",
+    "type": "end"
+  },
+  "vars": {}
+}

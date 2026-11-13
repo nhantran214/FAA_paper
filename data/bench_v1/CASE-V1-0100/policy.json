@@ -1,0 +1,17 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "kiem_tra_tai_lieu",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "GD-01"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {},
+  "statutory_refs": []
+}

@@ -1,0 +1,116 @@
+{
+  "start": "S00",
+  "facts": {
+    "ngan_sach_con_lai": 400000000,
+    "yeu_cau_chi": 420000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Khởi chạy chiến dịch khuyến mãi nhưng hết ngân sách"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "DE-CHI-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "TP-MH",
+          "lines": [
+            {
+              "ma_dong": "DE-CHI-001-1",
+              "mo_ta": "Chi phí quảng cáo",
+              "so_luong": 1,
+              "don_gia": 420000000,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "DE-CHI-001-2",
+              "mo_ta": "Chi phí sự kiện offline",
+              "so_luong": 1,
+              "don_gia": 70000000,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-001",
+        "doc": "DE-CHI-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-MH",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "fact": "yeu_cau_chi"
+            },
+            {
+              "fact": "ngan_sach_con_lai"
+            }
+          ]
+        },
+        "ref": "DE-CHI-001",
+        "flag_reason": "Yêu cầu chi vượt ngân sách còn lại"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "pay",
+      "actor": "DE-MH",
+      "params": {
+        "id": "PAY-001",
+        "request": "DE-CHI-001",
+        "approval": "APR-001",
+        "invoice": "DE-CHI-001",
+        "stk_nhan": "0071000123456"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-002",
+        "doc": "DE-CHI-001",
+        "loai_pd": "bo_sung_ngan_sach"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-MH",
+      "params": {
+        "for": "GD",
+        "approval": "APR-002"
+      }
+    }
+  ]
+}

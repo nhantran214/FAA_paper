@@ -1,0 +1,88 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-CNTT",
+      "params": {
+        "title": "Cấp quyền truy cập hệ thống tài chính cho trưởng phòng kế toán"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CNTT",
+      "params": {
+        "doc": {
+          "id": "REQ-001",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "TP-KE-TOAN",
+          "ghi_chu": "Yêu cầu quyền truy cập cấp cao để phân tích ngân sách 2026",
+          "lines": [
+            {
+              "ma_dong": "LINE-001",
+              "so_luong": 1,
+              "mo_ta": "Yêu cầu cấp quyền truy cập hệ thống tài chính cấp cao để phân tích ngân sách 2026"
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CNTT",
+      "params": {
+        "id": "APR-001",
+        "doc": "REQ-001",
+        "loai_pd": "phien_quyen_hethong"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-CNTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Đồng ý cấp quyền truy cập theo yêu cầu"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-CNTT",
+      "params": {
+        "id": "APR-002",
+        "doc": "REQ-001",
+        "loai_pd": "phien_quyen_hethong_capcao"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "GD-CT",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt",
+        "ly_do": "Xác nhận phê duyệt theo quy trình"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-CNTT",
+      "params": {
+        "reason": "Quyền truy cập đã được cấp thành công"
+      }
+    }
+  ]
+}

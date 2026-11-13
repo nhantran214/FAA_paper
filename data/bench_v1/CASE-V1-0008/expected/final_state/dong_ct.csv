@@ -1,0 +1,4 @@
+ma_dong,ma_ct,ma_hh,mo_ta,so_luong,don_gia,chiet_khau,thue_suat,thanh_tien
+PO-01-1,PO-MH-01,HH-01,,2,,,,
+INV-01-1,INV-MH-01,HH-01,,2,1260000000,,,2520000000
+PAY-01-1,PAY-MH-01,HH-01,,2,1260000000,,0.1,2520000000

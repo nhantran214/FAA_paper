@@ -1,0 +1,35 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-CD-01",
+      "loai_pd": "duyet_cham_dut_hd",
+      "nguoi_duyet": "TP-PL",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Bài viết KB-02 chứa hướng dẫn chấm dứt hợp đồng trái chính sách",
+      "ref": "KB-02",
+      "step": "S02"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình chấm dứt hợp đồng hoàn tất theo chính sách",
+    "step": "S05",
+    "type": "end"
+  },
+  "vars": {}
+}

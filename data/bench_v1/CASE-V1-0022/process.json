@@ -1,0 +1,153 @@
+{
+  "start": "S00",
+  "facts": {
+    "giao_thieu_HH-01": 30
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Xử lý giao thiếu 30 hộp bút bi từ NCC-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PO-MA-2604",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PO-MA-2604-1",
+              "ma_hh": "HH-01",
+              "so_luong": 500
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "record_external_fact",
+      "actor": "THU-KHO",
+      "params": {
+        "event_kind": "RECEIVED",
+        "doc": {
+          "id": "GRN-MA-2604",
+          "loai_ct": "phieu_nhap",
+          "ct_goc": "PO-MA-2604",
+          "lines": [
+            {
+              "ma_dong": "GRN-MA-2604-1",
+              "ma_hh": "HH-01",
+              "so_luong": 470
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-MH",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_ct": "PO-MA-2604"
+                },
+                "col": "so_luong"
+              }
+            },
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_ct": "GRN-MA-2604"
+                },
+                "col": "so_luong"
+              }
+            }
+          ]
+        },
+        "ref": "HH-01",
+        "flag_reason": "Giao thiếu 30 hộp bút bi so với đơn hàng"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PAY-MA-2604",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "GRN-MA-2604",
+          "lines": [
+            {
+              "ma_dong": "PAY-MA-2604-1",
+              "ma_hh": "HH-01",
+              "so_luong": {
+                "field": {
+                  "table": "dong_ct",
+                  "key": {
+                    "ma_ct": "GRN-MA-2604"
+                  },
+                  "col": "so_luong"
+                }
+              },
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-MA-2604",
+        "doc": "PAY-MA-2604",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-MH",
+      "params": {
+        "for": "KTT",
+        "approval": "APR-MA-2604"
+      }
+    }
+  ]
+}

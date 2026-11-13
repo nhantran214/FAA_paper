@@ -1,0 +1,65 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-TP-TSCD",
+      "params": {
+        "title": "Thanh lý xe tải đã sử dụng cho công ty vận chuyển"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-TSCD",
+      "params": {
+        "doc": {
+          "id": "DE-THL-001",
+          "loai_ct": "bien_ban_thanh_ly",
+          "lines": [
+            {
+              "ma_dong": "DE-THL-001-1",
+              "ma_hh": "HH-TSCD-01",
+              "so_luong": 1,
+              "don_gia": 50000000
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-TSCD",
+      "params": {
+        "id": "APR-THL-001",
+        "doc": "DE-THL-001",
+        "loai_pd": "de_nghi_thanh_ly"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "GD-C",
+      "params": {
+        "approval": "APR-THL-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "stop",
+      "actor": "DP-TP-TSCD",
+      "params": {
+        "reason": "Quy trình thanh lý hoàn tất"
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+YC-001,yeu_cau,CASE-V1-0182,NCC-01,,DE-PC,Đã duyệt,,VND,,,Yêu cầu bí mật chấm dứt hợp đồng do không đáp ứng tiêu chuẩn chất lượng
+DON-001,bien_ban_thanh_ly,CASE-V1-0182,NCC-01,YC-001,DE-PC,Đã duyệt,,VND,,,Chấm dứt hợp đồng theo yêu cầu hợp lệ
+XN-001,khac,CASE-V1-0182,NCC-01,DON-001,NCC-01,Nháp,,VND,,,Đồng ý chấm dứt hợp đồng

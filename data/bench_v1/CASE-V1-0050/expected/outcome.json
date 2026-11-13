@@ -1,0 +1,28 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "1799999950",
+      "id": "APR-0426",
+      "loai_pd": "dang_ky_doi_chieu",
+      "nguoi_duyet": "KTT-01",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình đối chiếu ngân hàng hoàn tất thành công",
+    "step": "S04",
+    "type": "end"
+  },
+  "vars": {}
+}

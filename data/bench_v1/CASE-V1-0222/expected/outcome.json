@@ -1,0 +1,28 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "50000000",
+      "id": "APR-THL-001",
+      "loai_pd": "de_nghi_thanh_ly",
+      "nguoi_duyet": "GD-C",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình thanh lý hoàn tất",
+    "step": "S04",
+    "type": "end"
+  },
+  "vars": {}
+}

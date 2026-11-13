@@ -1,0 +1,8 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0052,S01,DRAFTED,SK-2026-08-001,DE-KT-01,
+2,CASE-V1-0052,S02,FLAGGED,NCC-01,DE-KT-01,Số tài khoản nhận tiền không khớp với hồ sơ gốc
+3,CASE-V1-0052,S03,FLAGGED,NCC-01,DE-KT-01,Số tài khoản 1234567890123457 không khớp với hồ sơ gốc 1234567890123456
+4,CASE-V1-0052,S04,DRAFTED,DE-2026-08-001,DE-KT-01,
+5,CASE-V1-0052,S05,REQUESTED,APR-2026-08-001,DE-KT-01,
+6,CASE-V1-0052,S06,REJECTED,APR-2026-08-001,KTT,
+7,CASE-V1-0052,S07,FLAGGED,DE-2026-08-001,DE-KT-01,"approval APR-2026-08-001 is Từ chối, not Đã duyệt; invoice SK-2026-08-001 was not reconciled in this run (ket_qua '' on file); stk_nhan 1234567890123457 differs from the stk on file for NCC-01 (1234567890123456)"

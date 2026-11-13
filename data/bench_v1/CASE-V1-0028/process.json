@@ -1,0 +1,204 @@
+{
+  "start": "S00",
+  "facts": {
+    "stk_khach_hang_KH-01": "101234567890"
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-BH",
+      "params": {
+        "title": "Báo giá và thu tiền cho công ty vận tải bị thay đổi hồ sơ khách hàng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-BH",
+      "params": {
+        "doc": {
+          "id": "BG-001",
+          "loai_ct": "bao_gia",
+          "ma_dt": "KH-01",
+          "ghi_chu": "Báo giá dịch vụ vận chuyển hàng hóa",
+          "lines": [
+            {
+              "ma_dong": "BG-001-1",
+              "ma_hh": "DV-01",
+              "so_luong": 1
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-BH",
+      "params": {
+        "id": "APR-001",
+        "doc": "BG-001",
+        "loai_pd": "bao_gia"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-BH",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "record_external_fact",
+      "actor": "KH-01",
+      "params": {
+        "event_kind": "RECEIVED",
+        "doc": {
+          "id": "TT-001",
+          "loai_ct": "phieu_thu",
+          "ma_dt": "KH-01",
+          "ct_goc": "BG-001",
+          "ghi_chu": "Khách hàng đồng ý và thanh toán theo báo giá",
+          "lines": [
+            {
+              "ma_dong": "TT-001-1",
+              "ma_hh": "DV-01",
+              "so_luong": 1
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "create_document",
+      "actor": "DE-BH",
+      "params": {
+        "doc": {
+          "id": "PR-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "KH-01",
+          "ct_goc": "BG-001",
+          "ghi_chu": "Yêu cầu thanh toán theo báo giá",
+          "lines": [
+            {
+              "ma_dong": "PR-001-1",
+              "ma_hh": "DV-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "DV-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-BH",
+      "params": {
+        "id": "APR-002",
+        "doc": "PR-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "check",
+      "actor": "DE-BH",
+      "params": {
+        "expr": {
+          "op": "ne",
+          "args": [
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "KH-01"
+                },
+                "col": "stk"
+              }
+            },
+            {
+              "field": {
+                "table": "doi_tac",
+                "key": {
+                  "ma_dt": "KH-01-ALERT"
+                },
+                "col": "stk"
+              }
+            }
+          ]
+        },
+        "ref": "PR-001",
+        "flag_reason": "Tài khoản ngân hàng trong hồ sơ khách hàng bị thay đổi"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "flag_exception",
+      "actor": "DE-BH",
+      "params": {
+        "ref": "PR-001",
+        "reason": "Tài khoản ngân hàng trong hồ sơ khách hàng bị thay đổi"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "decide_approval",
+      "actor": "TP-BH",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Từ chối",
+        "ly_do": "Tài khoản ngân hàng trong hồ sơ khách hàng bị thay đổi"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "pay",
+      "actor": "DE-BH",
+      "params": {
+        "id": "PAY-001",
+        "request": "PR-001",
+        "approval": "APR-002",
+        "invoice": "BG-001",
+        "stk_nhan": "101234567890"
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "stop",
+      "actor": "DP-BH",
+      "params": {
+        "reason": "Giao dịch bị từ chối do thay đổi hồ sơ khách hàng"
+      }
+    }
+  ]
+}

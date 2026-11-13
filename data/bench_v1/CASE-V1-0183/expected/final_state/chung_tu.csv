@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+HD-2024-PL001,hop_dong,CASE-V1-0183-LS,NCC-01,,NV-PL-01,Đã thực hiện,Khớp,VND,,,"Hợp đồng cung cấp thiết bị POS ký ngày 01/01/2024, hết hiệu lực ngày 01/01/2026."
+HD-PL-0012,hoa_don_mua,CASE-V1-0183-LS,NCC-01,HD-2024-PL001,NCC-01,Chờ duyệt,Cần kiểm,VND,3600000,39600000,Hóa đơn gửi ngày 05/01/2026 yêu cầu thanh toán 3 thiết bị POS.
+PD-STOP-001,bien_ban_thanh_ly,CASE-V1-0183,NCC-01,HD-PL-0012,DE-PL,Đã duyệt,,VND,,,Từ chối thanh toán hóa đơn HD-PL-0012 do hợp đồng hết hiệu lực

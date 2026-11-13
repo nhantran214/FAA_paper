@@ -1,0 +1,17 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "yeu_cau_cap_quyen",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-CNTT"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {},
+  "statutory_refs": []
+}

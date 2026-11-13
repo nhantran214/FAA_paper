@@ -1,0 +1,25 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_chi",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 20000000,
+          "nguoi_duyet": "KP-NS"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "TP-NS"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_uy_quyen": "20000000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

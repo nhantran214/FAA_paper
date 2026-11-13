@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0139,S01,DRAFTED,KN-001,CSKH-01,
+2,CASE-V1-0139,S02,REQUESTED,APR-001,CSKH-01,
+3,CASE-V1-0139,S04,FLAGGED,KN-001,DE-CSKH,Không có chi tiết sản phẩm trong khiếu nại
+4,CASE-V1-0139,S05,FLAGGED,KN-001,DE-CSKH,Tin nhắn 'giám đốc' không khớp với quy trình phê duyệt

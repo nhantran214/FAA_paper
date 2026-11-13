@@ -1,0 +1,57 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "24600000",
+      "id": "APR-01",
+      "loai_pd": "don_mua",
+      "nguoi_duyet": "TP-CNTT",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "27610000",
+      "id": "APR-02",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-02 is Chờ duyệt, not Đã duyệt; invoice HOA-DON-ERP-01 was not reconciled in this run (ket_qua '' on file)",
+      "step": "S10"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Chênh lệch tỷ giá vượt mức cho phép (2%)",
+      "ref": "HOA-DON-ERP-01",
+      "step": "S07"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "stop": {
+    "approval": "APR-02",
+    "for": "KTT",
+    "reason": "",
+    "step": "S11",
+    "type": "wait"
+  },
+  "vars": {
+    "tong_tien_cu": "24600000",
+    "tong_tien_moi": "25100000"
+  }
+}

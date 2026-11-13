@@ -1,0 +1,4 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0063,S01,DRAFTED,PN-001,DE-KT,
+2,CASE-V1-0063,S02,FLAGGED,PN-001,DE-KT,Thiếu hóa đơn VAT cho lô hàng giấy in A4
+3,CASE-V1-0063,S03,REQUESTED,APR-001,DE-KT,

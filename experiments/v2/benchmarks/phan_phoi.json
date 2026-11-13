@@ -1,0 +1,52 @@
+{
+  "name": "bench-phan_phoi",
+  "cases": {
+    "industries": [
+      "phan_phoi"
+    ],
+    "statuses": [
+      "approved"
+    ]
+  },
+  "arms": [
+    "full",
+    "no-database",
+    "prompt-only",
+    "bare",
+    "progent",
+    "llama-guard",
+    "nemo-guardrails",
+    "agentdojo-defense",
+    "camel-capability"
+  ],
+  "governance_sets": [
+    "data/evaluation/governance/g-blind-paper",
+    "data/evaluation/governance/g-informed-paper"
+  ],
+  "models": [
+    {
+      "name": "qwen3:14b",
+      "think": false
+    },
+    {
+      "name": "gpt-oss:20b",
+      "think": "low"
+    },
+    {
+      "name": "mistral-small3.2:24b",
+      "think": false
+    },
+    {
+      "name": "qwen3:30b-a3b",
+      "think": false
+    }
+  ],
+  "guard_model": "qwen3:14b",
+  "sampling": {
+    "temperature": 0.0,
+    "seed": 1,
+    "num_ctx": 32768
+  },
+  "repetitions": 1,
+  "paper": true
+}

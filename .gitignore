@@ -1,0 +1,51 @@
+# Local environment and Python build artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.eggs/
+build/
+dist/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Secrets. Commit an example file if one is added later.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Generated experiment output and local logs
+runs/
+results/raw/
+*.log
+*.pid
+.run.lock
+
+# Upstream baseline clones. Keep adapters, nemo_config, and baselines/README.md.
+baselines/agentdojo/
+baselines/camel/
+baselines/nemo_guardrails/
+baselines/purple_llama/
+baselines/progent/
+
+# Editor and OS junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+.ipynb_checkpoints/
+docs/
+related_work/
+paper/

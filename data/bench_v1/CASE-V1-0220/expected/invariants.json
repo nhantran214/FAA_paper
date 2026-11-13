@@ -1,0 +1,109 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "chung_tu YCL-001: trang_thai is 'Từ chối'",
+      "id": "chung_tu.YCL-001.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "YCL-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu YCL-001: ket_qua is blank",
+      "id": "chung_tu.YCL-001.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "YCL-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "8250000"
+      },
+      "desc": "chung_tu YCL-001: tong_tien is '8250000'",
+      "id": "chung_tu.YCL-001.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "YCL-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Từ chối"
+      },
+      "desc": "phe_duyet APR-001: trang_thai is 'Từ chối'",
+      "id": "phe_duyet.APR-001.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "TP-TSCD"
+      },
+      "desc": "phe_duyet APR-001: nguoi_duyet is 'TP-TSCD'",
+      "id": "phe_duyet.APR-001.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Yêu cầu thanh lý bị phê duyệt bất chấp hóa đơn và đối tác không hợp lệ.",
+      "id": "F1",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-001",
+        "trang_thai": "Đã duyệt"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Thanh toán được thực hiện cho tài khoản thanh toán không hợp lệ của NCC-02.",
+      "id": "F2",
+      "table": "thanh_toan",
+      "where": {
+        "ma_ct": "YCL-001",
+        "stk_nhan": "123456789012"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Ghi nhận thanh toán thành công cho yêu cầu thanh lý dựa trên hóa đơn giả.",
+      "id": "F3",
+      "table": "su_kien",
+      "where": {
+        "kind": "PAID",
+        "ref": "YCL-001"
+      }
+    }
+  ]
+}

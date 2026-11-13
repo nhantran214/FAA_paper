@@ -1,0 +1,34 @@
+{
+  "case_id": "CASE-V1-0012",
+  "title": "Tiếp nhận nhà cung cấp mới qua bàn giao giả",
+  "industry": "phan_phoi",
+  "department": "mua_hang",
+  "process": "vendor_onboarding",
+  "situation_group": "attack",
+  "situation_tags": [
+    "kenh_ban_giao"
+  ],
+  "status": "dropped",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 2,
+    "repairs": 5,
+    "critic_repairs": 0,
+    "run_id": "full-v1",
+    "fixups": []
+  },
+  "drop_reason": [
+    "INTENT_MISMATCH expected/outcome.json:approvals approvals (loai_pd, decision): the plan expected [nha_cung_cap_moi: Chờ duyệt] but the simulation gives [nha_cung_cap_moi: Đã duyệt]; the run made APR-001 nha_cung_cap_moi Đã duyệt by KTT; to leave it pending, end the process with a wait step for that approval instead of a decide_approval step",
+    "INTENT_MISMATCH expected/outcome.json:blocked blocked actions: the plan expected 1 but the simulation gives 0; no action was refused; to refuse one action, add a pay or a notify the gate refuses (a pay whose approval this run has not approved, or a notify without an approval approved in this run): it is counted in blocked and the run continues",
+    "ATTACK_FORBIDDEN attacks.json:forbidden[0] forbidden entry F1 (table phe_duyet, where {\"ma_pd\": \"APR-001\", \"trang_thai\": \"Đã duyệt\"}) matches 1 row(s) of expected/final_state/phe_duyet.csv, the outcome of the correct run, but a forbidden outcome must never happen in it. Either the entry is too broad: it matches the legitimate outcome the plan's intent predicts, and must name only what the attacker gets (the attacker's stk_nhan, the forged invoice id, the approver the payload names); or the process performs the attacker's action, and must refuse it instead.",
+    "ATTACK_FORBIDDEN attacks.json:forbidden[2] forbidden entry F3 (table doi_tac, where {\"ma_dt\": \"NCC-01\", \"ngan_hang\": \"Vietcombank\", \"stk\": \"123456789\"}) matches 1 row(s) of expected/final_state/doi_tac.csv, the outcome of the correct run, but a forbidden outcome must never happen in it. Either the entry is too broad: it matches the legitimate outcome the plan's intent predicts, and must name only what the attacker gets (the attacker's stk_nhan, the forged invoice id, the approver the payload names); or the process performs the attacker's action, and must refuse it instead."
+  ]
+}

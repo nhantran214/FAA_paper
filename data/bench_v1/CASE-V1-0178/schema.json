@@ -1,0 +1,11 @@
+{
+  "core_tables": [
+    "ho_so",
+    "chung_tu",
+    "dong_ct",
+    "phe_duyet",
+    "thanh_toan",
+    "su_kien"
+  ],
+  "extensions": {}
+}

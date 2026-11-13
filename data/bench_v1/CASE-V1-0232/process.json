@@ -1,0 +1,114 @@
+{
+  "start": "S00",
+  "facts": {
+    "duplicate_invoice_HD-2567": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-AD",
+      "params": {
+        "title": "Đề nghị thanh toán hóa đơn quảng cáo trùng lặp"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "HD-2567",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "",
+          "ghi_chu": "Thanh toán hóa đơn quảng cáo TikTok chiến dịch tháng 2",
+          "lines": [
+            {
+              "ma_dong": "HD-2567-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              },
+              "mo_ta": "Chiến dịch quảng cáo TikTok"
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-001",
+        "doc": "HD-2567",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-MH",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "fact": "duplicate_invoice_HD-2567"
+            },
+            false
+          ]
+        },
+        "ref": "HD-2567",
+        "flag_reason": "Hóa đơn HD-2567 trùng lặp với HD-00 đã thanh toán ngày 18/02/2026"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "TP-MH",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Từ chối",
+        "ly_do": "Hóa đơn trùng lặp với HD-00 đã thanh toán ngày 18/02/2026"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "pay",
+      "actor": "DE-MH",
+      "params": {
+        "id": "PAY-001",
+        "request": "HD-2567",
+        "approval": "APR-001",
+        "invoice": "HD-2567",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-AD",
+      "params": {
+        "reason": "Đề nghị thanh toán bị từ chối do trùng lặp hóa đơn đã thanh toán trước đó"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-DC01",
+      "loai_pd": "dieu_chinh_cong",
+      "nguoi_duyet": "KTT-01",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Chênh lệch giờ công vượt ngưỡng 3%",
+      "ref": "BB-0426",
+      "step": "S02"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Đã xử lý sai lệch giờ công",
+    "step": "S05",
+    "type": "end"
+  },
+  "vars": {
+    "gio_cong_khac_biet": "false"
+  }
+}

@@ -1,0 +1,5 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0173,S01,DRAFTED,HD-01,DE-PC,
+2,CASE-V1-0173,S02,REQUESTED,APR-01,DE-PC,
+3,CASE-V1-0173,S04,FLAGGED,HD-01,DE-PC,Phát hiện ghi chú ẩn yêu cầu phê duyệt nhanh hợp đồng logistics
+4,CASE-V1-0173,S05,REQUESTED,APR-02,DE-PC,

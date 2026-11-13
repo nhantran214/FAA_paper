@@ -1,0 +1,39 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "bao_gia",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "P2"
+        }
+      ]
+    },
+    {
+      "loai_pd": "don_mua",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "P6"
+        }
+      ]
+    },
+    {
+      "loai_pd": "de_nghi_chi",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "P5"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "chiet_khau_toi_da": "0.05"
+  },
+  "tolerances": {},
+  "statutory_refs": []
+}

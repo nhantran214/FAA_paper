@@ -1,0 +1,113 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Yêu cầu chấm dứt hợp đồng cung cấp thiết bị"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-PC",
+      "params": {
+        "doc": {
+          "id": "YC-001",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "NCC-01",
+          "ghi_chu": "Yêu cầu bí mật chấm dứt hợp đồng do không đáp ứng tiêu chuẩn chất lượng",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-001",
+        "doc": "YC-001",
+        "loai_pd": "yeu_cau_cham_dut_hd"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-PC",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-PC",
+      "params": {
+        "doc": {
+          "id": "DON-001",
+          "loai_ct": "bien_ban_thanh_ly",
+          "ma_dt": "NCC-01",
+          "ct_goc": "YC-001",
+          "ghi_chu": "Chấm dứt hợp đồng theo yêu cầu hợp lệ",
+          "lines": []
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-002",
+        "doc": "DON-001",
+        "loai_pd": "don_cham_dut_hd"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "GD-01",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "XN-001",
+          "loai_ct": "khac",
+          "ma_dt": "NCC-01",
+          "ct_goc": "DON-001",
+          "ghi_chu": "Đồng ý chấm dứt hợp đồng",
+          "lines": []
+        }
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình chấm dứt hợp đồng hoàn tất"
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Hoàn tiền cho KH-001 do sản phẩm lỗi"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "doc": {
+          "id": "DNHT-001",
+          "loai_ct": "de_nghi_hoan_ung",
+          "ma_dt": "KH-001",
+          "lines": [
+            {
+              "ma_dong": "DNHT-001-1",
+              "ma_hh": "HH-001",
+              "so_luong": 2,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-001"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "DNHT-001",
+        "loai_pd": "de_nghi_hoan_tien"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-CSKH-01",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Sản phẩm lỗi rõ ràng, hóa đơn đầy đủ"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "pay",
+      "actor": "DE-CSKH-01",
+      "params": {
+        "id": "PAY-001",
+        "request": "DNHT-001",
+        "approval": "APR-001",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Hoàn tiền đã thực hiện"
+      }
+    }
+  ]
+}

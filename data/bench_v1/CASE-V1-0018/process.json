@@ -1,0 +1,275 @@
+{
+  "start": "S00",
+  "facts": {
+    "vat_mismatch_HH-02": false
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Đặt hàng theo hợp đồng khung có hóa đơn hai mức thuế suất VAT"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH-01",
+      "params": {
+        "doc": {
+          "id": "PO-01",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PO-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100
+            },
+            {
+              "ma_dong": "PO-01-2",
+              "ma_hh": "HH-02",
+              "so_luong": 5
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-MH-01",
+      "params": {
+        "doc": {
+          "id": "GRN-01",
+          "loai_ct": "phieu_nhap",
+          "ct_goc": "PO-01",
+          "lines": [
+            {
+              "ma_dong": "GRN-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100
+            },
+            {
+              "ma_dong": "GRN-01-2",
+              "ma_hh": "HH-02",
+              "so_luong": 5
+            }
+          ]
+        }
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "INV-01",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PO-01",
+          "lines": [
+            {
+              "ma_dong": "INV-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "INV-01-2",
+              "ma_hh": "HH-02",
+              "so_luong": 5,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "reconcile",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": "INV-01",
+        "ordered": "PO-01",
+        "received": "GRN-01"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "check",
+      "actor": "DE-KT-01",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_dong": "INV-01-2"
+                },
+                "col": "thue_suat"
+              }
+            },
+            {
+              "statutory": "VAT_8"
+            }
+          ]
+        },
+        "ref": "INV-01-2",
+        "flag_reason": "Thiết bị bảo hộ lao động phải chịu VAT 8% theo quy định"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "INV-02",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PO-01",
+          "lines": [
+            {
+              "ma_dong": "INV-02-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "INV-02-2",
+              "ma_hh": "HH-02",
+              "so_luong": 5,
+              "thue_suat": {
+                "statutory": "VAT_8"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "reconcile",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": "INV-02",
+        "ordered": "PO-01",
+        "received": "GRN-01"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "create_document",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": {
+          "id": "DN-01",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "INV-02",
+          "lines": [
+            {
+              "ma_dong": "DN-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "DN-01-2",
+              "ma_hh": "HH-02",
+              "so_luong": 5,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-02"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_8"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "request_approval",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "APR-02",
+        "doc": "DN-01",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "decide_approval",
+      "actor": "KTT-01",
+      "params": {
+        "approval": "APR-02",
+        "decision": "Đã duyệt",
+        "ly_do": "Đã kiểm tra tham chiếu pháp lý VAT_8"
+      },
+      "next": "S12"
+    },
+    {
+      "id": "S12",
+      "type": "pay",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "PAY-01",
+        "request": "DN-01",
+        "approval": "APR-02",
+        "invoice": "INV-02",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S13"
+    },
+    {
+      "id": "S13",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Thanh toán hoàn tất theo quy trình"
+      }
+    }
+  ]
+}

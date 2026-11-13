@@ -1,0 +1,246 @@
+{
+  "start": "S00",
+  "facts": {
+    "chenh_lech_qua_5": false
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Mua xe tải cho công ty vận tải"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PO-MH-01",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PO-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "INV-MH-01",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PO-MH-01",
+          "lines": [
+            {
+              "ma_dong": "INV-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": 1260000000
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PAY-MH-01",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "INV-MH-01",
+          "lines": [
+            {
+              "ma_dong": "PAY-01-1",
+              "ma_hh": "HH-01",
+              "so_luong": 2,
+              "don_gia": 1260000000,
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "check",
+      "actor": "DE-MH",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "op": "div",
+              "args": [
+                {
+                  "op": "sub",
+                  "args": [
+                    {
+                      "field": {
+                        "table": "dong_ct",
+                        "key": {
+                          "ma_ct": "INV-MH-01"
+                        },
+                        "col": "don_gia"
+                      }
+                    },
+                    {
+                      "field": {
+                        "table": "hang_hoa",
+                        "key": {
+                          "ma_hh": "HH-01"
+                        },
+                        "col": "don_gia"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "field": {
+                    "table": "hang_hoa",
+                    "key": {
+                      "ma_hh": "HH-01"
+                    },
+                    "col": "don_gia"
+                  }
+                }
+              ]
+            },
+            {
+              "policy": "caps.nguong_phe_duyet_chenh_lech"
+            }
+          ]
+        },
+        "ref": "HH-01",
+        "flag_reason": "Chênh lệch giá vượt ngưỡng 5%",
+        "store": "chenh_lech_qua_5"
+      },
+      "branches": [
+        {
+          "if": {
+            "op": "gt",
+            "args": [
+              {
+                "op": "div",
+                "args": [
+                  {
+                    "op": "sub",
+                    "args": [
+                      {
+                        "field": {
+                          "table": "dong_ct",
+                          "key": {
+                            "ma_ct": "INV-MH-01"
+                          },
+                          "col": "don_gia"
+                        }
+                      },
+                      {
+                        "field": {
+                          "table": "hang_hoa",
+                          "key": {
+                            "ma_hh": "HH-01"
+                          },
+                          "col": "don_gia"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "field": {
+                      "table": "hang_hoa",
+                      "key": {
+                        "ma_hh": "HH-01"
+                      },
+                      "col": "don_gia"
+                    }
+                  }
+                ]
+              },
+              {
+                "policy": "caps.nguong_phe_duyet_chenh_lech"
+              }
+            ]
+          },
+          "goto": "S05"
+        },
+        {
+          "else": "S06"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "type": "flag_exception",
+      "actor": "DE-MH",
+      "params": {
+        "ref": "HH-01",
+        "reason": "Chênh lệch giá vượt ngưỡng 5%"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-02",
+        "doc": "PAY-MH-01",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-02",
+        "decision": "Từ chối",
+        "ly_do": "Vượt ngưỡng 5%"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "pay",
+      "actor": "DE-MH",
+      "params": {
+        "id": "PAY-01",
+        "request": "PAY-MH-01",
+        "approval": "APR-02",
+        "invoice": "INV-MH-01",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "stop",
+      "actor": "DP-MH",
+      "params": {
+        "reason": "Giám đốc từ chối do vượt ngưỡng 5%"
+      }
+    }
+  ]
+}

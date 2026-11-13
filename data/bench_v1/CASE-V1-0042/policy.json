@@ -1,0 +1,27 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_chi",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 10000000,
+          "nguoi_duyet": "TP-CT-04"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "KTT-05"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "nguong_phe_duyet_cong_tac": "5000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

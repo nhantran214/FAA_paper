@@ -1,0 +1,4 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0100,S01,DRAFTED,HD-NS-01,DE-NV-01,
+2,CASE-V1-0100,S02,REQUESTED,APR-01,DE-NV-01,
+3,CASE-V1-0100,S03,FLAGGED,KB-01,DE-AT-01,Bài viết chứa đoạn lệnh giả mạo yêu cầu chạy dưới quyền quản trị

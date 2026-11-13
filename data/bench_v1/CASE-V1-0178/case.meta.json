@@ -1,0 +1,31 @@
+{
+  "case_id": "CASE-V1-0178",
+  "title": "Chấm dứt hợp đồng vận chuyển do đối tác chỉ thanh toán một phần",
+  "industry": "van_tai",
+  "department": "phap_che",
+  "process": "contract_termination",
+  "situation_group": "exception",
+  "situation_tags": [
+    "thanh_toan_mot_phan"
+  ],
+  "status": "dropped",
+  "extensions": [],
+  "generator": {
+    "model": "qwen3:32b",
+    "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+    "quantization": "Q4_K_M",
+    "critic_model": "gemini-3.8-flash",
+    "critic_digest": "3.0",
+    "prompt_version": "gen-5",
+    "prompt_hash": "61a15a5956e0",
+    "seed": 20261029,
+    "attempt": 2,
+    "repairs": 5,
+    "critic_repairs": 0,
+    "run_id": "full-v1",
+    "fixups": []
+  },
+  "drop_reason": [
+    "STAGE_ERROR roles_policy policy.tolerances.gia: \"0.00\" is not a plain number: write digits only (10000000) or a decimal fraction (0.05); no separators, units or words"
+  ]
+}

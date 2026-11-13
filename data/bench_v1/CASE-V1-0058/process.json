@@ -1,0 +1,134 @@
+{
+  "start": "S00",
+  "facts": {
+    "so_luong_thuc_te": 18
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KT",
+      "params": {
+        "title": "Khóa sổ cuối tháng phát hiện sai lệch số liệu tài sản cố định"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "PK-001",
+          "loai_ct": "phieu_kiem_ke",
+          "lines": [
+            {
+              "ma_dong": "PK-001-1",
+              "ma_hh": "TS-01",
+              "so_luong": 20
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "record_external_fact",
+      "actor": "THU-KHO",
+      "params": {
+        "event_kind": "RECEIVED",
+        "doc": {
+          "id": "PK-002",
+          "loai_ct": "phieu_kiem_ke",
+          "lines": [
+            {
+              "ma_dong": "PK-002-1",
+              "ma_hh": "TS-01",
+              "so_luong": 18
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "dong_ct",
+                "key": {
+                  "ma_ct": "PK-001"
+                },
+                "col": "so_luong"
+              }
+            },
+            {
+              "fact": "so_luong_thuc_te"
+            }
+          ]
+        },
+        "ref": "TS-01",
+        "flag_reason": "Số lượng thực tế (18) không khớp với sổ sách (20)"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "BB-001",
+          "loai_ct": "bien_ban_thanh_ly",
+          "lines": [
+            {
+              "ma_dong": "BB-001-1",
+              "ma_hh": "TS-01",
+              "so_luong": 2
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "BB-001",
+        "loai_pd": "dieu_chinh_so_sach"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Xác nhận 2 xe đã thanh lý, điều chỉnh sổ sách"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-KT",
+      "params": {
+        "reason": "Sai lệch đã được giải trình và điều chỉnh"
+      }
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "start": "S00",
+  "facts": {
+    "tong_gia_tri_tra_hang": 2200000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KH",
+      "params": {
+        "title": "Khách hàng KH-01 trả lại 200 sản phẩm thiết bị văn phòng"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH",
+      "params": {
+        "doc": {
+          "id": "DOC-01",
+          "loai_ct": "phieu_doi_tra",
+          "ma_dt": "KH-01",
+          "lines": [
+            {
+              "ma_dong": "LINE-01",
+              "ma_hh": "HH-01",
+              "so_luong": 200,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-01",
+        "doc": "DOC-01",
+        "loai_pd": "de_nghi_tra_hang"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "GD-KD",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-02",
+        "doc": "DOC-01",
+        "loai_pd": "de_nghi_tra_hang"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "GD-KD",
+      "params": {
+        "approval": "APR-02",
+        "decision": "Đã duyệt"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "stop",
+      "actor": "DP-KH",
+      "params": {
+        "reason": "Cả hai cấp phê duyệt đã hoàn thành"
+      }
+    }
+  ]
+}

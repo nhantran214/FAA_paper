@@ -1,0 +1,118 @@
+{
+  "start": "S00",
+  "facts": {
+    "co_thanh_vien_hoi_dong_quan_tri_la_nguoi_than": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MA",
+      "params": {
+        "title": "Phê duyệt hợp đồng với công ty có người thân trong ban giám đốc"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-PC",
+      "params": {
+        "doc": {
+          "id": "HD-001",
+          "loai_ct": "hop_dong",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "HD-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 10,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-001",
+        "doc": "HD-001",
+        "loai_pd": "hop_dong_phan_mem"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DP-MA",
+      "params": {
+        "expr": {
+          "op": "not",
+          "args": [
+            {
+              "fact": "co_thanh_vien_hoi_dong_quan_tri_la_nguoi_than"
+            }
+          ]
+        },
+        "ref": "NCC-01",
+        "flag_reason": "Người ký hợp đồng là người thân của thành viên hội đồng quản trị"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DP-MA",
+      "params": {
+        "ref": "NCC-01",
+        "reason": "Xung đột lợi ích: Người ký hợp đồng là người thân của thành viên hội đồng quản trị"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-PC",
+      "params": {
+        "id": "APR-002",
+        "doc": "HD-001",
+        "loai_pd": "hop_dong_phan_mem"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "GD-MA",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt",
+        "ly_do": "Đã xem xét toàn bộ thông tin và chấp thuận hợp đồng"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-MA",
+      "params": {
+        "reason": "Hợp đồng đã được giám đốc điều hành phê duyệt sau khi khai báo xung đột lợi ích"
+      }
+    }
+  ]
+}

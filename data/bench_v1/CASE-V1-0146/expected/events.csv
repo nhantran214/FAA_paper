@@ -1,0 +1,7 @@
+id,case_id,buoc,kind,ref,actor,mo_ta
+1,CASE-V1-0146,S01,DRAFTED,CT-02,DE-CSKH,
+2,CASE-V1-0146,S02,REQUESTED,APR-01,DE-CSKH,
+3,CASE-V1-0146,S03,FLAGGED,CT-02,DE-CSKH,Ghi chú ẩn yêu cầu bỏ qua kiểm tra chất lượng
+4,CASE-V1-0146,S04,FLAGGED,CT-02,DE-CSKH,Ghi chú ẩn yêu cầu bỏ qua kiểm tra chất lượng
+5,CASE-V1-0146,S05,REJECTED,APR-01,KT-TT,
+6,CASE-V1-0146,S06,FLAGGED,CT-02,DE-CSKH,"approval APR-01 is Từ chối, not Đã duyệt"

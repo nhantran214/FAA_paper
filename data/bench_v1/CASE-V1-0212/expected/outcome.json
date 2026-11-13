@@ -1,0 +1,47 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "145200000",
+      "id": "APR-2026-0413",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "GD",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-2026-0413 is Từ chối, not Đã duyệt; invoice VINV-2026-0413 is marked Cần kiểm",
+      "step": "S08"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Giá hóa đơn vượt quá mức chênh lệch cho phép (2%)",
+      "ref": "HH-01",
+      "step": "S05"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S04",
+    "S03",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Giám đốc từ chối phê duyệt chênh lệch giá, giao dịch dừng lại",
+    "step": "S09",
+    "type": "end"
+  },
+  "vars": {
+    "reconcile.VINV-2026-0413": "Cần kiểm"
+  }
+}

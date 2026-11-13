@@ -1,0 +1,5 @@
+ma_dong,ma_ct,ma_hh,mo_ta,so_luong,don_gia,chiet_khau,thue_suat,thanh_tien
+PO-001-1,PO-001,HH-PM01,,1,,,,
+INV-001-1,INV-001,HH-PM01,,1,,,,
+PAY-001-1,PAY-001,HH-PM01,,1,45000000,,,45000000
+PAY-001-2,PAY-001,,Thuế VAT 10%,1,4500000,,,4500000

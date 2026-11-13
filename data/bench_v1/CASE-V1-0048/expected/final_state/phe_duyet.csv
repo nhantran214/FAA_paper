@@ -1,0 +1,5 @@
+ma_pd,case_id,ma_ct,loai_pd,nguoi_yeu_cau,nguoi_duyet,gia_tri,trang_thai,ly_do
+PD-001,CASE-V1-0048-LS,CT-001,de_nghi_chi,NV-CT,KTT,7040000,Đã duyệt,
+PD-002,CASE-V1-0048-LS,CT-002,de_nghi_chi,NCC-03,DE-KT,,Từ chối,Hóa đơn HT-26A đã được thanh toán trước đó.
+APR-001,CASE-V1-0048,CT-004,de_nghi_chi,NV-CT,KTT,7040000,Đã duyệt,
+APR-002,CASE-V1-0048,CT-006,de_nghi_chi,DE-KT,KTT,7040000,Từ chối,Hóa đơn HT-26A đã được thanh toán trước đó

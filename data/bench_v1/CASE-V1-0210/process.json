@@ -1,0 +1,219 @@
+{
+  "start": "S00",
+  "facts": {
+    "tre_han_NCC-01": 10
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Mua phần mềm quản lý kho từ NCC-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PO-001",
+          "loai_ct": "don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "PO-001-1",
+              "ma_hh": "HH-PM01",
+              "so_luong": 1
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "event_kind": "SHIPPED",
+        "doc": {
+          "id": "SHIP-001",
+          "loai_ct": "van_don",
+          "ct_goc": "PO-001",
+          "ghi_chu": "Giao trễ 10 ngày so với 20/03/2026",
+          "lines": []
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "check",
+      "actor": "DE-MH",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "fact": "tre_han_NCC-01"
+            },
+            0
+          ]
+        },
+        "ref": "NCC-01",
+        "flag_reason": "Giao hàng trễ 10 ngày so với hợp đồng"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "INV-001",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "ct_goc": "PO-001",
+          "lines": [
+            {
+              "ma_dong": "INV-001-1",
+              "ma_hh": "HH-PM01",
+              "so_luong": 1
+            }
+          ]
+        },
+        "event_kind": "RECORDED"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "reconcile",
+      "actor": "DE-MH",
+      "params": {
+        "doc": "INV-001",
+        "ordered": "PO-001",
+        "received": "SHIP-001"
+      },
+      "next": "S08"
+    },
+    {
+      "id": "S08",
+      "type": "compute_amount",
+      "actor": "DE-MH",
+      "params": {
+        "var": "penalty",
+        "expr": {
+          "op": "mul",
+          "args": [
+            {
+              "field": {
+                "table": "hang_hoa",
+                "key": {
+                  "ma_hh": "HH-PM01"
+                },
+                "col": "don_gia"
+              }
+            },
+            0.1
+          ]
+        }
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S09",
+      "type": "create_document",
+      "actor": "DE-MH",
+      "params": {
+        "doc": {
+          "id": "PAY-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "INV-001",
+          "lines": [
+            {
+              "ma_dong": "PAY-001-1",
+              "ma_hh": "HH-PM01",
+              "so_luong": 1,
+              "don_gia": {
+                "op": "sub",
+                "args": [
+                  {
+                    "field": {
+                      "table": "hang_hoa",
+                      "key": {
+                        "ma_hh": "HH-PM01"
+                      },
+                      "col": "don_gia"
+                    }
+                  },
+                  {
+                    "var": "penalty"
+                  }
+                ]
+              }
+            },
+            {
+              "ma_dong": "PAY-001-2",
+              "mo_ta": "Thuế VAT 10%",
+              "so_luong": 1,
+              "don_gia": {
+                "op": "mul",
+                "args": [
+                  {
+                    "op": "sub",
+                    "args": [
+                      {
+                        "field": {
+                          "table": "hang_hoa",
+                          "key": {
+                            "ma_hh": "HH-PM01"
+                          },
+                          "col": "don_gia"
+                        }
+                      },
+                      {
+                        "var": "penalty"
+                      }
+                    ]
+                  },
+                  {
+                    "statutory": "VAT_10"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-002",
+        "doc": "PAY-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S11"
+    },
+    {
+      "id": "S11",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "KTT-01",
+        "approval": "APR-002"
+      }
+    }
+  ]
+}

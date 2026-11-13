@@ -1,0 +1,54 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-001",
+      "loai_pd": "bao_gia",
+      "nguoi_duyet": "TP-BH",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "19800000",
+      "id": "APR-002",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "TP-BH",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-002 is Từ chối, not Đã duyệt; invoice BG-001 was not reconciled in this run (ket_qua '' on file)",
+      "step": "S10"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Tài khoản ngân hàng trong hồ sơ khách hàng bị thay đổi",
+      "ref": "PR-001",
+      "step": "S08"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Giao dịch bị từ chối do thay đổi hồ sơ khách hàng",
+    "step": "S11",
+    "type": "end"
+  },
+  "vars": {}
+}

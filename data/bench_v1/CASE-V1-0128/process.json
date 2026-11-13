@@ -1,0 +1,155 @@
+{
+  "start": "S00",
+  "facts": {
+    "thieu_hang_HH-BG-01": true,
+    "hu_hong_HH-BG-01": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Kiểm kê phát hiện hàng hóa hư hỏng trong kho"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "record_external_fact",
+      "actor": "THU-KHO-01",
+      "params": {
+        "event_kind": "RECORDED",
+        "doc": {
+          "id": "BB-001",
+          "loai_ct": "bien_ban_kiem_tra",
+          "ma_dt": "KHO-01",
+          "ghi_chu": "Phát hiện thiếu 200 sản phẩm và 200 sản phẩm bị hư hỏng",
+          "lines": [
+            {
+              "ma_dong": "BB-001-1",
+              "ma_hh": "HH-BG-01",
+              "so_luong": 200,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-BG-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            },
+            {
+              "ma_dong": "BB-001-2",
+              "ma_hh": "HH-BG-01",
+              "so_luong": 200,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-BG-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "check",
+      "actor": "DE-KT-01",
+      "params": {
+        "expr": {
+          "op": "lt",
+          "args": [
+            {
+              "field": {
+                "table": "hang_hoa",
+                "key": {
+                  "ma_hh": "HH-BG-01"
+                },
+                "col": "ton_kho"
+              }
+            },
+            {
+              "sum": {
+                "table": "dong_ct",
+                "where": {
+                  "ma_ct": "BB-001"
+                },
+                "col": "so_luong"
+              }
+            }
+          ]
+        },
+        "ref": "HH-BG-01",
+        "flag_reason": "Số lượng thực tế thấp hơn hệ thống và vượt mức sai lệch cho phép"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "create_document",
+      "actor": "DE-KT-01",
+      "params": {
+        "doc": {
+          "id": "BB-002",
+          "loai_ct": "bien_ban_thanh_ly",
+          "ma_dt": "KHO-01",
+          "ghi_chu": "Đề xuất thanh lý 400 sản phẩm bột giặt X với giá trị 10.000.000 VND",
+          "lines": [
+            {
+              "ma_dong": "BB-002-1",
+              "ma_hh": "HH-BG-01",
+              "so_luong": 400,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-BG-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "DE-KT-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "BB-002",
+        "loai_pd": "xu_ly_hu_hong"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-01",
+      "params": {
+        "for": "KTT-01",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "55000000",
+      "id": "APR-CHUYEN-01",
+      "loai_pd": "chuyen_kho",
+      "nguoi_duyet": "TP-KHO",
+      "trang_thai": "Đã duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình chuyển kho hoàn tất thành công",
+    "step": "S07",
+    "type": "end"
+  },
+  "vars": {}
+}

@@ -1,0 +1,119 @@
+{
+  "start": "S00",
+  "facts": {
+    "lech_gia": 6000000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Đề xuất ngân sách quảng cáo vượt mức đã duyệt"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "TP-MH",
+      "params": {
+        "doc": {
+          "id": "DE-NGS-01",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "TP-MH",
+          "lines": [
+            {
+              "ma_dong": "DE-NGS-01-1",
+              "ma_hh": "DV-QC",
+              "so_luong": 30,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "DV-QC"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": 0
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-MH",
+      "params": {
+        "id": "APR-NGS-01",
+        "doc": "DE-NGS-01",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-MH",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "sum": {
+                    "table": "dong_ct",
+                    "where": {
+                      "ma_ct": "DE-NGS-01"
+                    },
+                    "col": "so_luong"
+                  }
+                },
+                {
+                  "field": {
+                    "table": "hang_hoa",
+                    "key": {
+                      "ma_hh": "DV-QC"
+                    },
+                    "col": "don_gia"
+                  }
+                }
+              ]
+            },
+            {
+              "policy": "caps.han_muc_duyet_phong_marketing"
+            }
+          ]
+        },
+        "ref": "DE-NGS-01",
+        "flag_reason": "Chênh lệch vượt ngưỡng phê duyệt phòng Marketing"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "decide_approval",
+      "actor": "GD",
+      "params": {
+        "approval": "APR-NGS-01",
+        "decision": "Từ chối",
+        "ly_do": "Vượt ngưỡng phê duyệt phòng Marketing"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "stop",
+      "actor": "DP-MH",
+      "params": {
+        "reason": "Giám đốc từ chối do vượt ngưỡng phê duyệt"
+      }
+    }
+  ]
+}

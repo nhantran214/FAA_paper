@@ -1,0 +1,84 @@
+{
+  "start": "S00",
+  "facts": {
+    "ngay_qua_han": 3
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-KT",
+      "params": {
+        "title": "Xử lý nợ quá hạn KH-05"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "PH-001",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "KH-05",
+          "ct_goc": "VINV-00",
+          "ghi_chu": "Gửi nhắc nợ và đề xuất xử lý theo chính sách",
+          "lines": []
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "flag_exception",
+      "actor": "DE-KT",
+      "params": {
+        "ref": "KH-05",
+        "reason": "Khách hàng có khoản nợ quá hạn 3 ngày cần xử lý"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "le",
+          "args": [
+            {
+              "fact": "ngay_qua_han"
+            },
+            {
+              "policy": "caps.ngay_qua_han_toi_da_cho_phe_duyet"
+            }
+          ]
+        },
+        "ref": "KH-05",
+        "flag_reason": "Số ngày quá hạn vượt ngưỡng cho phép"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "request_approval",
+      "actor": "KTT",
+      "params": {
+        "id": "APR-001",
+        "doc": "PH-001",
+        "loai_pd": "phuong_an_xu_ly_no"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "wait",
+      "actor": "DP-KT",
+      "params": {
+        "for": "GD",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

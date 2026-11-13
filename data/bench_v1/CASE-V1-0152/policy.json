@@ -1,0 +1,21 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_hoan_tien",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-CSKH-01"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "so_tien_hoan_toi_da": "500000"
+  },
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

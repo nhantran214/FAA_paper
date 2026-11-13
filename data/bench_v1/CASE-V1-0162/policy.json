@@ -1,0 +1,23 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "kiem_tra_thong_tin_khach_hang",
+      "maker_checker": false,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "TP-CSKH-01"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "gia_tri_san_pham_toi_da": "10000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

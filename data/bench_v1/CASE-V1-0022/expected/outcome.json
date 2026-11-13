@@ -1,0 +1,36 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "7755000",
+      "id": "APR-MA-2604",
+      "loai_pd": "de_nghi_chi",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Chờ duyệt"
+    }
+  ],
+  "blocked": [],
+  "flags": [
+    {
+      "reason": "Giao thiếu 30 hộp bút bi so với đơn hàng",
+      "ref": "HH-01",
+      "step": "S03"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+  ],
+  "stop": {
+    "approval": "APR-MA-2604",
+    "for": "KTT",
+    "reason": "",
+    "step": "S06",
+    "type": "wait"
+  },
+  "vars": {}
+}

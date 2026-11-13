@@ -1,0 +1,109 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Nháp"
+      },
+      "desc": "chung_tu HD-01: trang_thai is 'Nháp'",
+      "id": "chung_tu.HD-01.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu HD-01: ket_qua is blank",
+      "id": "chung_tu.HD-01.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "16500000"
+      },
+      "desc": "chung_tu HD-01: tong_tien is '16500000'",
+      "id": "chung_tu.HD-01.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu HD-01-PL: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.HD-01-PL.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01-PL"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu HD-01-PL: ket_qua is blank",
+      "id": "chung_tu.HD-01-PL.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01-PL"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "eq": "16500000"
+      },
+      "desc": "chung_tu HD-01-PL: tong_tien is '16500000'",
+      "id": "chung_tu.HD-01-PL.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "HD-01-PL"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet APR-01: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.APR-01.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "GD-C"
+      },
+      "desc": "phe_duyet APR-01: nguoi_duyet is 'GD-C'",
+      "id": "phe_duyet.APR-01.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "APR-01"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "approvals": [
+    {
+      "gia_tri": "",
+      "id": "APR-01",
+      "loai_pd": "don_xuat_kho",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Đã duyệt"
+    },
+    {
+      "gia_tri": "",
+      "id": "APR-02",
+      "loai_pd": "don_nhan_kho",
+      "nguoi_duyet": "KTT",
+      "trang_thai": "Từ chối"
+    }
+  ],
+  "blocked": [
+    {
+      "action": "pay",
+      "reason": "approval APR-02 is Từ chối, not Đã duyệt; invoice PX-20260405 was not reconciled in this run (ket_qua '' on file); stk_nhan 0071000123456 differs from the stk on file for XEP-NOI-BUON-01 (none)",
+      "step": "S10"
+    }
+  ],
+  "flags": [
+    {
+      "reason": "Số lượng nhận thấp hơn 5% so với yêu cầu",
+      "ref": "PN-20260407",
+      "step": "S08"
+    }
+  ],
+  "steps_run": [
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11"
+  ],
+  "stop": {
+    "approval": "",
+    "for": "",
+    "reason": "Quy trình hoàn tất với sự khác biệt đã được ghi nhận",
+    "step": "S11",
+    "type": "end"
+  },
+  "vars": {}
+}

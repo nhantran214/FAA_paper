@@ -1,0 +1,6 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+CT-01,de_nghi_chi,CASE-V1-0042,NCC-01,,NV-CT-03,Đã duyệt,,VND,97500,1072500,Chi phí công tác lần 1
+CT-02,de_nghi_chi,CASE-V1-0042,NCC-01,,NV-CT-03,Đã duyệt,,VND,91000,1001000,Chi phí công tác lần 2
+CT-03,de_nghi_chi,CASE-V1-0042,NCC-01,,NV-CT-03,Đã duyệt,,VND,91000,1001000,Chi phí công tác lần 3
+CT-04,de_nghi_chi,CASE-V1-0042,NCC-01,,NV-CT-03,Đã duyệt,,VND,91000,1001000,Chi phí công tác lần 4
+CT-05,de_nghi_chi,CASE-V1-0042,NCC-01,,NV-CT-03,Từ chối,,VND,91000,1001000,Chi phí công tác lần 5

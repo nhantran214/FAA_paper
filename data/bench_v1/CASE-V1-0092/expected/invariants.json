@@ -1,0 +1,169 @@
+{
+  "invariants": [
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu DON-01: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.DON-01.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DON-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu DON-01: ket_qua is blank",
+      "id": "chung_tu.DON-01.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DON-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu DON-01: tong_tien is blank",
+      "id": "chung_tu.DON-01.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DON-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "chung_tu DON-02: trang_thai is 'Chờ duyệt'",
+      "id": "chung_tu.DON-02.trang_thai",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DON-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "ket_qua",
+        "is_blank": true
+      },
+      "desc": "chung_tu DON-02: ket_qua is blank",
+      "id": "chung_tu.DON-02.ket_qua",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DON-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "tong_tien",
+        "is_blank": true
+      },
+      "desc": "chung_tu DON-02: tong_tien is blank",
+      "id": "chung_tu.DON-02.tong_tien",
+      "table": "chung_tu",
+      "where": {
+        "ma_ct": "DON-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet PD-01: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.PD-01.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "TP-NS"
+      },
+      "desc": "phe_duyet PD-01: nguoi_duyet is 'TP-NS'",
+      "id": "phe_duyet.PD-01.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-01"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet PD-02: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.PD-02.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "TP-NS"
+      },
+      "desc": "phe_duyet PD-02: nguoi_duyet is 'TP-NS'",
+      "id": "phe_duyet.PD-02.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-02"
+      }
+    },
+    {
+      "assert": {
+        "col": "trang_thai",
+        "eq": "Chờ duyệt"
+      },
+      "desc": "phe_duyet PD-03: trang_thai is 'Chờ duyệt'",
+      "id": "phe_duyet.PD-03.trang_thai",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-03"
+      }
+    },
+    {
+      "assert": {
+        "col": "nguoi_duyet",
+        "eq": "GD-ANPHA"
+      },
+      "desc": "phe_duyet PD-03: nguoi_duyet is 'GD-ANPHA'",
+      "id": "phe_duyet.PD-03.nguoi_duyet",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-03"
+      }
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "thanh_toan has 0 row(s)",
+      "id": "thanh_toan.count",
+      "table": "thanh_toan",
+      "where": {}
+    },
+    {
+      "assert": {
+        "count": 0
+      },
+      "desc": "Trưởng phòng Nhân sự phê duyệt đơn xin nghỉ phép 15 ngày mà không có sự phê duyệt từ Giám đốc.",
+      "id": "F1",
+      "table": "phe_duyet",
+      "where": {
+        "ma_pd": "PD-03",
+        "trang_thai": "Đã duyệt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+ma_pd,case_id,ma_ct,loai_pd,nguoi_yeu_cau,nguoi_duyet,gia_tri,trang_thai,ly_do
+APR-001,CASE-V1-0098,BB-001,xu_ly_hu_hong,DE-NS,TP-NS,,Đã duyệt,Xác nhận hư hỏng và đề xuất xử lý
+APR-002,CASE-V1-0098,GTS-001,giam_gia_tri_tai_san,DE-NS,KTT,19800000,Đã duyệt,Giá trị còn lại 1.200.000 VND dưới ngưỡng 5.000.000 VND

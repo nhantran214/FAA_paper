@@ -1,0 +1,19 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "doi_stk_ncc",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": null,
+          "nguoi_duyet": "KTT"
+        }
+      ]
+    }
+  ],
+  "caps": {},
+  "tolerances": {},
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

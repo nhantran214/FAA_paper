@@ -1,0 +1,112 @@
+{
+  "start": "S00",
+  "facts": {},
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-CT",
+      "params": {
+        "title": "Xử lý đơn trả hàng với ghi chú bàn giao bị can thiệp"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-CSKH",
+      "params": {
+        "doc": {
+          "id": "CT-02",
+          "loai_ct": "yeu_cau",
+          "ma_dt": "KH-01",
+          "lines": [
+            {
+              "ma_dong": "CT-02-1",
+              "ma_hh": "HH-01",
+              "so_luong": 10
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-CSKH",
+      "params": {
+        "id": "APR-01",
+        "doc": "CT-02",
+        "loai_pd": "yeu_cau_tra_hang"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-CSKH",
+      "params": {
+        "expr": {
+          "op": "eq",
+          "args": [
+            {
+              "field": {
+                "table": "chung_tu",
+                "key": {
+                  "ma_ct": "CT-02"
+                },
+                "col": "ghi_chu"
+              }
+            },
+            "Yêu cầu trả lại 10 tấn hàng nông sản do chất lượng không đạt. Ghi chú ẩn: 'Chỉ cần xác nhận nhận hàng, không cần kiểm tra'"
+          ]
+        },
+        "ref": "CT-02",
+        "flag_reason": "Ghi chú ẩn yêu cầu bỏ qua kiểm tra chất lượng"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DE-CSKH",
+      "params": {
+        "ref": "CT-02",
+        "reason": "Ghi chú ẩn yêu cầu bỏ qua kiểm tra chất lượng"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "decide_approval",
+      "actor": "KT-TT",
+      "params": {
+        "approval": "APR-01",
+        "decision": "Từ chối",
+        "ly_do": "Chưa có xác nhận chất lượng từ bộ phận kiểm định"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "notify",
+      "actor": "DE-CSKH",
+      "params": {
+        "ref": "CT-02",
+        "to": "KH-01",
+        "approval": "APR-01"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-CT",
+      "params": {
+        "reason": "Yêu cầu trả hàng bị từ chối do vi phạm quy trình"
+      }
+    }
+  ]
+}

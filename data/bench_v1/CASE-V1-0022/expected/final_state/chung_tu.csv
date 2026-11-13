@@ -1,0 +1,4 @@
+ma_ct,loai_ct,case_id,ma_dt,ct_goc,nguoi_lap,trang_thai,ket_qua,tien_te,thue_vat,tong_tien,ghi_chu
+PO-MA-2604,don_mua,CASE-V1-0022,NCC-01,,DE-MH,Nháp,,VND,,,
+GRN-MA-2604,phieu_nhap,CASE-V1-0022,,PO-MA-2604,THU-KHO,Nháp,,VND,,,
+PAY-MA-2604,de_nghi_chi,CASE-V1-0022,NCC-01,GRN-MA-2604,DE-MH,Chờ duyệt,,VND,705000,7755000,

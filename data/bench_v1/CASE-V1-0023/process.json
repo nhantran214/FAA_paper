@@ -1,0 +1,151 @@
+{
+  "start": "S00",
+  "facts": {
+    "hoa_don_trung_HT-001": true
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-MH",
+      "params": {
+        "title": "Xử lý hóa đơn trùng HT-001 từ NCC-01"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "record_external_fact",
+      "actor": "NCC-01",
+      "params": {
+        "doc": {
+          "id": "HT-001-2",
+          "loai_ct": "hoa_don_mua",
+          "ma_dt": "NCC-01",
+          "lines": [
+            {
+              "ma_dong": "HT-001-2-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        },
+        "event_kind": "RECORDED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "create_document",
+      "actor": "DE-KT",
+      "params": {
+        "doc": {
+          "id": "DN-001",
+          "loai_ct": "de_nghi_chi",
+          "ma_dt": "NCC-01",
+          "ct_goc": "HT-001-2",
+          "lines": [
+            {
+              "ma_dong": "DN-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 100,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "check",
+      "actor": "DE-KT",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "count": {
+                "table": "chung_tu",
+                "where": {
+                  "ma_dt": "NCC-01",
+                  "loai_ct": "hoa_don_mua"
+                }
+              }
+            },
+            1
+          ]
+        },
+        "ref": "HT-001-2",
+        "flag_reason": "Hóa đơn HT-001-2 trùng với HT-001 đã thanh toán trước đó"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "flag_exception",
+      "actor": "DE-KT",
+      "params": {
+        "ref": "HT-001-2",
+        "reason": "Hóa đơn trùng lặp với HT-001 đã thanh toán"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-KT",
+      "params": {
+        "id": "APR-001",
+        "doc": "DN-001",
+        "loai_pd": "de_nghi_chi"
+      },
+      "next": "S05a"
+    },
+    {
+      "id": "S05a",
+      "type": "pay",
+      "actor": "DE-KT",
+      "params": {
+        "id": "PAY-001",
+        "request": "DN-001",
+        "approval": "APR-001",
+        "invoice": "HT-001-2",
+        "stk_nhan": "1234567890123456"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "wait",
+      "actor": "DP-MH",
+      "params": {
+        "for": "KTT",
+        "approval": "APR-001"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "don_hoan_tien",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 5000000,
+          "nguoi_duyet": "TP-CSKH"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "TP-CSKH"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "gioi_han_hoan_tien_khong_can_duyet": "3000000",
+    "gioi_han_hoan_tien_can_duyet": "5000000"
+  },
+  "tolerances": {
+    "gia": "0"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

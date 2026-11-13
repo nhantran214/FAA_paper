@@ -1,0 +1,27 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "yeu_cau_thanh_ly",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 10000000,
+          "nguoi_duyet": "TP-TSCD"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "han_muc_thanh_ly": "10000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

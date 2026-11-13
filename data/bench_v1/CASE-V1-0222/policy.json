@@ -1,0 +1,27 @@
+{
+  "approval_rules": [
+    {
+      "loai_pd": "de_nghi_thanh_ly",
+      "maker_checker": true,
+      "tiers": [
+        {
+          "max": 50000000,
+          "nguoi_duyet": "GD-C"
+        },
+        {
+          "max": null,
+          "nguoi_duyet": "GD-C"
+        }
+      ]
+    }
+  ],
+  "caps": {
+    "gia_thanh_ly_toi_da": "50000000"
+  },
+  "tolerances": {
+    "gia": "0.02"
+  },
+  "statutory_refs": [
+    "VAT_10"
+  ]
+}

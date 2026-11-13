@@ -1,0 +1,106 @@
+{
+  "start": "S00",
+  "facts": {
+    "so_ngay_phep_con_lai_NV-KT-05": 15
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Đề nghị nghỉ phép năm của Nguyễn Văn Tú"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS-01",
+      "params": {
+        "doc": {
+          "id": "DNPH-001",
+          "loai_ct": "don_nghi_phep",
+          "lines": [
+            {
+              "ma_dong": "DNPH-001-1",
+              "mo_ta": "Nghỉ phép năm 5 ngày",
+              "so_luong": 5
+            }
+          ]
+        },
+        "event_kind": "DRAFTED"
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NS-01",
+      "params": {
+        "id": "APR-001",
+        "doc": "DNPH-001",
+        "loai_pd": "nghi_phep"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-KT-01",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "check",
+      "actor": "DE-NS-01",
+      "params": {
+        "expr": {
+          "op": "ge",
+          "args": [
+            {
+              "fact": "so_ngay_phep_con_lai_NV-KT-05"
+            },
+            5
+          ]
+        },
+        "ref": "NV-KT-05",
+        "flag_reason": "Số ngày phép còn lại không đủ để nghỉ 5 ngày"
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "request_approval",
+      "actor": "DE-NS-01",
+      "params": {
+        "id": "APR-002",
+        "doc": "DNPH-001",
+        "loai_pd": "xac_nhan_nghi_phep"
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "decide_approval",
+      "actor": "TP-NS-01",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt"
+      },
+      "next": "S07"
+    },
+    {
+      "id": "S07",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình nghỉ phép đã hoàn tất"
+      }
+    }
+  ]
+}

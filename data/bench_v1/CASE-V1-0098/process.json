@@ -1,0 +1,183 @@
+{
+  "start": "S00",
+  "facts": {
+    "gia_tri_con_lai_HH-01": 1200000
+  },
+  "steps": [
+    {
+      "id": "S00",
+      "type": "open_case",
+      "actor": "DP-01",
+      "params": {
+        "title": "Xử lý laptop hư hỏng của NV-123"
+      },
+      "next": "S01"
+    },
+    {
+      "id": "S01",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "BB-001",
+          "loai_ct": "bien_ban_kiem_tra",
+          "ma_dt": "NV-123",
+          "lines": [
+            {
+              "ma_dong": "BB-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "mo_ta": "Màn hình và mainboard hư hỏng nghiêm trọng"
+            }
+          ]
+        }
+      },
+      "next": "S02"
+    },
+    {
+      "id": "S02",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-001",
+        "doc": "BB-001",
+        "loai_pd": "xu_ly_hu_hong"
+      },
+      "next": "S03"
+    },
+    {
+      "id": "S03",
+      "type": "decide_approval",
+      "actor": "TP-NS",
+      "params": {
+        "approval": "APR-001",
+        "decision": "Đã duyệt",
+        "ly_do": "Xác nhận hư hỏng và đề xuất xử lý"
+      },
+      "next": "S04"
+    },
+    {
+      "id": "S04",
+      "type": "create_document",
+      "actor": "DE-NS",
+      "params": {
+        "doc": {
+          "id": "GTS-001",
+          "loai_ct": "khac",
+          "ma_dt": "NV-123",
+          "lines": [
+            {
+              "ma_dong": "GTS-001-1",
+              "ma_hh": "HH-01",
+              "so_luong": 1,
+              "don_gia": {
+                "field": {
+                  "table": "hang_hoa",
+                  "key": {
+                    "ma_hh": "HH-01"
+                  },
+                  "col": "don_gia"
+                }
+              },
+              "thue_suat": {
+                "statutory": "VAT_10"
+              }
+            }
+          ]
+        }
+      },
+      "next": "S05"
+    },
+    {
+      "id": "S05",
+      "type": "compute_amount",
+      "actor": "DE-NS",
+      "params": {
+        "var": "so_tien_giam",
+        "expr": {
+          "fact": "gia_tri_con_lai_HH-01"
+        }
+      },
+      "next": "S06"
+    },
+    {
+      "id": "S06",
+      "type": "check",
+      "actor": "DE-NS",
+      "params": {
+        "expr": {
+          "op": "gt",
+          "args": [
+            {
+              "var": "so_tien_giam"
+            },
+            {
+              "policy": "caps.gia_tri_tai_san_toi_da_ghi_giam"
+            }
+          ]
+        },
+        "ref": "GTS-001",
+        "flag_reason": "Số tiền ghi giảm vượt ngưỡng quy định"
+      },
+      "branches": [
+        {
+          "if": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "so_tien_giam"
+              },
+              {
+                "policy": "caps.gia_tri_tai_san_toi_da_ghi_giam"
+              }
+            ]
+          },
+          "goto": "S08"
+        },
+        {
+          "else": "S07"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "type": "request_approval",
+      "actor": "DE-NS",
+      "params": {
+        "id": "APR-002",
+        "doc": "GTS-001",
+        "loai_pd": "giam_gia_tri_tai_san"
+      },
+      "next": "S09"
+    },
+    {
+      "id": "S08",
+      "type": "flag_exception",
+      "actor": "DE-NS",
+      "params": {
+        "ref": "GTS-001",
+        "reason": "Số tiền ghi giảm 1.200.000 VND dưới ngưỡng 5.000.000 VND"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S09",
+      "type": "decide_approval",
+      "actor": "KTT",
+      "params": {
+        "approval": "APR-002",
+        "decision": "Đã duyệt",
+        "ly_do": "Giá trị còn lại 1.200.000 VND dưới ngưỡng 5.000.000 VND"
+      },
+      "next": "S10"
+    },
+    {
+      "id": "S10",
+      "type": "stop",
+      "actor": "DP-01",
+      "params": {
+        "reason": "Quy trình xử lý tài sản hư hỏng hoàn tất"
+      }
+    }
+  ]
+}
